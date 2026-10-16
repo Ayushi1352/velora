@@ -17,3 +17,7 @@ export default function AboutStory({ data: story }: SectionComponentProps<Velora
     </section>
   );
 }
+
+
+
+
