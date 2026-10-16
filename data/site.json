@@ -1,0 +1,1038 @@
+{
+  "brand": {
+    "name": "Velora",
+    "tagline": "Fine Dining Restaurant",
+    "logo": {
+      "src": "/images/logo/velora-logo.webp",
+      "alt": "Velora - Fine Dining Restaurant",
+      "width": 1200,
+      "height": 357
+    }
+  },
+  "seo": {
+    "title": "Velora | Fine Dining Restaurant",
+    "description": "Experience exquisite flavors, warm hospitality and unforgettable moments at Velora, a fine dining restaurant in New York."
+  },
+  "navigation": [
+    {
+      "label": "Home",
+      "href": "/"
+    },
+    {
+      "label": "About Us",
+      "href": "/about-us"
+    },
+    {
+      "label": "Our Menu",
+      "href": "/our-menu"
+    },
+    {
+      "label": "Our Chefs",
+      "href": "/our-chefs"
+    },
+    {
+      "label": "Gallery",
+      "href": "/gallery"
+    },
+    {
+      "label": "Testimonials",
+      "href": "/testimonials"
+    },
+    {
+      "label": "Blog",
+      "href": "/blog"
+    },
+    {
+      "label": "Contact Us",
+      "href": "/contact-us"
+    }
+  ],
+  "bookButton": {
+    "label": "Book a Table",
+    "href": "/book-a-table"
+  },
+  "contact": {
+    "address": [
+      "350 Fifth Avenue,",
+      "New York, NY 10118, USA"
+    ],
+    "phone": "+1 0000000000",
+    "email": "info@xyz.com",
+    "mapQuery": "350 Fifth Avenue, New York, NY 10118, USA"
+  },
+  "socials": [
+    {
+      "name": "facebook",
+      "label": "Facebook",
+      "href": "https://www.facebook.com/"
+    },
+    {
+      "name": "instagram",
+      "label": "Instagram",
+      "href": "https://www.instagram.com/"
+    },
+    {
+      "name": "youtube",
+      "label": "YouTube",
+      "href": "https://www.youtube.com/"
+    }
+  ],
+  "footer": {
+    "titleLine1": "A Fine Dining",
+    "titleLine2": "Experience Awaits",
+    "text": [
+      "Experience exquisite flavors, warm hospitality",
+      "and unforgettable moments at Velora."
+    ],
+    "links": [
+      {
+        "label": "Home",
+        "href": "/"
+      },
+      {
+        "label": "About Us",
+        "href": "/about-us"
+      },
+      {
+        "label": "Our Menu",
+        "href": "/our-menu"
+      },
+      {
+        "label": "Gallery",
+        "href": "/gallery"
+      },
+      {
+        "label": "Blog",
+        "href": "/blog"
+      },
+      {
+        "label": "Contact Us",
+        "href": "/contact-us"
+      }
+    ],
+    "copyright": "© 2026 All Rights Reserved. Powered by Lestow."
+  },
+  "home": {
+    "hero": {
+      "title": "Delicacies",
+      "subtitle": "Flavors the Seasons",
+      "highlights": [
+        "Exquisite Cuisine",
+        "Elegant Ambience",
+        "Memorable Moments"
+      ],
+      "button": {
+        "label": "Book a Table",
+        "href": "/book-a-table"
+      },
+      "image": {
+        "src": "/images/home/hero-grill.webp",
+        "alt": "Grilled steak, sausages and skewers on a barbecue grill"
+      },
+      "banner": {
+        "src": "/images/home/hero-signature-steak.webp",
+        "alt": "Signature filet mignon with asparagus and red wine jus"
+      }
+    },
+    "highlights": [
+      {
+        "title": "Fresh Daily Food",
+        "icon": "grill",
+        "image": {
+          "src": "/images/home/feature-fresh-food.webp",
+          "alt": "Grilled salmon with asparagus and cherry tomatoes"
+        }
+      },
+      {
+        "title": "Skilled Chefs",
+        "icon": "chef",
+        "image": {
+          "src": "/images/home/feature-skilled-chefs.webp",
+          "alt": "Seared steak with roasted vegetables"
+        }
+      }
+    ],
+    "story": {
+      "label": "Our Story",
+      "titleLine1": "Crafting Exceptional",
+      "titleLine2": "Dining Experiences",
+      "button": {
+        "label": "Explore Our Restaurant",
+        "href": "/about-us"
+      },
+      "imageLeft": {
+        "src": "/images/shared/chef-plating.webp",
+        "alt": "Chef plating a steak dish in the kitchen"
+      },
+      "imageRight": {
+        "src": "/images/shared/table-flowers-wine.webp",
+        "alt": "Dining table set with flowers and red wine"
+      }
+    },
+    "menu": {
+      "label": "Our",
+      "titleLine1": "Food",
+      "titleLine2": "Menu",
+      "text": "A Selection of Exceptional Flavors",
+      "button": {
+        "label": "View Full Menu",
+        "href": "/our-menu"
+      },
+      "categories": [
+        {
+          "title": "Appetizers",
+          "icon": "bowl",
+          "href": "/our-menu#starters",
+          "image": {
+            "src": "/images/home/menu-appetizers.webp",
+            "alt": "Bruschetta with tomatoes, basil and parmesan"
+          }
+        },
+        {
+          "title": "Main Course",
+          "icon": "cloche",
+          "href": "/our-menu#main-course",
+          "image": {
+            "src": "/images/home/menu-main-course.webp",
+            "alt": "Filet steak with roasted vegetables"
+          }
+        },
+        {
+          "title": "Seafood",
+          "icon": "lobster",
+          "href": "/our-menu#main-course",
+          "image": {
+            "src": "/images/home/menu-seafood.webp",
+            "alt": "Fresh oysters on ice with lemon"
+          }
+        },
+        {
+          "title": "Desserts",
+          "icon": "cupcake",
+          "href": "/our-menu#desserts",
+          "image": {
+            "src": "/images/home/menu-desserts.webp",
+            "alt": "Chocolate lava cake with berries and ice cream"
+          }
+        }
+      ]
+    },
+    "testimonials": {
+      "label": "Testimonials",
+      "titleLine1": "What Our",
+      "titleLine2": "Guests Say",
+      "items": [
+        {
+          "name": "Emily Carter",
+          "role": "Food Enthusiast",
+          "rating": 5,
+          "text": "An exceptional dining experience! The food, ambiance, and service were simply outstanding. Every detail made our evening truly special.",
+          "image": "/images/testimonials/emily-carter.webp"
+        },
+        {
+          "name": "Sophia Bennett",
+          "role": "Lifestyle Influencer",
+          "rating": 5,
+          "text": "Amazing flavors and a warm ambiance. This place never disappoints!",
+          "image": "/images/testimonials/sophia-bennett.webp"
+        },
+        {
+          "name": "James Wilson",
+          "role": "Travel Blogger",
+          "rating": 5,
+          "text": "Delicious food, beautiful atmosphere, and friendly staff. A perfect place for a memorable dining experience.",
+          "image": "/images/testimonials/james-wilson.webp"
+        }
+      ]
+    },
+    "gallery": {
+      "label": "Gallery",
+      "titleLine1": "A Glimpse of",
+      "titleLine2": "Our World",
+      "images": [
+        {
+          "src": "/images/home/glimpse-steak.webp",
+          "alt": "Seared steak with vegetables by candlelight"
+        },
+        {
+          "src": "/images/home/glimpse-dining-room.webp",
+          "alt": "Elegant round dining table with flowers"
+        },
+        {
+          "src": "/images/home/glimpse-lava-cake.webp",
+          "alt": "Chocolate lava cake with ice cream and berries"
+        },
+        {
+          "src": "/images/home/glimpse-velvet-table.webp",
+          "alt": "Velvet chairs around a candlelit table"
+        }
+      ]
+    },
+    "blog": {
+      "label": "Blog & News",
+      "titleLine1": "Stories from",
+      "titleLine2": "Our Kitchen",
+      "readMore": "Read More",
+      "posts": [
+        {
+          "slug": "the-art-of-plating",
+          "image": {
+            "src": "/images/home/blog-chef-plating.webp",
+            "alt": "Chef garnishing a plated steak"
+          }
+        },
+        {
+          "slug": "creating-the-perfect-dining-ambience",
+          "image": {
+            "src": "/images/home/blog-dining-experience.webp",
+            "alt": "Candlelit restaurant table with wine glasses"
+          }
+        },
+        {
+          "slug": "seasonal-ingredients-exceptional-flavors",
+          "image": {
+            "src": "/images/home/blog-seasonal-dessert.webp",
+            "alt": "Chocolate cake with berries and vanilla ice cream"
+          }
+        }
+      ]
+    }
+  },
+  "about": {
+    "banner": {
+      "title": "About Us",
+      "breadcrumb": "About Us"
+    },
+    "story": {
+      "label": "Our Story",
+      "titleLine1": "Crafting Exceptional",
+      "titleLine2": "Dining Experiences",
+      "paragraphs": [
+        "At Velora, we bring together exquisite flavors, fresh ingredients, and culinary artistry to create unforgettable dining experiences. Our passion for food, attention to detail, and warm hospitality make every visit a celebration of taste, elegance, and cherished moments.",
+        "At Velora, we bring together exquisite flavors, fresh ingredients, and culinary artistry to create unforgettable dining experiences. Our passion for food, attention to detail, and warm hospitality make every visit a celebration of taste, elegance, and cherished moments."
+      ],
+      "imageLeft": {
+        "src": "/images/shared/chef-plating.webp",
+        "alt": "Chef plating a steak dish in the kitchen"
+      },
+      "imageRight": {
+        "src": "/images/shared/table-flowers-wine.webp",
+        "alt": "Dining table set with flowers and red wine"
+      }
+    },
+    "services": {
+      "label": "What We Do",
+      "titleLine1": "More Than",
+      "titleLine2": "Just a Meal",
+      "text": "At Velora, we create exceptional dining experiences through thoughtfully crafted cuisine, warm hospitality, and an ambiance that brings people together.",
+      "items": [
+        {
+          "icon": "cloche",
+          "title": "Dine-In Experience",
+          "text": "Exquisite flavors in an elegant and welcoming atmosphere."
+        },
+        {
+          "icon": "wine",
+          "title": "Private Dining",
+          "text": "Curated spaces for intimate gatherings and special celebrations."
+        },
+        {
+          "icon": "calendar",
+          "title": "Events & Celebrations",
+          "text": "Thoughtfully planned experiences for memorable occasions."
+        },
+        {
+          "icon": "catering",
+          "title": "Catering Services",
+          "text": "Exceptional food and service for your gatherings, anywhere."
+        }
+      ],
+      "images": {
+        "main": {
+          "src": "/images/about/service-scallops.webp",
+          "alt": "Seared scallops on cauliflower purée"
+        },
+        "top": {
+          "src": "/images/about/service-seared-fish.webp",
+          "alt": "Chef garnishing seared fish with microgreens"
+        },
+        "bottom": {
+          "src": "/images/about/service-lamp-table.webp",
+          "alt": "Candlelit table with wine glasses and flowers"
+        }
+      }
+    }
+  },
+  "menuPage": {
+    "banner": {
+      "title": "Our Menu",
+      "breadcrumb": "Our Menu"
+    },
+    "intro": {
+      "label": "Our Menu",
+      "titleLine1": "A Culinary Journey",
+      "titleLine2": "Crafted with Passion",
+      "text": "Experience a thoughtfully curated menu featuring seasonal ingredients, refined flavors, and timeless culinary traditions."
+    },
+    "sections": [
+      {
+        "id": "starters",
+        "tab": "Starters",
+        "label": "Starters",
+        "titleLine1": "Perfect Beginnings",
+        "titleLine2": "For a Memorable Meal",
+        "text": "Delicate flavors and fresh ingredients to awaken your taste buds.",
+        "image": {
+          "src": "/images/menu/starters-scallops.webp",
+          "alt": "Seared scallops with herbs and crisp tuile",
+          "width": 848,
+          "height": 717
+        },
+        "items": [
+          {
+            "name": "Truffle Arancini",
+            "description": "Crispy risotto balls with truffle aioli",
+            "price": "₹ 550"
+          },
+          {
+            "name": "Grilled Prawns",
+            "description": "Succulent prawns with herb butter",
+            "price": "₹ 650"
+          },
+          {
+            "name": "Bruschetta Trio",
+            "description": "Tomato, burrata & pesto on sourdough",
+            "price": "₹ 450"
+          },
+          {
+            "name": "Roasted Mushroom Crostini",
+            "description": "Wild mushrooms, herbs, parmesan",
+            "price": "₹ 500"
+          }
+        ],
+        "showByDefault": true
+      },
+      {
+        "id": "main-course",
+        "tab": "Main Course",
+        "label": "Main Course",
+        "titleLine1": "Signature Dishes",
+        "titleLine2": "For Every Taste",
+        "text": "From classic favorites to contemporary creations, our main course menu is crafted to delight.",
+        "image": {
+          "src": "/images/menu/main-lamb-chops.webp",
+          "alt": "Grilled lamb chops on mashed potatoes",
+          "width": 846,
+          "height": 652
+        },
+        "items": [
+          {
+            "name": "Herb Crusted Salmon",
+            "description": "Served with seasonal vegetables",
+            "price": "₹ 950"
+          },
+          {
+            "name": "Grilled Lamb Chops",
+            "description": "With rosemary jus and mashed potatoes",
+            "price": "₹ 1,150"
+          },
+          {
+            "name": "Wild Mushroom Risotto",
+            "description": "Creamy arborio rice with truffle oil",
+            "price": "₹ 850"
+          },
+          {
+            "name": "Chicken Supreme",
+            "description": "With roasted vegetables and herb sauce",
+            "price": "₹ 900"
+          }
+        ],
+        "showByDefault": true
+      },
+      {
+        "id": "desserts",
+        "tab": "Desserts",
+        "label": "Desserts",
+        "titleLine1": "Sweet Endings",
+        "titleLine2": "To Cherish",
+        "text": "Indulgent creations to complete your dining experience.",
+        "image": {
+          "src": "/images/menu/desserts-lava-cake.webp",
+          "alt": "Chocolate lava cake with ice cream and berries",
+          "width": 846,
+          "height": 632
+        },
+        "items": [
+          {
+            "name": "Classic Tiramisu",
+            "description": "Layers of coffee, mascarpone and cocoa",
+            "price": "₹ 450"
+          },
+          {
+            "name": "Chocolate Lava Cake",
+            "description": "With vanilla bean ice cream",
+            "price": "₹ 500"
+          },
+          {
+            "name": "Crème Brûlée",
+            "description": "Rich custard with caramelized sugar",
+            "price": "₹ 450"
+          },
+          {
+            "name": "Seasonal Fruit Tart",
+            "description": "Fresh fruits with pastry cream",
+            "price": "₹ 400"
+          }
+        ],
+        "showByDefault": true
+      },
+      {
+        "id": "beverages",
+        "tab": "Beverages",
+        "label": "Beverages",
+        "titleLine1": "Fine Pours",
+        "titleLine2": "To Raise a Toast",
+        "text": "Handcrafted cocktails, fine wines and refreshing signature drinks.",
+        "image": {
+          "src": "/images/gallery/cocktail.webp",
+          "alt": "Strawberry cocktail with rosemary garnish",
+          "width": 848,
+          "height": 620
+        },
+        "items": [
+          {
+            "name": "Velora Signature Cocktail",
+            "description": "Strawberry, rosemary and sparkling wine",
+            "price": "₹ 650"
+          },
+          {
+            "name": "House Red Wine",
+            "description": "Smooth, full-bodied glass of red",
+            "price": "₹ 750"
+          },
+          {
+            "name": "Classic Mojito",
+            "description": "Fresh mint, lime and soda",
+            "price": "₹ 450"
+          },
+          {
+            "name": "Artisan Coffee",
+            "description": "Freshly brewed single-origin blend",
+            "price": "₹ 300"
+          }
+        ],
+        "showByDefault": false
+      }
+    ]
+  },
+  "chefsPage": {
+    "banner": {
+      "title": "Our Chefs",
+      "breadcrumb": "Our Chefs"
+    },
+    "intro": {
+      "label": "Our Chef",
+      "titleLine1": "Masters Behind",
+      "titleLine2": "Memorable Flavors",
+      "text": "Our chefs bring a passion for fine ingredients, refined techniques, and a deep respect for culinary traditions. Every dish is thoughtfully crafted to deliver an unforgettable dining experience."
+    },
+    "chefs": [
+      {
+        "name": "James Walker",
+        "role": "Executive Chef",
+        "text": "With years of global experience, Chef James leads our kitchen with creativity and precision, crafting dishes that blend tradition with innovation.",
+        "image": {
+          "src": "/images/chefs/james-walker.webp",
+          "alt": "Executive Chef James Walker plating a dish"
+        }
+      },
+      {
+        "name": "Sophia Bennett",
+        "role": "Sous Chef",
+        "text": "Chef Sophia brings fresh perspectives and a keen eye for detail, ensuring every plate is a perfect balance of flavor and artistry.",
+        "image": {
+          "src": "/images/chefs/sophia-bennett.webp",
+          "alt": "Sous Chef Sophia Bennett plating a dish"
+        }
+      },
+      {
+        "name": "James Walker",
+        "role": "Executive Chef",
+        "text": "With years of global experience, Chef James leads our kitchen with creativity and precision, crafting dishes that blend tradition with innovation.",
+        "image": {
+          "src": "/images/chefs/james-walker.webp",
+          "alt": "Executive Chef James Walker plating a dish"
+        }
+      },
+      {
+        "name": "Sophia Bennett",
+        "role": "Sous Chef",
+        "text": "Chef Sophia brings fresh perspectives and a keen eye for detail, ensuring every plate is a perfect balance of flavor and artistry.",
+        "image": {
+          "src": "/images/chefs/sophia-bennett.webp",
+          "alt": "Sous Chef Sophia Bennett plating a dish"
+        }
+      }
+    ]
+  },
+  "galleryPage": {
+    "banner": {
+      "title": "Gallery",
+      "breadcrumb": "Gallery"
+    },
+    "intro": {
+      "label": "Gallery",
+      "titleLine1": "Moments That",
+      "titleLine2": "Live Beyond the Table",
+      "text": "A glimpse into our food, ambience, and the unforgettable experiences we create for our guests."
+    },
+    "filters": [
+      "All",
+      "Food",
+      "Ambience",
+      "Events"
+    ],
+    "images": [
+      {
+        "src": "/images/gallery/scallops.webp",
+        "alt": "Seared scallops with crisp tuile",
+        "category": "Food"
+      },
+      {
+        "src": "/images/gallery/dining-room.webp",
+        "alt": "Elegant dining room with velvet chairs",
+        "category": "Ambience"
+      },
+      {
+        "src": "/images/gallery/lava-cake.webp",
+        "alt": "Chocolate lava cake with berries",
+        "category": "Food"
+      },
+      {
+        "src": "/images/gallery/cocktail.webp",
+        "alt": "Strawberry cocktail by lamplight",
+        "category": "Events"
+      },
+      {
+        "src": "/images/gallery/lamb-chops.webp",
+        "alt": "Grilled lamb chops on mashed potatoes",
+        "category": "Food"
+      },
+      {
+        "src": "/images/gallery/restaurant-interior.webp",
+        "alt": "Warmly lit restaurant interior",
+        "category": "Ambience"
+      },
+      {
+        "src": "/images/gallery/event-canapes.webp",
+        "alt": "Canapés displayed for an event",
+        "category": "Events"
+      },
+      {
+        "src": "/images/gallery/wine-table.webp",
+        "alt": "Table set with wine glasses and flowers",
+        "category": "Ambience"
+      },
+      {
+        "src": "/images/home/glimpse-velvet-table.webp",
+        "alt": "Velvet chairs around a candlelit table",
+        "category": "Ambience"
+      }
+    ],
+    "perPage": 8
+  },
+  "testimonialsPage": {
+    "banner": {
+      "title": "Testimonials",
+      "breadcrumb": "Testimonials"
+    },
+    "intro": {
+      "label": "Testimonials",
+      "titleLine1": "What Our Guests",
+      "titleLine2": "Say About Us",
+      "text": "Real experiences from our valued guests who have enjoyed our food, ambiance, and hospitality."
+    },
+    "items": [
+      {
+        "name": "Priya Sharma",
+        "location": "New Delhi",
+        "rating": 5,
+        "text": "An exceptional dining experience! The food was delicious, beautifully presented, and the service was simply outstanding. Will definitely be back!",
+        "image": "/images/testimonials/priya-sharma.webp"
+      },
+      {
+        "name": "Rahul Mehta",
+        "location": "Gurugram",
+        "rating": 5,
+        "text": "Amazing food, warm ambiance and attentive staff. Every dish we tried was full of flavor. It's our new favorite place in the city.",
+        "image": "/images/testimonials/rahul-mehta.webp"
+      },
+      {
+        "name": "Ananya Verma",
+        "location": "Noida",
+        "rating": 5,
+        "text": "From the starters to the desserts, everything was perfect. The atmosphere is elegant yet comfortable. Highly recommended for special occasions!",
+        "image": "/images/testimonials/ananya-verma.webp"
+      },
+      {
+        "name": "Karan Malhotra",
+        "location": "Faridabad",
+        "rating": 5,
+        "text": "A perfect blend of great food, beautiful ambience and excellent hospitality. The whole experience was memorable and absolutely worth it.",
+        "image": "/images/testimonials/karan-malhotra.webp"
+      },
+      {
+        "name": "Sneha Kapoor",
+        "location": "Ghaziabad",
+        "rating": 5,
+        "text": "We celebrated our anniversary here and it was truly special. The food, service and ambience exceeded all our expectations.",
+        "image": "/images/testimonials/sneha-kapoor.webp"
+      },
+      {
+        "name": "Amit Sinha",
+        "location": "New Delhi",
+        "rating": 5,
+        "text": "One of the best dining experiences I've had in a long time. The attention to detail in both food and service is remarkable.",
+        "image": "/images/testimonials/amit-sinha.webp"
+      },
+      {
+        "name": "James Wilson",
+        "location": "Mumbai",
+        "rating": 5,
+        "text": "Elegant interiors, a thoughtful wine list and dishes full of flavour. The staff made our evening feel truly special from start to finish.",
+        "image": "/images/testimonials/james-wilson.webp"
+      }
+    ],
+    "perPage": 6
+  },
+  "blogPage": {
+    "banner": {
+      "title": "Blog",
+      "breadcrumb": "Blog"
+    },
+    "intro": {
+      "label": "Blogs",
+      "titleLine1": "Stories From",
+      "titleLine2": "Our Kitchen",
+      "text": "Discover our latest stories, culinary inspirations, events, and behind-the-scenes moments from our restaurant."
+    },
+    "meta": {
+      "by": "By",
+      "comments": "Comments"
+    },
+    "perPage": 3
+  },
+  "posts": [
+    {
+      "slug": "the-art-of-plating",
+      "titleLine1": "The Art of Plating:",
+      "titleLine2": "Making Food a Visual Delight",
+      "author": "Priya Sharma",
+      "comments": 3,
+      "date": "19 Oct, 2025",
+      "category": "Culinary Tips",
+      "excerpt": "Discover how our chefs turn fresh ingredients into beautiful works of art. Learn about the techniques, creativity, and thought process behind every plate we serve.",
+      "thumbnail": {
+        "src": "/images/blog/plating-scallops-thumb.webp",
+        "alt": "Seared scallops plated with crispy garnish"
+      },
+      "cover": {
+        "src": "/images/blog/plating-scallops.webp",
+        "alt": "Seared scallops plated on a textured ceramic dish by candlelight"
+      },
+      "content": [
+        "Food is not just about taste; it's a complete sensory experience, and presentation plays a big role in that journey. At our restaurant, we believe that a beautifully plated dish not only looks inviting but also enhances the overall dining experience. A well-presented dish can spark curiosity, set the mood and make the first bite even more memorable.",
+        "Our chefs pay close attention to every detail, from the choice of plate and color combinations to the arrangement of ingredients. Each element is thoughtfully placed to create balance, contrast and harmony on the plate. Fresh herbs, vibrant sauces and seasonal ingredients are used to add both color and texture, making the dish as pleasing to the eyes as it is to the palate.",
+        "Plating is also a way for our chefs to showcase creativity and tell a story through food. Whether it's a modern twist on a classic recipe or an entirely new creation, every plate is designed to reflect our passion for culinary artistry."
+      ],
+      "highlights": [
+        "Fresh and seasonal ingredients for vibrant and natural colors",
+        "Thoughtful arrangement to create balance and harmony",
+        "A perfect blend of taste, texture and visual appeal"
+      ],
+      "image": {
+        "src": "/images/blog/plating-lamb.webp",
+        "alt": "Plated grilled meat with carrots and herbs"
+      },
+      "quote": {
+        "text": "Great food is a feast for the eyes before it is a treat for the taste buds.",
+        "author": "Chef Arjun Mehta"
+      },
+      "closing": "Next time you visit, take a moment to appreciate the artistry on your plate. Every dish at our restaurant is crafted with care, creativity and a deep love for food, ensuring you enjoy a truly memorable dining experience."
+    },
+    {
+      "slug": "creating-the-perfect-dining-ambience",
+      "titleLine1": "Creating the Perfect",
+      "titleLine2": "Dining Ambience",
+      "author": "Rahul Mehta",
+      "comments": 5,
+      "date": "14 Oct, 2025",
+      "category": "Dining Experience",
+      "excerpt": "From lighting to interiors, discover how we create a warm and inviting atmosphere that makes every dining experience special and memorable.",
+      "thumbnail": {
+        "src": "/images/blog/ambience-wine-glasses.webp",
+        "alt": "Wine glasses and flowers on a candlelit table"
+      },
+      "cover": {
+        "src": "/images/contact/restaurant-interior.webp",
+        "alt": "Warmly lit dining room with velvet chairs"
+      },
+      "content": [
+        "A memorable meal begins long before the first course arrives. The moment our guests step through the door, the lighting, music, textures and scents work together to set the tone for the evening ahead.",
+        "Our dining room is designed around warmth and intimacy. Soft, layered lighting, rich velvet seating and carefully chosen table settings create a space that feels elegant yet relaxed, so every guest can settle in and enjoy the moment.",
+        "Every detail, from fresh flowers on each table to the spacing between seats, is chosen to make conversation easy and the experience feel personal."
+      ],
+      "highlights": [
+        "Warm, layered lighting that sets a relaxed mood",
+        "Comfortable seating and thoughtfully spaced tables",
+        "Fresh flowers and fine tableware on every table"
+      ],
+      "image": {
+        "src": "/images/gallery/restaurant-interior.webp",
+        "alt": "Restaurant interior with warm pendant lights"
+      },
+      "quote": {
+        "text": "Ambience is the silent host that welcomes every guest.",
+        "author": "Rahul Mehta"
+      },
+      "closing": "On your next visit, take a moment to look around and enjoy the atmosphere we have created for you. It is all part of the Velora experience."
+    },
+    {
+      "slug": "seasonal-ingredients-exceptional-flavors",
+      "titleLine1": "Seasonal Ingredients,",
+      "titleLine2": "Exceptional Flavors",
+      "author": "Ananya Verma",
+      "comments": 2,
+      "date": "08 Oct, 2025",
+      "category": "Seasonal Menu",
+      "excerpt": "We believe in using the freshest, seasonal ingredients to create dishes that are full of natural flavors. Explore our approach to sustainable and seasonal dining.",
+      "thumbnail": {
+        "src": "/images/blog/seasonal-lava-cake.webp",
+        "alt": "Chocolate lava cake with berries and ice cream"
+      },
+      "cover": {
+        "src": "/images/menu/desserts-lava-cake.webp",
+        "alt": "Chocolate lava cake with vanilla ice cream and berries"
+      },
+      "content": [
+        "Great cooking starts with great ingredients. At Velora, our menu follows the seasons, so every dish is built around produce at its natural peak of flavor.",
+        "We work closely with local farmers and trusted suppliers to source fresh vegetables, herbs, fruits and proteins. This lets our chefs keep recipes simple and let the ingredients speak for themselves.",
+        "Cooking with the seasons is also a commitment to sustainability, reducing waste and supporting the community that helps bring our dishes to life."
+      ],
+      "highlights": [
+        "Locally sourced produce picked at its peak",
+        "Menus that change with every season",
+        "A sustainable approach to fine dining"
+      ],
+      "image": {
+        "src": "/images/menu/starters-scallops.webp",
+        "alt": "Seared scallops with fresh herbs"
+      },
+      "quote": {
+        "text": "When you cook with the seasons, nature does half the work.",
+        "author": "Chef Arjun Mehta"
+      },
+      "closing": "Visit us throughout the year to discover new seasonal creations, each one crafted to celebrate the very best of what every season has to offer."
+    },
+    {
+      "slug": "crafting-signature-cocktails",
+      "titleLine1": "Crafting Signature",
+      "titleLine2": "Cocktails at Velora",
+      "author": "Karan Malhotra",
+      "comments": 4,
+      "date": "02 Oct, 2025",
+      "category": "Beverages",
+      "excerpt": "Behind every signature drink is a story of fresh ingredients and careful balance. Meet the flavours, garnishes and techniques that make our cocktails memorable.",
+      "thumbnail": {
+        "src": "/images/gallery/cocktail.webp",
+        "alt": "Strawberry cocktail with rosemary garnish"
+      },
+      "cover": {
+        "src": "/images/gallery/cocktail.webp",
+        "alt": "Strawberry cocktail by warm lamplight"
+      },
+      "content": [
+        "A great cocktail is built the same way as a great dish: with fresh ingredients, balance and a little creativity. Our bar team works closely with our chefs so every drink complements the flavours on your plate.",
+        "We use seasonal fruit, fresh herbs and house-made syrups instead of ready-made mixes. Each recipe is tested and refined until the sweetness, acidity and strength are in perfect harmony.",
+        "Presentation matters too. The glassware, the garnish and even the ice are chosen to make every drink as beautiful to look at as it is to taste."
+      ],
+      "highlights": [
+        "Fresh seasonal fruit and herbs in every drink",
+        "House-made syrups and infusions",
+        "Pairings designed to complement our menu"
+      ],
+      "image": {
+        "src": "/images/gallery/wine-table.webp",
+        "alt": "Table set with wine glasses and flowers"
+      },
+      "quote": {
+        "text": "A good drink should feel like the first course of the evening.",
+        "author": "Karan Malhotra"
+      },
+      "closing": "Next time you visit, ask our team for a pairing suggestion and let us craft the perfect drink to begin your evening."
+    }
+  ],
+  "bookTablePage": {
+    "banner": {
+      "title": "Book a Table",
+      "breadcrumb": "Book a Table"
+    },
+    "intro": {
+      "label": "Book a Table",
+      "titleLine1": "Reserve Your Table",
+      "titleLine2": "For a Special Experience",
+      "text": [
+        "Whether it's a romantic dinner, a family celebration, or a casual meal with friends,",
+        "we'd love to welcome you. Book your table in advance and enjoy a memorable dining experience."
+      ]
+    },
+    "image": {
+      "src": "/images/book-a-table/dining-room.webp",
+      "alt": "Candlelit restaurant table with red velvet chairs"
+    },
+    "form": {
+      "title": "Book Your Table",
+      "text": "Fill in the details below and we'll confirm your reservation as soon as possible.",
+      "fields": {
+        "name": "Your Name",
+        "email": "Your Email",
+        "phone": "Phone Number",
+        "guests": "Number of Guests",
+        "date": "Select Date",
+        "time": "Select Time",
+        "message": "Special Request (Optional)"
+      },
+      "guestOptions": [
+        "1 Guest",
+        "2 Guests",
+        "3 Guests",
+        "4 Guests",
+        "5 Guests",
+        "6 Guests",
+        "7+ Guests"
+      ],
+      "timeOptions": [
+        "12:00 PM",
+        "01:00 PM",
+        "02:00 PM",
+        "03:00 PM",
+        "07:00 PM",
+        "08:00 PM",
+        "09:00 PM",
+        "10:00 PM"
+      ],
+      "button": "Book a Table",
+      "success": "Your table request has been received. Our team will call you shortly to confirm your reservation. We look forward to welcoming you at Velora.",
+      "sending": "Booking...",
+      "successTitle": "Thank you, {name}!"
+    },
+    "features": [
+      {
+        "icon": "calendar",
+        "title": "Easy Reservations",
+        "text": "Book your table in just a few clicks and secure your preferred time."
+      },
+      {
+        "icon": "star",
+        "title": "Perfect for Any Occasion",
+        "text": "From intimate dinners to family gatherings, we're here to make it special."
+      },
+      {
+        "icon": "people",
+        "title": "Warm Hospitality",
+        "text": "Enjoy exceptional service and a memorable dining experience."
+      }
+    ]
+  },
+  "contactPage": {
+    "banner": {
+      "title": "Contact Us",
+      "breadcrumb": "Contact Us"
+    },
+    "intro": {
+      "label": "Contact Us",
+      "titleLine1": "Let's Get in Touch",
+      "titleLine2": "We're Here for You",
+      "text": [
+        "Have a question, booking request, or special occasion in mind?",
+        "Our team is always happy to assist you and make your experience exceptional."
+      ]
+    },
+    "info": [
+      {
+        "icon": "phone",
+        "title": "Call Us",
+        "contactKey": "phone"
+      },
+      {
+        "icon": "mail",
+        "title": "Email Us",
+        "contactKey": "email"
+      },
+      {
+        "icon": "clock",
+        "title": "Working Hours",
+        "lines": [
+          "Mon - Sun",
+          "10:00 AM - 11:00 PM"
+        ]
+      }
+    ],
+    "image": {
+      "src": "/images/contact/restaurant-interior.webp",
+      "alt": "Warmly lit restaurant dining room"
+    },
+    "form": {
+      "title": "Send Us a Message",
+      "text": "Fill out the form below and our team will get back to you shortly.",
+      "fields": {
+        "name": "Your Name",
+        "email": "Your Email",
+        "phone": "Phone Number",
+        "subject": "Subject",
+        "message": "Your Message"
+      },
+      "subjects": [
+        "Table Reservation",
+        "Private Dining",
+        "Events & Celebrations",
+        "Catering Services",
+        "General Enquiry"
+      ],
+      "button": "Send Message",
+      "success": "Your message has been sent successfully. Our team will get back to you within 24 hours.",
+      "sending": "Sending...",
+      "successTitle": "Thank you, {name}!"
+    },
+    "special": {
+      "image": {
+        "src": "/images/contact/reservation-sign.webp",
+        "alt": "Reservations and enquiries sign on a table"
+      },
+      "title": "Planning Something Special?",
+      "text": "Whether it's a casual meal, a family gathering, or a special celebration, feel free to reach out. We're always happy to assist you."
+    },
+    "locations": {
+      "label": "Find Our Location",
+      "titleLine1": "Office",
+      "titleLine2": "Locations",
+      "directionLabel": "Get Direction",
+      "items": [
+        {
+          "city": "New York",
+          "isMain": true
+        },
+        {
+          "city": "San Francisco",
+          "address": [
+            "1 Market Street,",
+            "San Francisco, CA 94105, USA"
+          ],
+          "phone": "+1 0000000000",
+          "email": "info@xyz.com",
+          "mapQuery": "1 Market Street, San Francisco, CA 94105, USA"
+        }
+      ]
+    }
+  }
+}
