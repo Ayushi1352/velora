@@ -7,10 +7,13 @@ import GalleryLightbox from "@/components/GalleryLightbox";
 
 type GalleryImage = { src: string; alt: string; category: string };
 
-export default function GalleryGrid({ filters, images, perPage }: { filters: string[]; images: GalleryImage[]; perPage: number }) {
+/** Two rows of four: the layout sizes the first row differently (see `i < 4` below). */
+const PER_PAGE = 8;
+
+export default function GalleryGrid({ filters, images }: { filters: string[]; images: GalleryImage[] }) {
   const [active, setActive] = useState(filters[0]);
   const visible = active === filters[0] ? images : images.filter((img) => img.category === active);
-  const { page, setPage, totalPages, pageItems } = usePagination(visible, perPage);
+  const { page, setPage, totalPages, pageItems } = usePagination(visible, PER_PAGE);
   // Index into `visible`, so the lightbox can step through every image of the active filter.
   const [lightbox, setLightbox] = useState<number | null>(null);
 

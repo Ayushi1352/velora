@@ -6,7 +6,7 @@ export default function Highlights() {
   const items = site.home.highlights;
 
   return (
-    <section aria-label="Why choose Velora" className="mx-auto max-w-[1920px] section-space px-5 md:px-8 lg:px-0">
+    <section aria-label={`Why choose ${site.brand.name}`} className="mx-auto max-w-[1920px] section-space px-5 md:px-8 lg:px-0">
       <div className="grid gap-16 sm:grid-cols-2 sm:gap-8 lg:grid-cols-[calc(963*var(--u))_1fr] lg:gap-0">
         {items.map((item, i) => {
           const Icon = featureIcons[item.icon as FeatureIconName];

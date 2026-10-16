@@ -247,6 +247,7 @@
     },
     "gallery": {
       "label": "Gallery",
+      "href": "/gallery",
       "titleLine1": "A Glimpse of",
       "titleLine2": "Our World",
       "images": [
@@ -638,8 +639,7 @@
         "alt": "Velvet chairs around a candlelit table",
         "category": "Ambience"
       }
-    ],
-    "perPage": 8
+    ]
   },
   "testimonialsPage": {
     "banner": {
@@ -725,6 +725,7 @@
   "posts": [
     {
       "slug": "the-art-of-plating",
+      "shortTitle": "The Art of Plating",
       "titleLine1": "The Art of Plating:",
       "titleLine2": "Making Food a Visual Delight",
       "author": "Priya Sharma",
@@ -762,6 +763,7 @@
     },
     {
       "slug": "creating-the-perfect-dining-ambience",
+      "shortTitle": "Creating the Perfect Dining Ambience",
       "titleLine1": "Creating the Perfect",
       "titleLine2": "Dining Ambience",
       "author": "Rahul Mehta",
@@ -799,6 +801,7 @@
     },
     {
       "slug": "seasonal-ingredients-exceptional-flavors",
+      "shortTitle": "Seasonal Ingredients, Exceptional Flavors",
       "titleLine1": "Seasonal Ingredients,",
       "titleLine2": "Exceptional Flavors",
       "author": "Ananya Verma",
@@ -836,6 +839,7 @@
     },
     {
       "slug": "crafting-signature-cocktails",
+      "shortTitle": "Crafting Signature Cocktails",
       "titleLine1": "Crafting Signature",
       "titleLine2": "Cocktails at Velora",
       "author": "Karan Malhotra",

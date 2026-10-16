@@ -25,7 +25,7 @@ export default function GalleryPreview() {
       />
 
       <Link
-        href="/gallery"
+        href={gallery.href}
         aria-label="View the full gallery"
         className="mt-[28px] grid gap-[12px] px-5 sm:grid-cols-2 md:px-8 lg:umt-14 lg:grid-cols-[calc(497*var(--u))_calc(474*var(--u))_calc(585*var(--u))] lg:ugap-11 lg:px-0 lg:upl-58"
       >

@@ -5,15 +5,6 @@ import PageBanner from "@/components/PageBanner";
 import ArticleHeader from "@/components/ArticleHeader";
 import ArticleBody from "@/components/ArticleBody";
 
-const SMALL_WORDS = new Set(["a", "an", "and", "the", "of", "for", "in", "on", "to", "with"]);
-
-function slugToTitle(slug: string) {
-  return slug
-    .split("-")
-    .map((word, i) => (i > 0 && SMALL_WORDS.has(word) ? word : word.charAt(0).toUpperCase() + word.slice(1)))
-    .join(" ");
-}
-
 function getPost(slug: string) {
   return site.posts.find((post) => post.slug === slug);
 }
@@ -37,8 +28,8 @@ export default async function BlogDetailPage({ params }: PageProps<"/blog/[slug]
   const post = getPost(slug);
   if (!post) notFound();
 
-  // Breadcrumb and banner use only the name from the URL, e.g. /blog/the-art-of-plating -> "The Art of Plating".
-  const title = slugToTitle(slug);
+  // Breadcrumb and banner show the post's short title, e.g. "The Art of Plating".
+  const title = post.shortTitle;
   const blog = site.navigation.find((item) => item.href === "/blog") ?? { label: "Blog", href: "/blog" };
 
   return (

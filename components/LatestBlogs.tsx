@@ -10,7 +10,7 @@ type Post = { slug: string; title: string; date: string; category: string; image
 function resolvePosts(cards: typeof site.home.blog.posts): Post[] {
   return cards.flatMap(({ slug, image }) => {
     const post = site.posts.find((p) => p.slug === slug);
-    return post ? [{ slug, image, title: `${post.titleLine1} ${post.titleLine2}`, date: post.date, category: post.category }] : [];
+    return post ? [{ slug, image, title: post.shortTitle, date: post.date, category: post.category }] : [];
   });
 }
 

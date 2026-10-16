@@ -6,7 +6,7 @@ export default function Hero() {
   const { hero } = site.home;
 
   return (
-    <section aria-label="Welcome to Velora">
+    <section aria-label={`Welcome to ${site.brand.name}`}>
       {/* Intro */}
       <div className="mx-auto grid max-w-[1920px] gap-10 section-space px-5 md:grid-cols-[38%_1fr] md:items-center md:gap-6 md:px-8 lg:grid-cols-[calc(683*var(--u))_1fr] lg:items-start lg:gap-0 lg:px-0">
         <div className="flex justify-center lg:block lg:upl-70 lg:upt-36">
@@ -25,7 +25,7 @@ export default function Hero() {
         <div className="text-center md:text-left">
           <span aria-hidden="true" className="mx-auto block h-[3px] w-[70px] bg-gold-bright md:mx-0 lg:uh-3.5 lg:uw-88" />
           <h1>
-            <span className="mt-[18px] block font-cormorant text-[60px] font-semibold uppercase leading-[0.8] tracking-[-0.005em] text-wine sm:text-[84px] md:text-[clamp(64px,8.6vw,96px)] lg:umt-24 lg:ut-127 lg:tracking-[-0.03em] lg:scale-y-[1.12] lg:origin-bottom">
+            <span className="mt-[18px] block font-cormorant text-[min(60px,15.5vw)] font-semibold uppercase leading-[0.8] tracking-[-0.005em] text-wine sm:text-[84px] md:text-[clamp(64px,8.6vw,96px)] lg:umt-24 lg:ut-127 lg:tracking-[-0.03em] lg:scale-y-[1.12] lg:origin-bottom">
               {hero.title}
             </span>
             <span className="mt-[14px] block font-marcellus text-[38px] leading-none tracking-[-0.012em] text-ink sm:text-[56px] md:text-[clamp(44px,6.9vw,74px)] lg:umt-15 lg:ut-101">

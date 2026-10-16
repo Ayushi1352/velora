@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 };
 
 export default function GalleryPage() {
-  const { banner, intro, filters, images, perPage } = site.galleryPage;
+  const { banner, intro, filters, images } = site.galleryPage;
 
   return (
     <>
@@ -25,7 +25,7 @@ export default function GalleryPage() {
           text={intro.text}
           textClassName="mt-[14px] max-w-[620px] text-[17px] lg:umaxw-620 lg:umt-14 lg:ut-23 leading-[1.45]"
         />
-        <GalleryGrid filters={filters} images={images} perPage={perPage} />
+        <GalleryGrid filters={filters} images={images} />
       </section>
     </>
   );
