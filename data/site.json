@@ -1,5 +1,36 @@
 {
   "Velora": {
+    "theme": {
+      "colors": {
+        "maroon": "#520008",
+        "maroon-dark": "#420006",
+        "wine": "#600010",
+        "gold": "#a8742f",
+        "gold-bright": "#c89040",
+        "gold-soft": "#d09848",
+        "gold-line": "#dcc09a",
+        "gold-pale": "#efdfc8",
+        "gold-light": "#f8d890",
+        "ink": "#1d1515",
+        "ink-soft": "#3a3030",
+        "body": "#5d5555",
+        "muted": "#7a7272",
+        "line": "#e8ddd2",
+        "cream": "#fcf7f3",
+        "sand": "#f8f2ec",
+        "blush": "#f9ede1"
+      },
+      "fonts": {
+        "cormorant": "Cormorant Garamond",
+        "marcellus": "Marcellus",
+        "serif": "Newsreader",
+        "body": "Libre Caslon Text",
+        "jost": "Jost",
+        "montserrat": "Montserrat",
+        "signature": "Mrs Saint Delafield"
+      },
+      "fontsUrl": "https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300..700&family=Jost:wght@100..900&family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&family=Marcellus&family=Montserrat:wght@100..900&family=Mrs+Saint+Delafield&family=Newsreader:ital,wght@0,200..800;1,200..800&display=swap"
+    },
     "templateComponents": {
       "template-1": {
         "shared": {

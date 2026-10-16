@@ -57,6 +57,7 @@ export type VeloraBlogPost = VeloraBlogPageData["items"][number];
 const sec = siteData.Velora.sections;
 
 const site = {
+  theme: siteData.Velora.theme,
   navbar: sec.Header.variants.VeloraHeader1,
   footer: sec.Footer.variants.VeloraFooter1,
   pageBanner: sec.PageBanner.variants.VeloraPageBanner1,

@@ -14,15 +14,35 @@ export const metadata: Metadata = {
 };
 
 /*
+ * Brand colours and fonts come from site.json (Velora.theme). They override the defaults in the
+ * globals.css @theme block, which stay in place as the fallback for any missing or invalid value.
+ */
+const { colors, fonts, fontsUrl } = site.theme;
+const fontFallbacks: Record<string, string> = {
+  jost: "Arial, sans-serif",
+  montserrat: "Arial, sans-serif",
+  signature: "cursive",
+};
+const isHex = (v: string) => /^#([0-9a-f]{3,4}|[0-9a-f]{6}|[0-9a-f]{8})$/i.test(v);
+const isFontName = (v: string) => /^[\w\s-]+$/.test(v);
+
+const themeCss = `:root{${[
+  ...Object.entries(colors)
+    .filter(([, v]) => isHex(v))
+    .map(([k, v]) => `--color-${k}:${v}`),
+  ...Object.entries(fonts)
+    .filter(([, v]) => isFontName(v))
+    .map(([k, v]) => `--font-${k}:"${v}", ${fontFallbacks[k] ?? "Georgia, serif"}`),
+].join(";")}}`;
+
+// A CSS `@import url(...)` is dropped by the build, so the Google Fonts stylesheet is linked here instead.
+const googleFontsUrl = fontsUrl.startsWith("https://fonts.googleapis.com/") ? fontsUrl : null;
+
+/*
  * Runs before the first paint: the `motion` class hides `[data-reveal]` elements until they scroll
  * into view, so they don't flash in and then disappear on hydration. If the app script never
  * starts (blocked / failed JS), the class is removed again so no content stays hidden.
  */
-// Every font family used by the `--font-*` tokens in globals.css. A CSS `@import url(...)` is dropped by the
-// build, so the stylesheet is linked here instead.
-const googleFontsUrl =
-  "https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300..700&family=Jost:wght@100..900&family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&family=Marcellus&family=Montserrat:wght@100..900&family=Mrs+Saint+Delafield&family=Newsreader:ital,wght@0,200..800;1,200..800&display=swap";
-
 const motionScript = `(function(d){d.classList.add("motion");setTimeout(function(){if(!window.__revealReady)d.classList.remove("motion")},3500)})(document.documentElement)`;
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
@@ -37,7 +57,8 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
-        <link rel="stylesheet" href={googleFontsUrl} />
+        {googleFontsUrl && <link rel="stylesheet" href={googleFontsUrl} />}
+        <style dangerouslySetInnerHTML={{ __html: themeCss }} />
         <script dangerouslySetInnerHTML={{ __html: motionScript }} />
       </head>
       <body className="flex min-h-screen flex-col">
