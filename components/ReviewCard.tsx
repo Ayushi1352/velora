@@ -6,7 +6,7 @@ type Review = {
   location: string;
   rating: number;
   text: string;
-  image: string;
+  image: { src: string; alt: string };
 };
 
 export default function ReviewCard({ item }: { item: Review }) {
@@ -25,7 +25,7 @@ export default function ReviewCard({ item }: { item: Review }) {
         <span aria-hidden="true" className="mt-[14px] block h-[2px] w-[40px] bg-gold-line lg:umt-12 lg:uw-42" />
         <div className="mt-[12px] flex items-center gap-[18px] lg:umt-8 lg:ugap-22">
           <div className="relative size-[70px] shrink-0 overflow-hidden rounded-full lg:usize-82">
-            <Image src={item.image} alt={item.name} fill sizes="82px" className="object-cover" />
+            <Image src={item.image.src} alt={item.image.alt} fill sizes="82px" className="object-cover" />
           </div>
           <div>
             <p className="font-serif text-[21px] font-medium leading-tight text-wine lg:ut-24.5">{item.name}</p>

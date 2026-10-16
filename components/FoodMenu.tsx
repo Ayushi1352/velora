@@ -1,15 +1,13 @@
 import Image from "next/image";
 import Link from "next/link";
-import site from "@/data/site.json";
+import type { SectionComponentProps, VeloraFoodMenuData } from "@/data";
 import BookButton from "@/components/BookButton";
 import { SectionLabel } from "@/components/SectionHeading";
 import { featureIcons, type FeatureIconName } from "@/components/Icons";
 
-export default function FoodMenu() {
-  const { menu } = site.home;
-
+export default function FoodMenu({ data: menu }: SectionComponentProps<VeloraFoodMenuData>) {
   return (
-    <section aria-label="Our food menu" className="mx-auto max-w-[1920px] section-space px-5 md:px-8 lg:px-0 lg:upl-55">
+    <section aria-label={`${menu.label} ${menu.titleLine1} ${menu.titleLine2}`} className="mx-auto max-w-[1920px] section-space px-5 md:px-8 lg:px-0 lg:upl-55">
       <div className="grid items-start gap-12 lg:grid-cols-[calc(338*var(--u))_1fr] lg:gap-0">
         <div className="text-center lg:upt-76 lg:text-left">
           <SectionLabel variant="sans" align="left" className="justify-center lg:justify-start" lineClassName="w-[44px] lg:uw-59">
@@ -38,7 +36,7 @@ export default function FoodMenu() {
               <li key={cat.title} className="mx-auto w-full max-w-[300px] md:max-w-none lg:uw-297">
                 <Link
                   href={cat.href}
-                  className="group relative flex flex-col items-center rounded-[999px] border-[1.5px] border-gold-line p-[3.4%] pb-[64px] transition-[box-shadow,border-color] duration-300 hover:border-gold hover:shadow-[0_18px_40px_rgba(77,0,8,0.12)] lg:upb-69"
+                  className="group relative mb-[7.5%] flex flex-col items-center rounded-[999px] border-[1.5px] border-gold-line p-[3.4%] pb-[64px] transition-[box-shadow,border-color] duration-300 hover:border-gold hover:shadow-[0_18px_40px_rgba(77,0,8,0.12)] lg:upb-69"
                 >
                   <div className="relative aspect-[279/379] w-full overflow-hidden rounded-t-[999px] rounded-b-[50%_16%]">
                     <Image

@@ -227,6 +227,8 @@
 @layer base {
   html {
     scroll-behavior: smooth;
+    /* Never let anything push the page sideways (clip keeps the sticky navbar working). */
+    overflow-x: clip;
   }
 
   body {

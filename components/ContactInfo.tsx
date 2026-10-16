@@ -1,12 +1,13 @@
 import Image from "next/image";
-import site from "@/data/site.json";
+import type { VeloraContactData, VeloraContactDetails } from "@/data";
 import { featureIcons, type FeatureIconName } from "@/components/Icons";
 
-export default function ContactInfo() {
-  const { info, image } = site.contactPage;
-  // Phone and email come from the shared `contact` block so they match the footer.
+type ContactInfoProps = Pick<VeloraContactData, "info" | "image"> & { contact: VeloraContactDetails };
+
+export default function ContactInfo({ info, image, contact }: ContactInfoProps) {
+  // Phone and email come from the shared `settings.contact` block so they match the footer.
   const linesOf = (item: (typeof info)[number]) =>
-    item.contactKey ? [site.contact[item.contactKey as "phone" | "email"]] : (item.lines ?? []);
+    item.contactKey ? [contact[item.contactKey as "phone" | "email"]] : (item.lines ?? []);
 
   return (
     <div className="mt-[40px] grid gap-10 px-5 md:px-8 lg:umt-55 lg:grid-cols-[calc(720*var(--u))_1fr] lg:gap-0 lg:px-0">

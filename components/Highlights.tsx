@@ -1,12 +1,12 @@
 import Image from "next/image";
-import site from "@/data/site.json";
+import type { SectionComponentProps, VeloraHighlightsData } from "@/data";
 import { featureIcons, type FeatureIconName } from "@/components/Icons";
 
-export default function Highlights() {
-  const items = site.home.highlights;
+export default function Highlights({ data, settings }: SectionComponentProps<VeloraHighlightsData>) {
+  const { items } = data;
 
   return (
-    <section aria-label={`Why choose ${site.brand.name}`} className="mx-auto max-w-[1920px] section-space px-5 md:px-8 lg:px-0">
+    <section aria-label={`Why choose ${settings.brand.name}`} className="mx-auto max-w-[1920px] section-space px-5 md:px-8 lg:px-0">
       <div className="grid gap-16 sm:grid-cols-2 sm:gap-8 lg:grid-cols-[calc(963*var(--u))_1fr] lg:gap-0">
         {items.map((item, i) => {
           const Icon = featureIcons[item.icon as FeatureIconName];
@@ -15,7 +15,8 @@ export default function Highlights() {
               key={item.title}
               className={`flex flex-col items-center ${i === 0 ? "lg:items-start lg:upl-250" : "sm:mt-[60px] lg:items-start lg:umt-88 lg:upl-0"}`}
             >
-              <div className="flex flex-col items-center">
+              {/* top padding = how far the gold ring sticks out above the photo (4.4% of its width) */}
+              <div className="flex flex-col items-center pt-[min(3.35vw,13.2px)] sm:pt-[min(1.76vw,13.2px)] lg:upt-21">
                 <div className="relative w-[min(76vw,300px)] sm:w-[min(40vw,300px)] lg:uw-470">
                   {/* thin gold ring around the photo */}
                   <span aria-hidden="true" className="absolute -inset-[3.6%] translate-x-[1.2%] -translate-y-[0.8%] rounded-full border-[1.5px] border-gold-line" />

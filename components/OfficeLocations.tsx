@@ -1,13 +1,13 @@
-import site from "@/data/site.json";
+import { Fragment } from "react";
+import type { SectionComponentProps, VeloraLocationsData } from "@/data";
 import { SectionLabel } from "@/components/SectionHeading";
 import { ArrowUpRight } from "@/components/Icons";
 
 const mapUrl = (query: string) => `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(query)}`;
 
-export default function OfficeLocations() {
-  const { locations } = site.contactPage;
-  const { contact } = site;
-  // The main office uses the shared `contact` block (also shown in the footer).
+export default function OfficeLocations({ data: locations, settings }: SectionComponentProps<VeloraLocationsData>) {
+  const { contact } = settings;
+  // The main office uses the shared `settings.contact` block (also shown in the footer).
   const items = locations.items.map((loc) =>
     loc.isMain
       ? { city: loc.city, address: contact.address, phone: contact.phone, email: contact.email, mapQuery: contact.mapQuery }
@@ -16,7 +16,7 @@ export default function OfficeLocations() {
   const mapEmbed = `https://maps.google.com/maps?q=${encodeURIComponent(contact.mapQuery)}&z=16&output=embed`;
 
   return (
-    <section aria-label={locations.label} className="section-space px-5 md:px-8 lg:px-[calc(80*var(--u))]">
+    <section aria-label={locations.label} className="mx-auto max-w-[1920px] section-space px-5 md:px-8 lg:px-[calc(80*var(--u))]">
       <SectionLabel variant="sans-wide" align="left" className="font-jost! font-medium! tracking-[0.3em]! lg:ut-19!" lineClassName="w-[50px] lg:uw-64">
         {locations.label}
       </SectionLabel>
@@ -32,9 +32,12 @@ export default function OfficeLocations() {
           >
             <h3 className="font-serif text-[30px] leading-none text-ink lg:ut-46">{loc.city}</h3>
             <p className="font-jost text-[16px] leading-[1.55] text-body lg:ut-21">
-              {loc.address[0]}
-              <br />
-              {loc.address[1]}
+              {loc.address.map((line, i) => (
+                <Fragment key={i}>
+                  {i > 0 && <br />}
+                  {line}
+                </Fragment>
+              ))}
             </p>
             <p className="font-jost text-[16px] leading-[1.55] text-body lg:ut-21">
               <a href={`tel:${loc.phone.replace(/\s/g, "")}`} className="transition-colors hover:text-gold">

@@ -1,10 +1,9 @@
 import Image from "next/image";
-import site from "@/data/site.json";
+import type { SectionComponentProps, VeloraServicesData } from "@/data";
 import { SectionLabel } from "@/components/SectionHeading";
 import { featureIcons, type FeatureIconName } from "@/components/Icons";
 
-export default function Services() {
-  const { services } = site.about;
+export default function Services({ data: services }: SectionComponentProps<VeloraServicesData>) {
   const { main, top, bottom } = services.images;
 
   return (
@@ -43,8 +42,8 @@ export default function Services() {
           </ul>
         </div>
 
-        {/* Image collage */}
-        <div className="grid grid-cols-2 gap-[12px] px-5 section-pb md:px-8 lg:grid-cols-[calc(495*var(--u))_1fr] lg:ugap-19 lg:p-0 lg:-translate-y-[calc(25*var(--u))]">
+        {/* Image collage; bottom padding is the section space minus the 25u it is lifted by */}
+        <div className="grid grid-cols-2 gap-[12px] px-5 section-pb md:px-8 lg:grid-cols-[calc(495*var(--u))_1fr] lg:ugap-19 lg:px-0 lg:pt-0 lg:pb-[calc(var(--section-space)-25*var(--u))] lg:-translate-y-[calc(25*var(--u))]">
           <div className="relative col-span-2 aspect-[495/723] overflow-hidden sm:col-span-1 sm:row-span-2 lg:aspect-auto lg:uh-723 lg:umt-392">
             <Image src={main.src} alt={main.alt} fill sizes="(min-width: 1024px) 26vw, (min-width: 640px) 50vw, 100vw" className="object-cover" />
           </div>

@@ -1,15 +1,15 @@
 import Image from "next/image";
 import Link from "next/link";
-import site from "@/data/site.json";
+import { getBlogPost, type SectionComponentProps, type VeloraBlogData } from "@/data";
 import SectionHeading from "@/components/SectionHeading";
 import { ArrowRight } from "@/components/Icons";
 
 type Post = { slug: string; title: string; date: string; category: string; image: { src: string; alt: string } };
 
 /** Title, date and category come from the blog post itself; the home card only picks its image. */
-function resolvePosts(cards: typeof site.home.blog.posts): Post[] {
+function resolvePosts(cards: VeloraBlogData["posts"]): Post[] {
   return cards.flatMap(({ slug, image }) => {
-    const post = site.posts.find((p) => p.slug === slug);
+    const post = getBlogPost(slug);
     return post ? [{ slug, image, title: post.shortTitle, date: post.date, category: post.category }] : [];
   });
 }
@@ -39,8 +39,7 @@ function ReadMore({ href, label }: { href: string; label: string }) {
   );
 }
 
-export default function LatestBlogs() {
-  const { blog } = site.home;
+export default function LatestBlogs({ data: blog }: SectionComponentProps<VeloraBlogData>) {
   const [featured, ...rest] = resolvePosts(blog.posts);
 
   return (

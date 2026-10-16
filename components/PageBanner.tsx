@@ -1,28 +1,24 @@
 import Link from "next/link";
-import site from "@/data/site.json";
-
-const home = site.navigation.find((item) => item.href === "/") ?? site.navigation[0];
-
-type PageBannerProps = {
-  title: string;
-  breadcrumb: string;
-  /** Optional middle crumb, e.g. Blog on the blog detail page. */
-  parent?: { label: string; href: string };
-};
+import type { SectionComponentProps, VeloraPageBannerData } from "@/data";
 
 function Separator() {
   return <span aria-hidden="true" className="block h-px w-[16px] bg-line lg:uw-18" />;
 }
 
-export default function PageBanner({ title, breadcrumb, parent }: PageBannerProps) {
+export default function PageBanner({ data, item }: SectionComponentProps<VeloraPageBannerData>) {
+  const { homeLabel, homeHref, parent } = data;
+  // On an expanded page (blog detail) the banner and breadcrumb show the item's short title.
+  const title = data.title || item?.shortTitle || "";
+  const breadcrumb = data.breadcrumb || item?.shortTitle || "";
+
   return (
     <section className="bg-maroon">
       <div className="mx-auto flex max-w-[1920px] flex-col items-center px-5 pb-[52px] pt-[52px] text-center sm:pb-[64px] sm:pt-[72px] lg:uh-370 lg:upb-0 lg:upt-140">
         <nav aria-label="Breadcrumb">
           <ol className="flex flex-wrap items-center justify-center gap-x-[12px] gap-y-1 rounded-full bg-white px-[20px] py-[9px] font-jost text-[15px] font-medium tracking-[0.07em] lg:ugapx-15 lg:upx-25 lg:upy-13 lg:ut-19">
             <li>
-              <Link href={home.href} className="text-ink transition-colors hover:text-gold">
-                {home.label}
+              <Link href={homeHref} className="text-ink transition-colors hover:text-gold">
+                {homeLabel}
               </Link>
             </li>
             {parent && (

@@ -22,18 +22,18 @@ function MenuRow({ section, reverse }: { section: MenuSection; reverse: boolean 
   return (
     <article
       id={section.id}
-      className={`grid scroll-mt-28 items-start gap-8 md:grid-cols-2 lg:gap-0 ${
+      className={`grid scroll-mt-28 items-start gap-8 lg:gap-0 ${
         reverse ? "lg:grid-cols-[calc(848*var(--u))_1fr]" : "lg:grid-cols-[1fr_calc(848*var(--u))]"
       }`}
     >
       <div
-        className={`relative overflow-hidden ${reverse ? "md:order-1" : "md:order-2"}`}
+        className={`relative overflow-hidden ${reverse ? "lg:order-1" : "lg:order-2"}`}
         style={{ aspectRatio: `${section.image.width} / ${section.image.height}` }}
       >
-        <Image src={section.image.src} alt={section.image.alt} fill sizes="(min-width: 768px) 50vw, 100vw" className="object-cover" />
+        <Image src={section.image.src} alt={section.image.alt} fill sizes="(min-width: 1024px) 50vw, 100vw" className="object-cover" />
       </div>
 
-      <div className={`${reverse ? "md:order-2 lg:upl-71 lg:upr-76" : "md:order-1 lg:upl-85 lg:upr-65"}`}>
+      <div className={`${reverse ? "lg:order-2 lg:upl-71 lg:upr-76" : "lg:order-1 lg:upl-85 lg:upr-65"}`}>
         <SectionLabel align="left" lineClassName="w-[44px] lg:uw-61">
           {section.label}
         </SectionLabel>
@@ -85,7 +85,8 @@ export default function MenuSections({ sections }: { sections: MenuSection[] }) 
                 type="button"
                 role="tab"
                 aria-selected={active}
-                onClick={() => setSelected(s.id)}
+                // The first tab is the default overview, so it brings all featured sections back.
+                onClick={() => setSelected(i === 0 ? null : s.id)}
                 className={`rounded-full font-body text-[17px] transition-colors lg:ut-22 ${
                   active
                     ? "h-[48px] bg-maroon-dark px-[30px] text-white lg:uh-60 lg:upx-54"

@@ -1,12 +1,12 @@
 import Image from "next/image";
-import site from "@/data/site.json";
+import type { SectionComponentProps, VeloraContactFormData } from "@/data";
 import ContactForm from "@/components/ContactForm";
 
-export default function MessageSection() {
-  const { form, special } = site.contactPage;
+export default function MessageSection({ data }: SectionComponentProps<VeloraContactFormData>) {
+  const { form, special } = data;
 
   return (
-    <section aria-label={form.title} className="section-space px-5 md:px-8 lg:px-[calc(65*var(--u))]">
+    <section aria-label={form.title} className="mx-auto max-w-[1920px] section-space px-5 md:px-8 lg:px-[calc(65*var(--u))]">
       <div className="grid gap-8 rounded-[12px] bg-cream p-5 sm:p-8 lg:grid-cols-[1fr_calc(598*var(--u))] lg:gap-0 lg:p-0 lg:upr-23 lg:upy-10">
         <div className="lg:upb-34 lg:upl-40 lg:upr-50 lg:upt-62">
           <h2 className="font-serif text-[32px] font-medium leading-tight text-wine lg:ut-43">{form.title}</h2>

@@ -1,21 +1,7 @@
-import type { Metadata } from "next";
-import site from "@/data/site.json";
-import PageBanner from "@/components/PageBanner";
-import AboutStory from "@/components/AboutStory";
-import Services from "@/components/Services";
+import PageRenderer, { pageMetadata } from "@/components/PageRenderer";
 
-export const metadata: Metadata = {
-  title: site.about.banner.title,
-};
+export const metadata = pageMetadata("about-us");
 
 export default function AboutUsPage() {
-  const { banner } = site.about;
-
-  return (
-    <>
-      <PageBanner title={banner.title} breadcrumb={banner.breadcrumb} />
-      <AboutStory />
-      <Services />
-    </>
-  );
+  return <PageRenderer page="about-us" />;
 }

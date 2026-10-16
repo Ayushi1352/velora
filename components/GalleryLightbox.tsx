@@ -37,9 +37,9 @@ export default function GalleryLightbox({ images, index, onChange, onClose }: Ga
 
   useEffect(() => {
     const { overflow } = document.body.style;
-    document.body.style.overflow = "hidden";
+    document.documentElement.style.overflow = "hidden";
     return () => {
-      document.body.style.overflow = overflow;
+      document.documentElement.style.overflow = overflow;
     };
   }, []);
 

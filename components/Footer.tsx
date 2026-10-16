@@ -1,14 +1,23 @@
+import { Fragment } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import site from "@/data/site.json";
+import type { SectionComponentProps, VeloraFooterData } from "@/data";
 import FooterLinks from "@/components/FooterLinks";
 import { Mail, MapPin, Phone, socialIcons } from "@/components/Icons";
 
 const contactText = "font-body text-[17px] leading-[1.38] text-ink-soft lg:ut-20";
 const iconCircle = "grid size-[44px] shrink-0 place-items-center rounded-full border border-gold-line text-maroon lg:usize-46";
 
-export default function Footer() {
-  const { footer, contact, brand, socials } = site;
+/** Fills `{year}` in the copyright line; cached so the footer can still be prerendered. */
+async function currentYear() {
+  "use cache";
+  return new Date().getFullYear();
+}
+
+export default async function Footer({ data: footer, settings }: SectionComponentProps<VeloraFooterData>) {
+  const { socials } = footer;
+  const { brand, contact } = settings;
+  const copyright = footer.copyright.replace("{year}", String(await currentYear()));
 
   return (
     <footer>
@@ -32,21 +41,32 @@ export default function Footer() {
             </p>
             <span aria-hidden="true" className="ml-[22px] mt-4 block h-[2px] w-[48px] bg-gold-soft lg:uml-24 lg:umt-16 lg:uw-52" />
             <p className="mt-4 pl-[22px] font-body text-[16px] leading-[1.45] text-ink-soft lg:umt-18 lg:upl-24 lg:ut-19">
-              {footer.text[0]}
-              <br className="hidden sm:block" /> {footer.text[1]}
+              {footer.text.map((line, i) => (
+                <Fragment key={i}>
+                  {i > 0 && (
+                    <>
+                      <br className="hidden sm:block" />{" "}
+                    </>
+                  )}
+                  {line}
+                </Fragment>
+              ))}
             </p>
           </div>
 
           {/* Contact */}
-          <ul className="flex flex-col gap-5 lg:ugap-24">
+          <ul className="flex flex-col gap-5 md:order-2 lg:order-none lg:ugap-24">
             <li className="flex items-center gap-5 lg:ugap-37">
               <span className={iconCircle}>
                 <MapPin className="size-[18px] lg:usize-18" />
               </span>
               <span className={contactText}>
-                {contact.address[0]}
-                <br />
-                {contact.address[1]}
+                {contact.address.map((line, i) => (
+                  <Fragment key={i}>
+                    {i > 0 && <br />}
+                    {line}
+                  </Fragment>
+                ))}
               </span>
             </li>
             <li className="flex items-center gap-5 lg:ugap-37">
@@ -68,13 +88,13 @@ export default function Footer() {
           </ul>
 
           {/* Links */}
-          <FooterLinks />
+          <FooterLinks links={footer.links} />
         </div>
       </div>
 
       <div className="bg-[linear-gradient(90deg,var(--color-maroon-dark)_0%,var(--color-maroon)_50%,var(--color-maroon-dark)_100%)]">
         <div className="mx-auto flex max-w-[1920px] flex-col items-center gap-5 px-5 py-5 sm:flex-row sm:gap-8 md:px-8 lg:uh-76 lg:ugap-35 lg:py-0 lg:upl-68 lg:upr-63">
-          <p className="shrink-0 text-center font-body text-[15px] text-white/90 lg:ut-19">{footer.copyright}</p>
+          <p className="shrink-0 text-center font-body text-[15px] text-white/90 lg:ut-19">{copyright}</p>
           <span aria-hidden="true" className="hidden h-px flex-1 bg-gold-line sm:block" />
           <ul className="flex shrink-0 items-center gap-5 lg:ugap-25 lg:uml-45">
             {socials.map((s) => {

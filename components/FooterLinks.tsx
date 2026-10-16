@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import site from "@/data/site.json";
+import type { VeloraFooterData } from "@/data";
 
 function isActive(pathname: string, href: string) {
   if (href === "/") return pathname === "/";
@@ -10,13 +10,13 @@ function isActive(pathname: string, href: string) {
 }
 
 /** Footer page links; the current page is underlined, like in the navbar. */
-export default function FooterLinks() {
+export default function FooterLinks({ links }: { links: VeloraFooterData["links"] }) {
   const pathname = usePathname();
 
   return (
-    <nav aria-label="Footer navigation" className="md:border-l md:border-gold-line md:pl-10 lg:upl-99">
+    <nav aria-label="Footer navigation" className="md:order-1 md:border-r md:border-gold-line md:pr-10 lg:order-none lg:border-r-0 lg:border-l lg:pr-0 lg:upl-99">
       <ul className="grid grid-cols-2 gap-x-6 gap-y-[12px] md:flex md:flex-col md:py-1 lg:ugap-16 lg:upy-6">
-        {site.footer.links.map((link) => {
+        {links.map((link) => {
           const active = isActive(pathname, link.href);
           return (
             <li key={link.href}>

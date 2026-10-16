@@ -1,12 +1,11 @@
 import Image from "next/image";
 import Link from "next/link";
-import site from "@/data/site.json";
+import type { SectionComponentProps, VeloraGalleryPreviewData } from "@/data";
 import SectionHeading from "@/components/SectionHeading";
 
 const zoom = "object-cover transition-transform duration-700 group-hover:scale-105";
 
-export default function GalleryPreview() {
-  const { gallery } = site.home;
+export default function GalleryPreview({ data: gallery }: SectionComponentProps<VeloraGalleryPreviewData>) {
   const [steak, room, cake, table] = gallery.images;
 
   return (

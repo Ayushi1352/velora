@@ -1,11 +1,11 @@
 "use client";
 
-import BlogListItem from "@/components/BlogListItem";
+import BlogListItem, { type PostMetaLabels } from "@/components/BlogListItem";
 import Pagination, { usePagination } from "@/components/Pagination";
 
 type Post = Parameters<typeof BlogListItem>[0]["post"];
 
-export default function BlogList({ posts, perPage }: { posts: Post[]; perPage: number }) {
+export default function BlogList({ posts, perPage, meta }: { posts: Post[]; perPage: number; meta: PostMetaLabels }) {
   const { page, setPage, totalPages, pageItems } = usePagination(posts, perPage);
 
   return (
@@ -13,7 +13,7 @@ export default function BlogList({ posts, perPage }: { posts: Post[]; perPage: n
       <ul key={page} className="mt-[36px] animate-[fade_0.45s_ease] lg:umt-36">
         {pageItems.map((post, i) => (
           <li key={post.slug} className={i > 0 ? "mt-[20px] border-t border-line pt-[20px] lg:umt-20 lg:upt-18" : ""}>
-            <BlogListItem post={post} />
+            <BlogListItem post={post} meta={meta} />
           </li>
         ))}
       </ul>

@@ -1,10 +1,10 @@
 import Image from "next/image";
-import site from "@/data/site.json";
+import type { VeloraBlogPost } from "@/data";
 import { CalendarSmall, UserCircle } from "@/components/Icons";
 
-type Post = (typeof site.posts)[number];
+type Post = VeloraBlogPost;
 
-export default function ArticleHeader({ post }: { post: Post }) {
+export default function ArticleHeader({ post, byLabel }: { post: Post; byLabel: string }) {
   return (
     <header>
       <div className="mx-auto max-w-[1920px] section-pt px-5 pb-[36px] text-center md:px-8 lg:upb-55">
@@ -16,7 +16,7 @@ export default function ArticleHeader({ post }: { post: Post }) {
           </li>
           <li className="flex items-center gap-[10px] lg:ugap-15">
             <UserCircle className="size-[20px] lg:usize-27" />
-            {site.blogPage.meta.by} {post.author}
+            {byLabel} {post.author}
           </li>
         </ul>
         <h1 className="mt-[24px] font-serif text-[40px] font-medium leading-[1.08] tracking-[-0.025em] text-wine sm:text-[56px] lg:umt-46 lg:ut-90">

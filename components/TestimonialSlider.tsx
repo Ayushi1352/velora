@@ -9,7 +9,7 @@ type Testimonial = {
   role: string;
   rating: number;
   text: string;
-  image: string;
+  image: { src: string; alt: string };
 };
 
 const sizes = {
@@ -46,7 +46,7 @@ function Card({ item, variant }: { item: Testimonial; variant: keyof typeof size
       className={`flex flex-col items-center border border-gold-pale bg-cream text-center sm:flex-row sm:text-left ${s.card} ${s.gap}`}
     >
       <div className={`relative shrink-0 overflow-hidden rounded-full ${s.avatar}`}>
-        <Image src={item.image} alt={item.name} fill sizes="(min-width: 1024px) 14vw, 170px" className="object-cover" />
+        <Image src={item.image.src} alt={item.image.alt} fill sizes="(min-width: 1024px) 14vw, 170px" className="object-cover" />
       </div>
       <div className="min-w-0 flex-1">
         <QuoteMark className={`mx-auto text-gold-bright sm:mx-0 ${s.quote}`} />

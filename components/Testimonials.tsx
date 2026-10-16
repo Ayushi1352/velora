@@ -1,10 +1,8 @@
-import site from "@/data/site.json";
+import type { SectionComponentProps, VeloraTestimonialData } from "@/data";
 import SectionHeading from "@/components/SectionHeading";
 import TestimonialSlider from "@/components/TestimonialSlider";
 
-export default function Testimonials() {
-  const { testimonials } = site.home;
-
+export default function Testimonials({ data: testimonials }: SectionComponentProps<VeloraTestimonialData>) {
   return (
     <section aria-label={testimonials.label} className="section-space overflow-hidden">
       <span aria-hidden="true" className="mx-auto block h-[2px] w-[70px] bg-gold-line lg:uw-82" />

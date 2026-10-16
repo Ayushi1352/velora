@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
-import site from "@/data/site.json";
+import type { SectionComponentProps, VeloraHeaderData } from "@/data";
 import { ArrowRight, CloseIcon, MenuIcon } from "@/components/Icons";
 
 function isActive(pathname: string, href: string) {
@@ -12,26 +12,26 @@ function isActive(pathname: string, href: string) {
   return pathname === href || pathname.startsWith(`${href}/`);
 }
 
-export default function Navbar() {
+export default function Navbar({ data, settings }: SectionComponentProps<VeloraHeaderData>) {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
-    document.body.style.overflow = open ? "hidden" : "";
+    document.documentElement.style.overflow = open ? "hidden" : "";
     return () => {
-      document.body.style.overflow = "";
+      document.documentElement.style.overflow = "";
     };
   }, [open]);
 
   return (
     <header className="sticky top-0 z-50 bg-white">
       <div className="mx-auto flex h-[76px] max-w-[1920px] items-center justify-between gap-4 px-5 md:h-[92px] md:px-8 lg:uh-135 lg:pl-[calc(56*var(--u))] lg:pr-[calc(44*var(--u))]">
-        <Link href="/" aria-label={site.brand.name} className="shrink-0" onClick={() => setOpen(false)}>
+        <Link href="/" aria-label={settings.brand.name} className="shrink-0" onClick={() => setOpen(false)}>
           <Image
-            src={site.brand.logo.src}
-            alt={site.brand.logo.alt}
-            width={site.brand.logo.width}
-            height={site.brand.logo.height}
+            src={settings.brand.logo.src}
+            alt={settings.brand.logo.alt}
+            width={settings.brand.logo.width}
+            height={settings.brand.logo.height}
             loading="eager"
             fetchPriority="high"
             sizes="(min-width: 1024px) 15vw, 220px"
@@ -41,7 +41,7 @@ export default function Navbar() {
 
         <nav aria-label="Main navigation" className="hidden lg:block">
           <ul className="flex items-center lg:ugap-14">
-            {site.navigation.map((item) => {
+            {data.navigation.map((item) => {
               const active = isActive(pathname, item.href);
               return (
                 <li key={item.href}>
@@ -68,10 +68,10 @@ export default function Navbar() {
 
         <div className="flex items-center gap-3">
           <Link
-            href={site.bookButton.href}
+            href={data.bookButton.href}
             className="btn-frame hidden h-[46px] items-center gap-3 bg-maroon-dark px-5 font-marcellus text-[16px] tracking-[0.02em] text-white transition-colors hover:bg-gold hover:text-white sm:inline-flex lg:uh-58 lg:upx-31 lg:ut-20 lg:ugap-13"
           >
-            {site.bookButton.label}
+            {data.bookButton.label}
             <ArrowRight className="size-[14px] lg:usize-15" />
           </Link>
           <button
@@ -96,7 +96,7 @@ export default function Navbar() {
       >
         <nav aria-label="Mobile navigation" className="px-5 pb-8 pt-2 md:px-8">
           <ul className="flex flex-col">
-            {site.navigation.map((item) => {
+            {data.navigation.map((item) => {
               const active = isActive(pathname, item.href);
               return (
                 <li key={item.href} className="border-b border-line/70">
@@ -116,11 +116,11 @@ export default function Navbar() {
             })}
           </ul>
           <Link
-            href={site.bookButton.href}
+            href={data.bookButton.href}
             onClick={() => setOpen(false)}
             className="btn-frame mt-7 inline-flex h-[50px] items-center gap-3 bg-maroon-dark px-6 font-marcellus text-[18px] text-white transition-colors hover:bg-gold hover:text-white sm:hidden"
           >
-            {site.bookButton.label}
+            {data.bookButton.label}
             <ArrowRight className="size-4" />
           </Link>
         </nav>

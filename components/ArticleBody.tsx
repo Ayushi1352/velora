@@ -1,8 +1,8 @@
 import Image from "next/image";
-import type site from "@/data/site.json";
+import type { VeloraBlogPost } from "@/data";
 import { CheckCircle, QuoteMark } from "@/components/Icons";
 
-type Post = (typeof site.posts)[number];
+type Post = VeloraBlogPost;
 
 /*
  * Desktop: 18px text in a column exactly one design line wide (61.9em), so the first line ends at
