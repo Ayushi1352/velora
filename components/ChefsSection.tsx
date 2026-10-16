@@ -19,7 +19,7 @@ export default function ChefsSection({ data = site.chefsPage }: SectionProps<Vel
       />
       <div className="mt-[40px] grid gap-8 lg:grid-cols-2 lg:umt-49 lg:ugapx-43 lg:ugapy-61">
         {chefs.map((chef, i) => (
-          <ChefCard key={`${chef.name}-${i}`} chef={chef} />
+          <ChefCard key={`${chef.name}-${i}`} chef={chef} delay={(i % 2) * 2 + 1} />
         ))}
       </div>
     </section>

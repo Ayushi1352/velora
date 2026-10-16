@@ -1,10 +1,8 @@
 import siteData from "./site.json";
 
 // ── Root Schema Types ──
-export type RawSiteData = typeof siteData;
 export type VeloraSchema = typeof siteData.Velora;
 export type VeloraSections = VeloraSchema["sections"];
-export type VeloraTemplateComponents = VeloraSchema["templateComponents"];
 
 // ── Universal SectionProps Interface (ai-builder Standard) ──
 export interface SectionProps<T = unknown> {
@@ -52,17 +50,8 @@ export type VeloraLocationsData =
   VeloraSections["Locations"]["variants"]["VeloraLocations1"];
 
 // ── Item-level types inferred from site.json ──
-export type VeloraNavLink = VeloraHeaderData["navigation"][number];
-export type VeloraSocialLink = VeloraFooterData["socials"][number];
 export type VeloraContactDetails = VeloraFooterData["contact"];
-export type VeloraMenuCategory = VeloraFoodMenuData["categories"][number];
-export type VeloraMenuSection = VeloraMenuPageData["sections"][number];
-export type VeloraMenuItem = VeloraMenuSection["items"][number];
-export type VeloraChef = VeloraChefsData["chefs"][number];
-export type VeloraTestimonialItem = VeloraTestimonialsPageData["items"][number];
-export type VeloraGalleryImage = VeloraGalleryData["images"][number];
 export type VeloraBlogPost = VeloraBlogPageData["items"][number];
-export type VeloraLocation = VeloraLocationsData["items"][number];
 
 // ── Legacy Site Map for Standalone Velora Site ──
 const sec = siteData.Velora.sections;
@@ -90,9 +79,7 @@ const site = {
   contactPage: sec.ContactDetails.variants.VeloraContact1,
   contactFormSection: sec.ContactForm.variants.VeloraContactForm1,
   locationsSection: sec.Locations.variants.VeloraLocations1,
-  Velora: siteData.Velora,
 };
 
-export type SiteData = typeof site;
 export { site };
 export default siteData;

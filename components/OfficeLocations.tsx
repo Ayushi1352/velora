@@ -20,14 +20,16 @@ export default function OfficeLocations({ data: locations = site.locationsSectio
       <SectionLabel variant="sans-wide" align="left" className="font-jost! font-medium! tracking-[0.3em]! lg:ut-19!" lineClassName="w-[50px] lg:uw-64">
         {locations.label}
       </SectionLabel>
-      <h2 className="mt-[8px] font-serif text-[44px] font-medium leading-[1.1] tracking-[-0.02em] text-wine sm:text-[56px] lg:umt-6 lg:ut-72">
+      <h2 data-reveal="up" data-delay="1" className="mt-[8px] font-serif text-[44px] font-medium leading-[1.1] tracking-[-0.02em] text-wine sm:text-[56px] lg:umt-6 lg:ut-72">
         {locations.titleLine1} <span className="font-normal italic text-gold">{locations.titleLine2}</span>
       </h2>
 
       <ul className="mt-[20px] border-t border-line lg:umt-16">
-        {items.map((loc) => (
+        {items.map((loc, i) => (
           <li
             key={loc.city}
+            data-reveal="up"
+            data-delay={i + 1}
             className="grid items-center gap-4 border-b border-line py-[24px] sm:grid-cols-2 lg:grid-cols-[calc(421*var(--u))_calc(464*var(--u))_1fr_auto] lg:gap-0 lg:uh-123 lg:py-0"
           >
             <h3 className="font-serif text-[30px] leading-none text-ink lg:ut-46">{loc.city}</h3>
@@ -63,7 +65,7 @@ export default function OfficeLocations({ data: locations = site.locationsSectio
         ))}
       </ul>
 
-      <div className="mt-[40px] overflow-hidden rounded-[12px] lg:umt-47 lg:-mx-[calc(7*var(--u))]">
+      <div data-reveal="up" data-delay="2" className="mt-[40px] overflow-hidden rounded-[12px] lg:umt-47 lg:-mx-[calc(7*var(--u))]">
         <iframe
           src={mapEmbed}
           title="Our location on the map"

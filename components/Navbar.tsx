@@ -16,6 +16,14 @@ function isActive(pathname: string, href: string) {
 export default function Navbar({ data }: SectionProps<VeloraHeaderData>) {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 8);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   useEffect(() => {
     document.documentElement.style.overflow = open ? "hidden" : "";
@@ -28,7 +36,11 @@ export default function Navbar({ data }: SectionProps<VeloraHeaderData>) {
   const { brand } = data;
 
   return (
-    <header className="sticky top-0 z-50 bg-white">
+    <header
+      data-intro="down"
+      className={`sticky top-0 z-50 bg-white transition-shadow duration-300 ${scrolled ? "shadow-[0_8px_28px_rgba(66,0,6,0.08)]" : ""}`}
+    >
+      <span aria-hidden="true" className="scroll-progress pointer-events-none absolute inset-x-0 bottom-0 h-[2px] bg-linear-to-r from-gold via-gold-light to-gold-bright" />
       <div className="mx-auto flex h-[76px] max-w-[1920px] items-center justify-between gap-4 px-5 md:h-[92px] md:px-8 lg:uh-135 lg:pl-[calc(56*var(--u))] lg:pr-[calc(44*var(--u))]">
         <Link href="/" aria-label={brand.name} className="shrink-0" onClick={() => setOpen(false)}>
           <Image
@@ -52,7 +64,7 @@ export default function Navbar({ data }: SectionProps<VeloraHeaderData>) {
                   <Link
                     href={item.href}
                     aria-current={active ? "page" : undefined}
-                    className={`relative block font-cormorant font-semibold leading-none transition-colors lg:upx-14 lg:upy-14 lg:ut-22 ${
+                    className={`group relative block font-cormorant font-semibold leading-none transition-colors lg:upx-14 lg:upy-14 lg:ut-22 ${
                       active ? "text-wine" : "text-ink hover:text-gold"
                     }`}
                   >
@@ -60,7 +72,7 @@ export default function Navbar({ data }: SectionProps<VeloraHeaderData>) {
                     <span
                       aria-hidden="true"
                       className={`absolute inset-x-0 h-[2px] bg-gold-bright transition-transform duration-300 lg:bottom-[calc(-2*var(--u))] ${
-                        active ? "scale-x-100" : "scale-x-0"
+                        active ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100"
                       }`}
                     />
                   </Link>

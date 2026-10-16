@@ -1,8 +1,11 @@
 "use client";
 
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ChevronLeft, ChevronRight, QuoteMark, Star } from "@/components/Icons";
+
+/** Time each testimonial stays up while auto-playing. */
+const AUTOPLAY_MS = 6000;
 
 type Testimonial = {
   name: string;
@@ -73,17 +76,31 @@ export default function TestimonialSlider({ items }: { items: Testimonial[] }) {
   const total = items.length;
   const prev = (active - 1 + total) % total;
   const next = (active + 1) % total;
+  // Pauses while the pointer or keyboard focus is on the slider.
+  const [paused, setPaused] = useState(false);
+
+  useEffect(() => {
+    if (paused || total < 2 || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    // Restarts on every change, so a manual click gets a full interval too.
+    const id = setTimeout(() => setActive((a) => (a + 1) % total), AUTOPLAY_MS);
+    return () => clearTimeout(id);
+  }, [active, paused, total]);
 
   return (
-    <div>
+    <div
+      onMouseEnter={() => setPaused(true)}
+      onMouseLeave={() => setPaused(false)}
+      onFocus={() => setPaused(true)}
+      onBlur={() => setPaused(false)}
+    >
       <div className="flex items-center justify-center lg:ugap-19">
-        <div className="hidden shrink-0 lg:block" aria-hidden="true">
+        <div key={prev} className="hidden shrink-0 animate-[fade_0.6s_ease] opacity-80 lg:block" aria-hidden="true">
           <Card item={items[prev]} variant="side" />
         </div>
-        <div key={active} className="w-full max-w-[680px] animate-[fade_0.5s_ease] lg:w-auto lg:max-w-none" aria-live="polite">
+        <div key={active} className="w-full max-w-[680px] animate-[fade_0.6s_ease] lg:w-auto lg:max-w-none" aria-live={paused ? "polite" : "off"}>
           <Card item={items[active]} variant="main" />
         </div>
-        <div className="hidden shrink-0 lg:block" aria-hidden="true">
+        <div key={next} className="hidden shrink-0 animate-[fade_0.6s_ease] opacity-80 lg:block" aria-hidden="true">
           <Card item={items[next]} variant="side" />
         </div>
       </div>

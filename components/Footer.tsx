@@ -25,7 +25,7 @@ export default async function Footer({ data: footer = site.footer }: SectionProp
       <div className="bg-cream">
         <div className="mx-auto grid max-w-[1920px] gap-10 px-5 py-[44px] md:grid-cols-2 md:px-8 lg:grid-cols-[calc(815*var(--u))_calc(441*var(--u))_1fr] lg:items-center lg:gap-0 lg:upl-80 lg:upr-40 lg:upy-48">
           {/* Brand */}
-          <div className="md:col-span-2 lg:col-span-1">
+          <div data-reveal="up" className="md:col-span-2 lg:col-span-1">
             <Link href="/" aria-label={brand.name} className="inline-block">
               <Image
                 src={brand.logo.src}
@@ -40,7 +40,7 @@ export default async function Footer({ data: footer = site.footer }: SectionProp
               {footer.titleLine1}
               <span className="block pl-[0.16em] text-gold">{footer.titleLine2}</span>
             </p>
-            <span aria-hidden="true" className="ml-[22px] mt-4 block h-[2px] w-[48px] bg-gold-soft lg:uml-24 lg:umt-16 lg:uw-52" />
+            <span aria-hidden="true" data-reveal="line" data-delay="3" className="ml-[22px] mt-4 block h-[2px] w-[48px] origin-left bg-gold-soft lg:uml-24 lg:umt-16 lg:uw-52" />
             <p className="mt-4 pl-[22px] font-body text-[16px] leading-[1.45] text-ink-soft lg:umt-18 lg:upl-24 lg:ut-19">
               {footer.text.map((line, i) => (
                 <Fragment key={i}>
@@ -56,7 +56,7 @@ export default async function Footer({ data: footer = site.footer }: SectionProp
           </div>
 
           {/* Contact */}
-          <ul className="flex flex-col gap-5 md:order-2 lg:order-none lg:ugap-24">
+          <ul data-reveal="up" data-delay="2" className="flex flex-col gap-5 md:order-2 lg:order-none lg:ugap-24">
             <li className="flex items-center gap-5 lg:ugap-37">
               <span className={iconCircle}>
                 <MapPin className="size-[18px] lg:usize-18" />
@@ -107,7 +107,7 @@ export default async function Footer({ data: footer = site.footer }: SectionProp
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={s.label}
-                    className="grid size-[40px] place-items-center rounded-full border border-gold-line text-white transition-colors hover:bg-gold lg:usize-42"
+                    className="grid size-[40px] place-items-center rounded-full border border-gold-line text-white transition-[background-color,translate] duration-300 hover:-translate-y-1 hover:bg-gold lg:usize-42"
                   >
                     <Icon className="size-[17px] lg:usize-18" />
                   </a>

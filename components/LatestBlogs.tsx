@@ -56,14 +56,14 @@ export default function LatestBlogs({ data: blog = site.blogSection }: SectionPr
         accent="upright"
         titleClassName="text-[44px] sm:text-[56px] lg:ut-74 leading-[0.96]"
       />
-      <span aria-hidden="true" className="mx-auto mt-[16px] block h-[2px] w-[40px] bg-gold-soft lg:umt-22 lg:uw-46" />
+      <span aria-hidden="true" data-reveal="line" data-delay="2" className="mx-auto mt-[16px] block h-[2px] w-[40px] bg-gold-soft lg:umt-22 lg:uw-46" />
 
       <div className="mt-[28px] grid gap-14 px-5 md:px-8 lg:umt-27 lg:grid-cols-[calc(969*var(--u))_calc(513*var(--u))] lg:ugap-26 lg:px-0 lg:upl-91">
         <article>
-          <Link href={`/blog/${featured.slug}`} aria-label={featured.title} className="group relative block aspect-[1098/740] overflow-hidden lg:aspect-auto lg:uh-653">
+          <Link data-reveal="mask-up" href={`/blog/${featured.slug}`} aria-label={featured.title} className="group relative block aspect-[1098/740] overflow-hidden lg:aspect-auto lg:uh-653">
             <Image src={featured.image.src} alt={featured.image.alt} fill sizes="(min-width: 1024px) 58vw, 100vw" className={zoom} />
           </Link>
-          <div className="mt-[20px] lg:umt-22">
+          <div data-reveal="up" data-delay="3" className="mt-[20px] lg:umt-22">
             <Meta post={featured} />
             <h3 className="mt-[12px] font-serif text-[32px] font-medium leading-[1.1] tracking-[-0.015em] text-wine sm:text-[38px] lg:umt-14 lg:ut-47">
               <Link href={`/blog/${featured.slug}`} className="transition-colors hover:text-gold">
@@ -78,7 +78,7 @@ export default function LatestBlogs({ data: blog = site.blogSection }: SectionPr
 
         <div className="grid gap-14 sm:grid-cols-2 lg:grid-cols-1 lg:content-start lg:ugap-34">
           {rest.map((post, i) => (
-            <article key={post.slug}>
+            <article key={post.slug} data-reveal="right" data-delay={i * 2 + 2}>
               <Link
                 href={`/blog/${post.slug}`}
                 aria-label={post.title}

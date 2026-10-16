@@ -27,6 +27,8 @@ function MenuRow({ section, reverse }: { section: MenuSection; reverse: boolean 
       }`}
     >
       <div
+        // The photo is uncovered from the outer edge of the page.
+        data-reveal={reverse ? "mask-left" : "mask-right"}
         className={`relative overflow-hidden ${reverse ? "lg:order-1" : "lg:order-2"}`}
         style={{ aspectRatio: `${section.image.width} / ${section.image.height}` }}
       >
@@ -37,18 +39,18 @@ function MenuRow({ section, reverse }: { section: MenuSection; reverse: boolean 
         <SectionLabel align="left" lineClassName="w-[44px] lg:uw-61">
           {section.label}
         </SectionLabel>
-        <h2 className="mt-[14px] font-serif text-[38px] font-medium leading-[1.12] tracking-[-0.015em] text-wine sm:text-[46px] lg:umt-22 lg:ut-65">
+        <h2 data-reveal="up" data-delay="1" className="mt-[14px] font-serif text-[38px] font-medium leading-[1.12] tracking-[-0.015em] text-wine sm:text-[46px] lg:umt-22 lg:ut-65">
           {section.titleLine1}
           <br />
           <span className="font-normal italic text-gold">{section.titleLine2}</span>
         </h2>
-        <p className="mt-[12px] max-w-[580px] font-body text-[18px] leading-[1.5] text-body lg:umaxw-560 lg:umt-10 lg:ut-23">{section.text}</p>
+        <p data-reveal="up" data-delay="2" className="mt-[12px] max-w-[580px] font-body text-[18px] leading-[1.5] text-body lg:umaxw-560 lg:umt-10 lg:ut-23">{section.text}</p>
 
         <ul className="mt-[26px] lg:umt-44">
           {section.items.map((item, i) => (
             <Fragment key={item.name}>
-              {i > 0 && <li aria-hidden="true" className="dashed-line my-[14px] h-px lg:umb-12 lg:umt-10" />}
-              <li>
+              {i > 0 && <li aria-hidden="true" data-reveal="line" data-delay={Math.min(i + 2, 12)} className="dashed-line origin-left my-[14px] h-px lg:umb-12 lg:umt-10" />}
+              <li data-reveal="up" data-delay={Math.min(i + 3, 12)}>
                 <div className="flex items-baseline justify-between gap-4">
                   <h3 className="font-serif text-[21px] font-medium leading-tight text-wine lg:ut-25.5">{item.name}</h3>
                   <span className="shrink-0 font-serif text-[21px] font-medium text-gold lg:ut-25.5">{item.price}</span>
@@ -87,7 +89,7 @@ export default function MenuSections({ sections }: { sections: MenuSection[] }) 
                 aria-selected={active}
                 // The first tab is the default overview, so it brings all featured sections back.
                 onClick={() => setSelected(i === 0 ? null : s.id)}
-                className={`rounded-full font-body text-[17px] transition-colors lg:ut-22 ${
+                className={`rounded-full font-body text-[17px] transition-[background-color,color,padding] duration-300 lg:ut-22 ${
                   active
                     ? "h-[48px] bg-maroon-dark px-[30px] text-white lg:uh-60 lg:upx-54"
                     : "h-[48px] px-[16px] text-ink-soft transition-colors hover:text-gold lg:uh-60 lg:upx-31"

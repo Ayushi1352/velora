@@ -9,9 +9,10 @@ type Review = {
   image: { src: string; alt: string };
 };
 
-export default function ReviewCard({ item }: { item: Review }) {
+/** `delay` staggers the card's scroll reveal (see data-delay in globals.css). */
+export default function ReviewCard({ item, delay }: { item: Review; delay?: number }) {
   return (
-    <article className="flex gap-[18px] rounded-[14px] border-[1.5px] border-gold-pale bg-white px-[20px] py-[22px] shadow-[0_8px_24px_rgba(140,90,40,0.04)] lg:uh-335 lg:ugap-20 lg:upl-28 lg:upr-24 lg:upt-21">
+    <article data-reveal="up" data-delay={delay} className="flex gap-[18px] rounded-[14px] border-[1.5px] border-gold-pale bg-white px-[20px] py-[22px] shadow-[0_8px_24px_rgba(140,90,40,0.04)] transition-[translate,box-shadow,border-color] duration-500 hover:-translate-y-1.5 hover:border-gold-line hover:shadow-[0_20px_44px_rgba(140,90,40,0.12)] lg:uh-335 lg:ugap-20 lg:upl-28 lg:upr-24 lg:upt-21">
       <span className="grid size-[56px] shrink-0 place-items-center rounded-full bg-blush text-gold lg:usize-64">
         <QuoteMark className="h-[18px] w-[24px] lg:uh-20 lg:uw-27" />
       </span>

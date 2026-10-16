@@ -28,7 +28,7 @@ export default function Booking({ data = site.bookingPage }: SectionProps<Velora
       />
 
       <div className="mt-[40px] grid gap-8 lg:grid-cols-2 lg:umt-62 lg:ugap-32">
-        <div className="relative aspect-[789/837] overflow-hidden rounded-[6px] lg:aspect-auto">
+        <div data-reveal="mask-left" className="relative aspect-[789/837] overflow-hidden rounded-[6px] lg:aspect-auto">
           <Image src={image.src} alt={image.alt} fill sizes="(min-width: 1024px) 47vw, 100vw" className="object-cover" />
         </div>
         <ReservationForm form={form} />

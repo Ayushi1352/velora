@@ -57,9 +57,9 @@ export default function ReservationForm({ form }: { form: FormData }) {
   const { fields } = form;
 
   return (
-    <div className="rounded-[12px] bg-cream px-5 py-8 sm:px-8 lg:upb-44 lg:upl-41 lg:upr-41 lg:upt-48">
+    <div data-reveal="right" data-delay="2" className="rounded-[12px] bg-cream px-5 py-8 sm:px-8 lg:upb-44 lg:upl-41 lg:upr-41 lg:upt-48">
       <h2 className="font-serif text-[34px] font-medium leading-tight text-wine lg:ut-48">{form.title}</h2>
-      <span aria-hidden="true" className="mt-[12px] block h-[2px] w-[60px] bg-gold-soft lg:umt-14 lg:uw-72" />
+      <span aria-hidden="true" data-reveal="line" data-delay="5" className="mt-[12px] block h-[2px] w-[60px] origin-left bg-gold-soft lg:umt-14 lg:uw-72" />
       <p className="mt-[16px] max-w-[640px] font-body text-[17px] leading-[1.3] text-body lg:umt-22 lg:ut-23">{form.text}</p>
 
       {showThanks ? (

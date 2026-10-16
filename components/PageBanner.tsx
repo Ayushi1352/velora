@@ -19,7 +19,7 @@ export default function PageBanner({ data = site.pageBanner, title = "", breadcr
   return (
     <section className="bg-maroon">
       <div className="mx-auto flex max-w-[1920px] flex-col items-center px-5 pb-[52px] pt-[52px] text-center sm:pb-[64px] sm:pt-[72px] lg:uh-370 lg:upb-0 lg:upt-140">
-        <nav aria-label="Breadcrumb">
+        <nav aria-label="Breadcrumb" data-intro="down" data-delay="1">
           <ol className="flex flex-wrap items-center justify-center gap-x-[12px] gap-y-1 rounded-full bg-white px-[20px] py-[9px] font-jost text-[15px] font-medium tracking-[0.07em] lg:ugapx-15 lg:upx-25 lg:upy-13 lg:ut-19">
             <li>
               <Link href={homeHref} className="text-ink transition-colors hover:text-gold">
@@ -46,7 +46,7 @@ export default function PageBanner({ data = site.pageBanner, title = "", breadcr
             </li>
           </ol>
         </nav>
-        <h1 className="mt-[22px] max-w-[1100px] text-balance font-marcellus text-[34px] leading-[1.15] text-white sm:text-[40px] lg:umaxw-1300 lg:umt-24 lg:text-[min(45px,3.125vw)]">{title}</h1>
+        <h1 data-intro="up" data-delay="3" className="mt-[22px] max-w-[1100px] text-balance font-marcellus text-[34px] leading-[1.15] text-white sm:text-[40px] lg:umaxw-1300 lg:umt-24 lg:text-[min(45px,3.125vw)]">{title}</h1>
       </div>
     </section>
   );

@@ -27,11 +27,13 @@ export function SectionLabel({
 }: SectionLabelProps) {
   return (
     <p
+      data-reveal="up"
       className={`flex items-center gap-[16px] uppercase text-gold lg:ugap-23 ${labelStyles[variant]} ${align === "center" ? "justify-center" : ""} ${className}`}
     >
-      <span aria-hidden="true" className={`h-[2px] shrink-0 bg-gold-soft ${lineClassName}`} />
+      {/* the rules grow outwards from the label text */}
+      <span aria-hidden="true" data-reveal="line" data-delay="2" className={`h-[2px] shrink-0 origin-right bg-gold-soft ${lineClassName}`} />
       <span>{children}</span>
-      {lines === "both" && <span aria-hidden="true" className={`h-[2px] shrink-0 bg-gold-soft ${lineClassName}`} />}
+      {lines === "both" && <span aria-hidden="true" data-reveal="line" data-delay="2" className={`h-[2px] shrink-0 origin-left bg-gold-soft ${lineClassName}`} />}
     </p>
   );
 }
@@ -81,7 +83,7 @@ export default function SectionHeading({
           {label}
         </SectionLabel>
       )}
-      <Tag className={`font-serif font-medium leading-[1.08] tracking-[-0.015em] text-wine ${titleClassName}`}>
+      <Tag data-reveal="up" data-delay="1" className={`font-serif font-medium leading-[1.08] tracking-[-0.015em] text-wine ${titleClassName}`}>
         {line1}
         {line2 && (
           <>
@@ -90,7 +92,7 @@ export default function SectionHeading({
           </>
         )}
       </Tag>
-      {text && <div className={`font-body leading-[1.5] text-body ${center ? "mx-auto" : ""} ${textClassName}`}>{text}</div>}
+      {text && <div data-reveal="up" data-delay="2" className={`font-body leading-[1.5] text-body ${center ? "mx-auto" : ""} ${textClassName}`}>{text}</div>}
     </div>
   );
 }

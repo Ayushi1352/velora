@@ -10,9 +10,11 @@ export default function BookingFeatures({ features }: { features: Feature[] }) {
         return (
           <li
             key={f.title}
-            className={`flex flex-col items-center px-4 text-center lg:px-0 ${i > 0 ? "md:border-l md:border-gold-line" : ""} md:py-[8px]`}
+            data-reveal="up"
+            data-delay={i * 2 + 1}
+            className={`group flex flex-col items-center px-4 text-center lg:px-0 ${i > 0 ? "md:border-l md:border-gold-line" : ""} md:py-[8px]`}
           >
-            <span className="grid size-[80px] place-items-center rounded-full bg-blush text-gold lg:usize-90">
+            <span data-reveal="pop" data-delay={i * 2 + 3} className="grid size-[80px] place-items-center rounded-full bg-blush text-gold transition-colors duration-300 group-hover:bg-maroon group-hover:text-gold-bright lg:usize-90">
               <Icon className="size-[36px] lg:usize-38" />
             </span>
             <h3 className="mt-[18px] font-serif text-[26px] font-medium leading-tight text-wine lg:umt-22 lg:ut-33">{f.title}</h3>

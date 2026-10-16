@@ -54,7 +54,9 @@ export default function GalleryGrid({ filters, images }: { filters: string[]; im
         {pageItems.map((img, i) => (
           <li
             key={img.src}
-            className={`group relative aspect-[399/300] overflow-hidden rounded-[4px] animate-[fade_0.45s_ease] md:aspect-auto md:h-[clamp(200px,22vw,320px)] ${
+            data-reveal="zoom"
+            data-delay={(i % 4) + 1}
+            className={`group relative aspect-[399/300] overflow-hidden rounded-[4px] after:pointer-events-none after:absolute after:inset-0 after:bg-maroon/0 after:transition-colors after:duration-500 hover:after:bg-maroon/20 md:aspect-auto md:h-[clamp(200px,22vw,320px)] ${
               i < 4 ? "lg:uh-292" : "lg:uh-313"
             }`}
           >
