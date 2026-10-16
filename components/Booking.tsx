@@ -1,11 +1,11 @@
 import { Fragment } from "react";
 import Image from "next/image";
-import type { SectionComponentProps, VeloraBookingData } from "@/data";
+import { site, type SectionProps, type VeloraBookingData } from "@/data";
 import SectionHeading from "@/components/SectionHeading";
 import ReservationForm from "@/components/ReservationForm";
 import BookingFeatures from "@/components/BookingFeatures";
 
-export default function Booking({ data }: SectionComponentProps<VeloraBookingData>) {
+export default function Booking({ data = site.bookingPage }: SectionProps<VeloraBookingData>) {
   const { intro, image, form, features } = data;
 
   return (

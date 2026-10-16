@@ -1,8 +1,8 @@
-import type { SectionComponentProps, VeloraMenuPageData } from "@/data";
+import { site, type SectionProps, type VeloraMenuPageData } from "@/data";
 import SectionHeading from "@/components/SectionHeading";
 import MenuSections from "@/components/MenuSections";
 
-export default function MenuPage({ data }: SectionComponentProps<VeloraMenuPageData>) {
+export default function MenuPage({ data = site.menuPage }: SectionProps<VeloraMenuPageData>) {
   const { intro, sections } = data;
 
   return (

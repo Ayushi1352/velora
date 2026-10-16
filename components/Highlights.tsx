@@ -1,12 +1,12 @@
 import Image from "next/image";
-import type { SectionComponentProps, VeloraHighlightsData } from "@/data";
+import { site, type SectionProps, type VeloraHighlightsData } from "@/data";
 import { featureIcons, type FeatureIconName } from "@/components/Icons";
 
-export default function Highlights({ data, settings }: SectionComponentProps<VeloraHighlightsData>) {
+export default function Highlights({ data = site.highlightsSection }: SectionProps<VeloraHighlightsData>) {
   const { items } = data;
 
   return (
-    <section aria-label={`Why choose ${settings.brand.name}`} className="mx-auto max-w-[1920px] section-space px-5 md:px-8 lg:px-0">
+    <section aria-label={`Why choose ${site.navbar.brand.name}`} className="mx-auto max-w-[1920px] section-space px-5 md:px-8 lg:px-0">
       <div className="grid gap-16 sm:grid-cols-2 sm:gap-8 lg:grid-cols-[calc(963*var(--u))_1fr] lg:gap-0">
         {items.map((item, i) => {
           const Icon = featureIcons[item.icon as FeatureIconName];

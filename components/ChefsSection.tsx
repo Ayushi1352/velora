@@ -1,8 +1,8 @@
-import type { SectionComponentProps, VeloraChefsData } from "@/data";
+import { site, type SectionProps, type VeloraChefsData } from "@/data";
 import SectionHeading from "@/components/SectionHeading";
 import ChefCard from "@/components/ChefCard";
 
-export default function ChefsSection({ data }: SectionComponentProps<VeloraChefsData>) {
+export default function ChefsSection({ data = site.chefsPage }: SectionProps<VeloraChefsData>) {
   const { intro, chefs } = data;
 
   return (

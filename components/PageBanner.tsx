@@ -1,15 +1,20 @@
 import Link from "next/link";
-import type { SectionComponentProps, VeloraPageBannerData } from "@/data";
+import { site, type SectionProps, type VeloraPageBannerData } from "@/data";
+
+type PageBannerProps = SectionProps<VeloraPageBannerData> & {
+  /** The page section's `bannerTitle` (or the blog post's short title on the blog detail page). */
+  title?: string;
+  breadcrumb?: string;
+  /** Optional middle crumb, e.g. Blog on the blog detail page. */
+  parent?: { label: string; href: string };
+};
 
 function Separator() {
   return <span aria-hidden="true" className="block h-px w-[16px] bg-line lg:uw-18" />;
 }
 
-export default function PageBanner({ data, item }: SectionComponentProps<VeloraPageBannerData>) {
-  const { homeLabel, homeHref, parent } = data;
-  // On an expanded page (blog detail) the banner and breadcrumb show the item's short title.
-  const title = data.title || item?.shortTitle || "";
-  const breadcrumb = data.breadcrumb || item?.shortTitle || "";
+export default function PageBanner({ data = site.pageBanner, title = "", breadcrumb = "", parent }: PageBannerProps) {
+  const { homeLabel, homeHref } = data;
 
   return (
     <section className="bg-maroon">

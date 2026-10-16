@@ -1,8 +1,8 @@
-import type { SectionComponentProps, VeloraTestimonialsPageData } from "@/data";
+import { site, type SectionProps, type VeloraTestimonialsPageData } from "@/data";
 import SectionHeading from "@/components/SectionHeading";
 import ReviewGrid from "@/components/ReviewGrid";
 
-export default function TestimonialsListing({ data }: SectionComponentProps<VeloraTestimonialsPageData>) {
+export default function TestimonialsListing({ data = site.testimonialsPage }: SectionProps<VeloraTestimonialsPageData>) {
   const { intro, items, perPage } = data;
 
   return (

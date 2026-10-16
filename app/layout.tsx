@@ -1,21 +1,21 @@
 import type { Metadata } from "next";
 import ScrollToTop from "@/components/ScrollToTop";
 import { SharedSection } from "@/components/PageRenderer";
-import { settings } from "@/data";
+import { site } from "@/data";
 import "./globals.css";
 
 export const metadata: Metadata = {
   title: {
-    default: settings.seo.title,
-    template: `%s | ${settings.brand.name}`,
+    default: site.navbar.seo.title,
+    template: `%s | ${site.navbar.brand.name}`,
   },
-  description: settings.seo.description,
+  description: site.navbar.seo.description,
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
-      lang={settings.lang}
+      lang="en"
       data-scroll-behavior="smooth"
       className="antialiased"
     >

@@ -1,13 +1,13 @@
 import { Fragment } from "react";
-import type { SectionComponentProps, VeloraLocationsData } from "@/data";
+import { site, type SectionProps, type VeloraLocationsData } from "@/data";
 import { SectionLabel } from "@/components/SectionHeading";
 import { ArrowUpRight } from "@/components/Icons";
 
 const mapUrl = (query: string) => `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(query)}`;
 
-export default function OfficeLocations({ data: locations, settings }: SectionComponentProps<VeloraLocationsData>) {
-  const { contact } = settings;
-  // The main office uses the shared `settings.contact` block (also shown in the footer).
+export default function OfficeLocations({ data: locations = site.locationsSection }: SectionProps<VeloraLocationsData>) {
+  const { contact } = site.footer;
+  // The main office uses the shared Footer `contact` block (also shown in the footer).
   const items = locations.items.map((loc) =>
     loc.isMain
       ? { city: loc.city, address: contact.address, phone: contact.phone, email: contact.email, mapQuery: contact.mapQuery }

@@ -1,7 +1,7 @@
 import { Fragment } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import type { SectionComponentProps, VeloraFooterData } from "@/data";
+import { site, type SectionProps, type VeloraFooterData } from "@/data";
 import FooterLinks from "@/components/FooterLinks";
 import { Mail, MapPin, Phone, socialIcons } from "@/components/Icons";
 
@@ -14,9 +14,10 @@ async function currentYear() {
   return new Date().getFullYear();
 }
 
-export default async function Footer({ data: footer, settings }: SectionComponentProps<VeloraFooterData>) {
+export default async function Footer({ data: footer = site.footer }: SectionProps<VeloraFooterData>) {
   const { socials } = footer;
-  const { brand, contact } = settings;
+  const { contact } = footer;
+  const { brand } = site.navbar;
   const copyright = footer.copyright.replace("{year}", String(await currentYear()));
 
   return (

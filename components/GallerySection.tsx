@@ -1,8 +1,8 @@
-import type { SectionComponentProps, VeloraGalleryData } from "@/data";
+import { site, type SectionProps, type VeloraGalleryData } from "@/data";
 import SectionHeading from "@/components/SectionHeading";
 import GalleryGrid from "@/components/GalleryGrid";
 
-export default function GallerySection({ data }: SectionComponentProps<VeloraGalleryData>) {
+export default function GallerySection({ data = site.galleryPage }: SectionProps<VeloraGalleryData>) {
   const { intro, filters, images } = data;
 
   return (

@@ -1,8 +1,8 @@
-import type { SectionComponentProps, VeloraBlogPageData } from "@/data";
+import { site, type SectionProps, type VeloraBlogPageData } from "@/data";
 import SectionHeading from "@/components/SectionHeading";
 import BlogList from "@/components/BlogList";
 
-export default function BlogListing({ data }: SectionComponentProps<VeloraBlogPageData>) {
+export default function BlogListing({ data = site.blogPage }: SectionProps<VeloraBlogPageData>) {
   const { intro, perPage, meta, items } = data;
 
   return (

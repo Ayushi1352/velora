@@ -1,9 +1,9 @@
 import { Fragment } from "react";
-import type { SectionComponentProps, VeloraContactData } from "@/data";
+import { site, type SectionProps, type VeloraContactData } from "@/data";
 import SectionHeading from "@/components/SectionHeading";
 import ContactInfo from "@/components/ContactInfo";
 
-export default function ContactDetails({ data, settings }: SectionComponentProps<VeloraContactData>) {
+export default function ContactDetails({ data = site.contactPage }: SectionProps<VeloraContactData>) {
   const { intro, info, image } = data;
 
   return (
@@ -25,7 +25,7 @@ export default function ContactDetails({ data, settings }: SectionComponentProps
         ))}
         textClassName="mt-[16px] max-w-[900px] text-[17px] lg:umaxw-900 lg:umt-14 lg:ut-21 leading-[1.55]"
       />
-      <ContactInfo info={info} image={image} contact={settings.contact} />
+      <ContactInfo info={info} image={image} contact={site.footer.contact} />
     </section>
   );
 }

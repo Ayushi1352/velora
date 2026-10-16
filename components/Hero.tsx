@@ -1,10 +1,10 @@
 import Image from "next/image";
-import type { SectionComponentProps, VeloraHeroData } from "@/data";
+import { site, type SectionProps, type VeloraHeroData } from "@/data";
 import BookButton from "@/components/BookButton";
 
-export default function Hero({ data: hero, settings }: SectionComponentProps<VeloraHeroData>) {
+export default function Hero({ data: hero = site.hero }: SectionProps<VeloraHeroData>) {
   return (
-    <section aria-label={`Welcome to ${settings.brand.name}`}>
+    <section aria-label={`Welcome to ${site.navbar.brand.name}`}>
       {/* Intro */}
       <div className="mx-auto grid max-w-[1920px] gap-10 section-space px-5 md:grid-cols-[38%_1fr] md:items-center md:gap-6 md:px-8 lg:grid-cols-[calc(683*var(--u))_1fr] lg:items-start lg:gap-0 lg:px-0">
         <div className="flex justify-center lg:block lg:upl-70 lg:upt-36">

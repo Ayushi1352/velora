@@ -1,11 +1,11 @@
 import Image from "next/image";
 import Link from "next/link";
-import type { SectionComponentProps, VeloraFoodMenuData } from "@/data";
+import { site, type SectionProps, type VeloraFoodMenuData } from "@/data";
 import BookButton from "@/components/BookButton";
 import { SectionLabel } from "@/components/SectionHeading";
 import { featureIcons, type FeatureIconName } from "@/components/Icons";
 
-export default function FoodMenu({ data: menu }: SectionComponentProps<VeloraFoodMenuData>) {
+export default function FoodMenu({ data: menu = site.foodMenuSection }: SectionProps<VeloraFoodMenuData>) {
   return (
     <section aria-label={`${menu.label} ${menu.titleLine1} ${menu.titleLine2}`} className="mx-auto max-w-[1920px] section-space px-5 md:px-8 lg:px-0 lg:upl-55">
       <div className="grid items-start gap-12 lg:grid-cols-[calc(338*var(--u))_1fr] lg:gap-0">

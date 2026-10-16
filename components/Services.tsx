@@ -1,9 +1,9 @@
 import Image from "next/image";
-import type { SectionComponentProps, VeloraServicesData } from "@/data";
+import { site, type SectionProps, type VeloraServicesData } from "@/data";
 import { SectionLabel } from "@/components/SectionHeading";
 import { featureIcons, type FeatureIconName } from "@/components/Icons";
 
-export default function Services({ data: services }: SectionComponentProps<VeloraServicesData>) {
+export default function Services({ data: services = site.servicesSection }: SectionProps<VeloraServicesData>) {
   const { main, top, bottom } = services.images;
 
   return (

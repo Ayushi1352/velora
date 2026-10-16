@@ -5,7 +5,7 @@ import { featureIcons, type FeatureIconName } from "@/components/Icons";
 type ContactInfoProps = Pick<VeloraContactData, "info" | "image"> & { contact: VeloraContactDetails };
 
 export default function ContactInfo({ info, image, contact }: ContactInfoProps) {
-  // Phone and email come from the shared `settings.contact` block so they match the footer.
+  // Phone and email come from the shared Footer `contact` block so they match the footer.
   const linesOf = (item: (typeof info)[number]) =>
     item.contactKey ? [contact[item.contactKey as "phone" | "email"]] : (item.lines ?? []);
 

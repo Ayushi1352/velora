@@ -1,8 +1,8 @@
 import Image from "next/image";
-import type { SectionComponentProps, VeloraContactFormData } from "@/data";
+import { site, type SectionProps, type VeloraContactFormData } from "@/data";
 import ContactForm from "@/components/ContactForm";
 
-export default function MessageSection({ data }: SectionComponentProps<VeloraContactFormData>) {
+export default function MessageSection({ data = site.contactFormSection }: SectionProps<VeloraContactFormData>) {
   const { form, special } = data;
 
   return (

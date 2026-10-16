@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
-import type { SectionComponentProps, VeloraHeaderData } from "@/data";
+import type { SectionProps, VeloraHeaderData } from "@/data";
 import { ArrowRight, CloseIcon, MenuIcon } from "@/components/Icons";
 
 function isActive(pathname: string, href: string) {
@@ -12,7 +12,8 @@ function isActive(pathname: string, href: string) {
   return pathname === href || pathname.startsWith(`${href}/`);
 }
 
-export default function Navbar({ data, settings }: SectionComponentProps<VeloraHeaderData>) {
+// Client component: the Header data comes in as props (not from `site`) so site.json stays out of the browser bundle.
+export default function Navbar({ data }: SectionProps<VeloraHeaderData>) {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
 
@@ -23,15 +24,18 @@ export default function Navbar({ data, settings }: SectionComponentProps<VeloraH
     };
   }, [open]);
 
+  if (!data) return null;
+  const { brand } = data;
+
   return (
     <header className="sticky top-0 z-50 bg-white">
       <div className="mx-auto flex h-[76px] max-w-[1920px] items-center justify-between gap-4 px-5 md:h-[92px] md:px-8 lg:uh-135 lg:pl-[calc(56*var(--u))] lg:pr-[calc(44*var(--u))]">
-        <Link href="/" aria-label={settings.brand.name} className="shrink-0" onClick={() => setOpen(false)}>
+        <Link href="/" aria-label={brand.name} className="shrink-0" onClick={() => setOpen(false)}>
           <Image
-            src={settings.brand.logo.src}
-            alt={settings.brand.logo.alt}
-            width={settings.brand.logo.width}
-            height={settings.brand.logo.height}
+            src={brand.logo.src}
+            alt={brand.logo.alt}
+            width={brand.logo.width}
+            height={brand.logo.height}
             loading="eager"
             fetchPriority="high"
             sizes="(min-width: 1024px) 15vw, 220px"

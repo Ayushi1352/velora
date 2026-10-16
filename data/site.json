@@ -1,31 +1,5 @@
 {
   "Velora": {
-    "activeTemplate": "template-1",
-    "settings": {
-      "lang": "en",
-      "brand": {
-        "name": "Velora",
-        "logo": {
-          "src": "/images/logo/velora-logo.webp",
-          "alt": "Velora - Fine Dining Restaurant",
-          "width": 1200,
-          "height": 357
-        }
-      },
-      "seo": {
-        "title": "Velora | Fine Dining Restaurant",
-        "description": "Experience exquisite flavors, warm hospitality and unforgettable moments at Velora, a fine dining restaurant in New York."
-      },
-      "contact": {
-        "address": [
-          "350 Fifth Avenue,",
-          "New York, NY 10118, USA"
-        ],
-        "phone": "+1 0000000000",
-        "email": "info@xyz.com",
-        "mapQuery": "350 Fifth Avenue, New York, NY 10118, USA"
-      }
-    },
     "templateComponents": {
       "template-1": {
         "shared": {
@@ -66,17 +40,10 @@
             ]
           },
           "about-us": {
-            "seo": {
-              "title": "About Us"
-            },
             "components": [
               {
                 "key": "PageBanner",
-                "component": "VeloraPageBanner1",
-                "data": {
-                  "title": "About Us",
-                  "breadcrumb": "About Us"
-                }
+                "component": "VeloraPageBanner1"
               },
               {
                 "key": "Story",
@@ -89,17 +56,10 @@
             ]
           },
           "our-menu": {
-            "seo": {
-              "title": "Our Menu"
-            },
             "components": [
               {
                 "key": "PageBanner",
-                "component": "VeloraPageBanner1",
-                "data": {
-                  "title": "Our Menu",
-                  "breadcrumb": "Our Menu"
-                }
+                "component": "VeloraPageBanner1"
               },
               {
                 "key": "MenuListing",
@@ -108,17 +68,10 @@
             ]
           },
           "our-chefs": {
-            "seo": {
-              "title": "Our Chefs"
-            },
             "components": [
               {
                 "key": "PageBanner",
-                "component": "VeloraPageBanner1",
-                "data": {
-                  "title": "Our Chefs",
-                  "breadcrumb": "Our Chefs"
-                }
+                "component": "VeloraPageBanner1"
               },
               {
                 "key": "Chefs",
@@ -127,17 +80,10 @@
             ]
           },
           "gallery": {
-            "seo": {
-              "title": "Gallery"
-            },
             "components": [
               {
                 "key": "PageBanner",
-                "component": "VeloraPageBanner1",
-                "data": {
-                  "title": "Gallery",
-                  "breadcrumb": "Gallery"
-                }
+                "component": "VeloraPageBanner1"
               },
               {
                 "key": "Gallery",
@@ -146,17 +92,10 @@
             ]
           },
           "testimonials": {
-            "seo": {
-              "title": "Testimonials"
-            },
             "components": [
               {
                 "key": "PageBanner",
-                "component": "VeloraPageBanner1",
-                "data": {
-                  "title": "Testimonials",
-                  "breadcrumb": "Testimonials"
-                }
+                "component": "VeloraPageBanner1"
               },
               {
                 "key": "TestimonialListing",
@@ -165,17 +104,10 @@
             ]
           },
           "blog": {
-            "seo": {
-              "title": "Blog"
-            },
             "components": [
               {
                 "key": "PageBanner",
-                "component": "VeloraPageBanner1",
-                "data": {
-                  "title": "Blog",
-                  "breadcrumb": "Blog"
-                }
+                "component": "VeloraPageBanner1"
               },
               {
                 "key": "BlogListing",
@@ -184,16 +116,11 @@
             ]
           },
           "blog-detail": {
+            "expand": "items",
             "components": [
               {
                 "key": "PageBanner",
-                "component": "VeloraPageBanner1",
-                "data": {
-                  "parent": {
-                    "label": "Blog",
-                    "href": "/blog"
-                  }
-                }
+                "component": "VeloraPageBanner1"
               },
               {
                 "key": "BlogDetail",
@@ -202,17 +129,10 @@
             ]
           },
           "book-a-table": {
-            "seo": {
-              "title": "Book a Table"
-            },
             "components": [
               {
                 "key": "PageBanner",
-                "component": "VeloraPageBanner1",
-                "data": {
-                  "title": "Book a Table",
-                  "breadcrumb": "Book a Table"
-                }
+                "component": "VeloraPageBanner1"
               },
               {
                 "key": "Booking",
@@ -221,17 +141,10 @@
             ]
           },
           "contact-us": {
-            "seo": {
-              "title": "Contact Us"
-            },
             "components": [
               {
                 "key": "PageBanner",
-                "component": "VeloraPageBanner1",
-                "data": {
-                  "title": "Contact Us",
-                  "breadcrumb": "Contact Us"
-                }
+                "component": "VeloraPageBanner1"
               },
               {
                 "key": "ContactDetails",
@@ -254,6 +167,20 @@
       "Header": {
         "variants": {
           "VeloraHeader1": {
+            "brand": {
+              "name": "Velora",
+              "tagline": "Fine Dining Restaurant",
+              "logo": {
+                "src": "/images/logo/velora-logo.webp",
+                "alt": "Velora - Fine Dining Restaurant",
+                "width": 1200,
+                "height": 357
+              }
+            },
+            "seo": {
+              "title": "Velora | Fine Dining Restaurant",
+              "description": "Experience exquisite flavors, warm hospitality and unforgettable moments at Velora, a fine dining restaurant in New York."
+            },
             "navigation": [
               {
                 "label": "Home",
@@ -304,6 +231,15 @@
               "Experience exquisite flavors, warm hospitality",
               "and unforgettable moments at Velora."
             ],
+            "contact": {
+              "address": [
+                "350 Fifth Avenue,",
+                "New York, NY 10118, USA"
+              ],
+              "phone": "+1 0000000000",
+              "email": "info@xyz.com",
+              "mapQuery": "350 Fifth Avenue, New York, NY 10118, USA"
+            },
             "links": [
               {
                 "label": "Home",
@@ -355,9 +291,7 @@
         "variants": {
           "VeloraPageBanner1": {
             "homeLabel": "Home",
-            "homeHref": "/",
-            "title": "",
-            "breadcrumb": ""
+            "homeHref": "/"
           }
         }
       },
@@ -435,6 +369,7 @@
             }
           },
           "VeloraStory2": {
+            "bannerTitle": "About Us",
             "label": "Our Story",
             "titleLine1": "Crafting Exceptional",
             "titleLine2": "Dining Experiences",
@@ -656,6 +591,7 @@
       "MenuListing": {
         "variants": {
           "VeloraMenuPage1": {
+            "bannerTitle": "Our Menu",
             "intro": {
               "label": "Our Menu",
               "titleLine1": "A Culinary Journey",
@@ -818,6 +754,7 @@
       "Chefs": {
         "variants": {
           "VeloraChefs1": {
+            "bannerTitle": "Our Chefs",
             "intro": {
               "label": "Our Chef",
               "titleLine1": "Masters Behind",
@@ -868,6 +805,7 @@
       "Gallery": {
         "variants": {
           "VeloraGallery1": {
+            "bannerTitle": "Gallery",
             "intro": {
               "label": "Gallery",
               "titleLine1": "Moments That",
@@ -933,6 +871,7 @@
       "TestimonialListing": {
         "variants": {
           "VeloraTestimonialsPage1": {
+            "bannerTitle": "Testimonials",
             "intro": {
               "label": "Testimonials",
               "titleLine1": "What Our Guests",
@@ -1018,6 +957,7 @@
       "BlogListing": {
         "variants": {
           "VeloraBlogPage1": {
+            "bannerTitle": "Blog",
             "intro": {
               "label": "Blogs",
               "titleLine1": "Stories From",
@@ -1189,6 +1129,7 @@
       "Booking": {
         "variants": {
           "VeloraBooking1": {
+            "bannerTitle": "Book a Table",
             "intro": {
               "label": "Book a Table",
               "titleLine1": "Reserve Your Table",
@@ -1261,6 +1202,7 @@
       "ContactDetails": {
         "variants": {
           "VeloraContact1": {
+            "bannerTitle": "Contact Us",
             "intro": {
               "label": "Contact Us",
               "titleLine1": "Let's Get in Touch",
@@ -1364,6 +1306,10 @@
           "VeloraBlogDetail1": {
             "meta": {
               "by": "By"
+            },
+            "parent": {
+              "label": "Blog",
+              "href": "/blog"
             }
           }
         }

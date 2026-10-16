@@ -1,7 +1,7 @@
-import type { SectionComponentProps, VeloraStoryData } from "@/data";
+import { site, type SectionProps, type VeloraStoryData } from "@/data";
 import StoryBlock from "@/components/StoryBlock";
 
-export default function OurStory({ data: story }: SectionComponentProps<VeloraStoryData>) {
+export default function OurStory({ data: story = site.storySection }: SectionProps<VeloraStoryData>) {
   return (
     <section aria-label={story.label} className="section-space">
       <StoryBlock
