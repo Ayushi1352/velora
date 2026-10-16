@@ -11,7 +11,7 @@ export default function Services({ data: services = site.servicesSection }: Sect
       <div className="mx-auto grid max-w-[1920px] gap-12 lg:grid-cols-[calc(760*var(--u))_1fr] lg:gap-0">
         {/* Copy + services list */}
         <div className="section-space px-5 md:px-8 lg:px-0 lg:upl-116">
-          <SectionLabel variant="serif" align="left" className="font-body! font-normal! text-body!" lineClassName="w-[44px] lg:uw-65">
+          <SectionLabel variant="serif" align="left" className="font-body! font-normal!" colorClassName="text-body" lineClassName="w-[44px] lg:uw-65">
             {services.label}
           </SectionLabel>
           <h2 data-reveal="up" data-delay="1" className="mt-[14px] font-serif text-[46px] font-medium leading-[1.06] tracking-[-0.02em] text-wine sm:text-[58px] lg:umt-16 lg:ut-79">

@@ -18,6 +18,11 @@ export const metadata: Metadata = {
  * into view, so they don't flash in and then disappear on hydration. If the app script never
  * starts (blocked / failed JS), the class is removed again so no content stays hidden.
  */
+// Every font family used by the `--font-*` tokens in globals.css. A CSS `@import url(...)` is dropped by the
+// build, so the stylesheet is linked here instead.
+const googleFontsUrl =
+  "https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300..700&family=Jost:wght@100..900&family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&family=Marcellus&family=Montserrat:wght@100..900&family=Mrs+Saint+Delafield&family=Newsreader:ital,wght@0,200..800;1,200..800&display=swap";
+
 const motionScript = `(function(d){d.classList.add("motion");setTimeout(function(){if(!window.__revealReady)d.classList.remove("motion")},3500)})(document.documentElement)`;
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
@@ -30,6 +35,9 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       suppressHydrationWarning
     >
       <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
+        <link rel="stylesheet" href={googleFontsUrl} />
         <script dangerouslySetInnerHTML={{ __html: motionScript }} />
       </head>
       <body className="flex min-h-screen flex-col">

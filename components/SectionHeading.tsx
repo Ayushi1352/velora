@@ -14,6 +14,8 @@ type SectionLabelProps = {
   lines?: "left" | "both";
   align?: "center" | "left";
   className?: string;
+  /** Text colour of the label; passed separately so it can be changed without `!important`. */
+  colorClassName?: string;
   lineClassName?: string;
 };
 
@@ -23,12 +25,13 @@ export function SectionLabel({
   lines = "left",
   align = "center",
   className = "",
+  colorClassName = "text-gold",
   lineClassName = "w-[44px] lg:uw-62",
 }: SectionLabelProps) {
   return (
     <p
       data-reveal="up"
-      className={`flex items-center gap-[16px] uppercase text-gold lg:ugap-23 ${labelStyles[variant]} ${align === "center" ? "justify-center" : ""} ${className}`}
+      className={`flex items-center gap-[16px] uppercase ${colorClassName} lg:ugap-23 ${labelStyles[variant]} ${align === "center" ? "justify-center" : ""} ${className}`}
     >
       {/* the rules grow outwards from the label text */}
       <span aria-hidden="true" data-reveal="line" data-delay="2" className={`h-[2px] shrink-0 origin-right bg-gold-soft ${lineClassName}`} />
