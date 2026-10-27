@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useEffect, useRef } from "react";
+import FadeIn from "@/components/FadeIn";
 import { ChevronLeft, ChevronRight, CloseIcon } from "@/components/Icons";
 import { label } from "@/data";
 
@@ -47,67 +48,71 @@ export default function GalleryLightbox({ images, index, onChange, onClose }: Ga
   if (!img) return null;
 
   return (
-    <div
-      role="dialog"
-      aria-modal="true"
-      aria-label={img.alt}
-      onClick={onClose}
-      onTouchStart={(e) => (touchX.current = e.touches[0].clientX)}
-      onTouchEnd={(e) => {
-        if (touchX.current === null) return;
-        const dx = e.changedTouches[0].clientX - touchX.current;
-        touchX.current = null;
-        if (Math.abs(dx) > 50) (dx > 0 ? prev : next)();
-      }}
-      className="fixed inset-0 z-[100] flex items-center justify-center bg-black/90 animate-[fade_0.3s_ease]"
-    >
-      <button
-        type="button"
-        aria-label={label("close")}
-        onClick={onClose}
-        className="absolute right-[16px] top-[16px] z-10 grid size-[44px] place-items-center rounded-full text-white transition-colors hover:bg-maroon lg:right-[calc(30*var(--u))] lg:top-[calc(30*var(--u))] lg:size-[calc(52*var(--u))]"
-      >
-        <CloseIcon className="size-[55%]" />
-      </button>
-
-      {count > 1 && (
-        <button
-          type="button"
-          aria-label={label("previousImage")}
-          onClick={(e) => {
-            e.stopPropagation();
-            prev();
-          }}
-          className={`${navButton} left-[12px] lg:left-[calc(40*var(--u))]`}
-        >
-          <ChevronLeft className="size-[45%]" />
-        </button>
-      )}
-
+    <FadeIn duration={300}>
       <div
-        onClick={(e) => e.stopPropagation()}
-        className="relative h-[75vh] w-[calc(100vw-32px)] sm:w-[calc(100vw-140px)] lg:h-[85vh] lg:w-[calc(100vw-calc(240*var(--u)))]"
+        role="dialog"
+        aria-modal="true"
+        aria-label={img.alt}
+        onClick={onClose}
+        onTouchStart={(e) => (touchX.current = e.touches[0].clientX)}
+        onTouchEnd={(e) => {
+          if (touchX.current === null) return;
+          const dx = e.changedTouches[0].clientX - touchX.current;
+          touchX.current = null;
+          if (Math.abs(dx) > 50) (dx > 0 ? prev : next)();
+        }}
+        className="fixed inset-0 z-[100] flex items-center justify-center bg-black/90"
       >
-        <Image key={img.src} src={img.src} alt={img.alt} fill sizes="100vw" className="object-contain animate-[fade_0.35s_ease]" priority />
-      </div>
-
-      {count > 1 && (
         <button
           type="button"
-          aria-label={label("nextImage")}
-          onClick={(e) => {
-            e.stopPropagation();
-            next();
-          }}
-          className={`${navButton} right-[12px] lg:right-[calc(40*var(--u))]`}
+          aria-label={label("close")}
+          onClick={onClose}
+          className="absolute right-[16px] top-[16px] z-10 grid size-[44px] place-items-center rounded-full text-white transition-colors hover:bg-maroon lg:right-[calc(30*var(--u))] lg:top-[calc(30*var(--u))] lg:size-[calc(52*var(--u))]"
         >
-          <ChevronRight className="size-[45%]" />
+          <CloseIcon className="size-[55%]" />
         </button>
-      )}
 
-      <p className="absolute bottom-[16px] left-1/2 -translate-x-1/2 font-body text-[15px] tracking-[0.1em] text-white/80 lg:bottom-[calc(30*var(--u))] lg:text-[max(calc(18*var(--u)),var(--text-min))]">
-        {index + 1} / {count}
-      </p>
-    </div>
+        {count > 1 && (
+          <button
+            type="button"
+            aria-label={label("previousImage")}
+            onClick={(e) => {
+              e.stopPropagation();
+              prev();
+            }}
+            className={`${navButton} left-[12px] lg:left-[calc(40*var(--u))]`}
+          >
+            <ChevronLeft className="size-[45%]" />
+          </button>
+        )}
+
+        <div
+          onClick={(e) => e.stopPropagation()}
+          className="relative h-[75vh] w-[calc(100vw-32px)] sm:w-[calc(100vw-140px)] lg:h-[85vh] lg:w-[calc(100vw-calc(240*var(--u)))]"
+        >
+          <FadeIn key={img.src} duration={350}>
+            <Image src={img.src} alt={img.alt} fill sizes="100vw" className="object-contain" priority />
+          </FadeIn>
+        </div>
+
+        {count > 1 && (
+          <button
+            type="button"
+            aria-label={label("nextImage")}
+            onClick={(e) => {
+              e.stopPropagation();
+              next();
+            }}
+            className={`${navButton} right-[12px] lg:right-[calc(40*var(--u))]`}
+          >
+            <ChevronRight className="size-[45%]" />
+          </button>
+        )}
+
+        <p className="absolute bottom-[16px] left-1/2 -translate-x-1/2 font-body text-[15px] tracking-[0.1em] text-white/80 lg:bottom-[calc(30*var(--u))] lg:text-[max(calc(18*var(--u)),var(--text-min))]">
+          {index + 1} / {count}
+        </p>
+      </div>
+    </FadeIn>
   );
 }

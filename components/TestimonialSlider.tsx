@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { ChevronLeft, ChevronRight, QuoteMark, Star } from "@/components/Icons";
 import { label } from "@/data";
 
@@ -72,6 +72,30 @@ function Card({ item, variant }: { item: Testimonial; variant: keyof typeof size
   );
 }
 
+/** The three visible cards (previous, current, next) around `center`. */
+function Row({ items, center, live }: { items: Testimonial[]; center: number; live?: boolean }) {
+  const total = items.length;
+  const prev = (center - 1 + total) % total;
+  const next = (center + 1) % total;
+  return (
+    <div className="flex items-center justify-center lg:gap-[calc(19*var(--u))]">
+      <div className="hidden shrink-0 opacity-80 lg:block" aria-hidden="true">
+        <Card item={items[prev]} variant="side" />
+      </div>
+      <div className="w-full max-w-[680px] lg:w-auto lg:max-w-none" aria-live={live ? "polite" : "off"}>
+        <Card item={items[center]} variant="main" />
+      </div>
+      <div className="hidden shrink-0 opacity-80 lg:block" aria-hidden="true">
+        <Card item={items[next]} variant="side" />
+      </div>
+    </div>
+  );
+}
+
+const SLIDE = { duration: 700, easing: "cubic-bezier(0.22, 1, 0.36, 1)" };
+// How far a row travels while it slides in or out, as a share of its own width.
+const shift = (dir: number) => `translateX(${dir * 30}%)`;
+
 export default function TestimonialSlider({ items }: { items: Testimonial[] }) {
   const [active, setActive] = useState(0);
   const total = items.length;
@@ -79,13 +103,35 @@ export default function TestimonialSlider({ items }: { items: Testimonial[] }) {
   const next = (active + 1) % total;
   // Pauses while the pointer or keyboard focus is on the slider.
   const [paused, setPaused] = useState(false);
+  // The row that is sliding out, and the direction everything moves: 1 = to the left (next), -1 = to the right (previous).
+  const [leaving, setLeaving] = useState<{ center: number; dir: 1 | -1 } | null>(null);
+  const incoming = useRef<HTMLDivElement>(null);
+  const outgoing = useRef<HTMLDivElement>(null);
+
+  const go = (to: number, dir: 1 | -1) => {
+    if (to === active) return;
+    if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) setLeaving({ center: active, dir });
+    setActive(to);
+  };
 
   useEffect(() => {
     if (paused || total < 2 || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     // Restarts on every change, so a manual click gets a full interval too.
-    const id = setTimeout(() => setActive((a) => (a + 1) % total), AUTOPLAY_MS);
+    const id = setTimeout(() => {
+      setLeaving({ center: active, dir: 1 });
+      setActive(next);
+    }, AUTOPLAY_MS);
     return () => clearTimeout(id);
-  }, [active, paused, total]);
+  }, [active, next, paused, total]);
+
+  // The new row slides in from one side while the old one slides out the other side.
+  useEffect(() => {
+    if (!leaving) return;
+    incoming.current?.animate([{ opacity: 0, transform: shift(leaving.dir) }, { opacity: 1, transform: "none" }], SLIDE);
+    const out = outgoing.current?.animate([{ opacity: 1, transform: "none" }, { opacity: 0, transform: shift(-leaving.dir) }], { ...SLIDE, fill: "forwards" });
+    out?.finished.then(() => setLeaving(null), () => {});
+    return () => out?.cancel();
+  }, [leaving]);
 
   return (
     <div
@@ -94,15 +140,14 @@ export default function TestimonialSlider({ items }: { items: Testimonial[] }) {
       onFocus={() => setPaused(true)}
       onBlur={() => setPaused(false)}
     >
-      <div className="flex items-center justify-center lg:gap-[calc(19*var(--u))]">
-        <div key={prev} className="hidden shrink-0 animate-[fade_0.6s_ease] opacity-80 lg:block" aria-hidden="true">
-          <Card item={items[prev]} variant="side" />
-        </div>
-        <div key={active} className="w-full max-w-[680px] animate-[fade_0.6s_ease] lg:w-auto lg:max-w-none" aria-live={paused ? "polite" : "off"}>
-          <Card item={items[active]} variant="main" />
-        </div>
-        <div key={next} className="hidden shrink-0 animate-[fade_0.6s_ease] opacity-80 lg:block" aria-hidden="true">
-          <Card item={items[next]} variant="side" />
+      <div className="relative">
+        {leaving && (
+          <div ref={outgoing} key={`out-${leaving.center}`} className="pointer-events-none absolute inset-x-0 top-0" aria-hidden="true" inert>
+            <Row items={items} center={leaving.center} />
+          </div>
+        )}
+        <div ref={incoming} key={active}>
+          <Row items={items} center={active} live={paused} />
         </div>
       </div>
 
@@ -110,7 +155,7 @@ export default function TestimonialSlider({ items }: { items: Testimonial[] }) {
         <span aria-hidden="true" className="h-px flex-1 bg-gold-line" />
         <button
           type="button"
-          onClick={() => setActive(prev)}
+          onClick={() => go(prev, -1)}
           aria-label={label("previousTestimonial")}
           className="grid size-[46px] shrink-0 place-items-center rounded-full border border-gold-line text-ink transition-colors hover:bg-maroon hover:text-white lg:size-[calc(47*var(--u))]"
         >
@@ -121,7 +166,7 @@ export default function TestimonialSlider({ items }: { items: Testimonial[] }) {
             <button
               key={t.name}
               type="button"
-              onClick={() => setActive(i)}
+              onClick={() => go(i, i > active ? 1 : -1)}
               aria-label={label("showTestimonial", { n: i + 1 })}
               aria-current={i === active}
               className={`size-[12px] rounded-full transition-colors lg:size-[calc(12*var(--u))] ${i === active ? "bg-maroon" : "bg-line hover:bg-gold-soft"}`}
@@ -130,7 +175,7 @@ export default function TestimonialSlider({ items }: { items: Testimonial[] }) {
         </div>
         <button
           type="button"
-          onClick={() => setActive(next)}
+          onClick={() => go(next, 1)}
           aria-label={label("nextTestimonial")}
           className="grid size-[46px] shrink-0 place-items-center rounded-full border border-gold-line text-ink transition-colors hover:bg-maroon hover:text-white lg:size-[calc(47*var(--u))]"
         >
