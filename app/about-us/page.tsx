@@ -1,7 +1,19 @@
-import PageRenderer, { pageMetadata } from "@/components/PageRenderer";
+import type { Metadata } from "next";
+import PageBanner from "@/components/PageBanner";
+import AboutStory from "@/components/AboutStory";
+import Services from "@/components/Services";
+import { site } from "@/data";
 
-export const metadata = pageMetadata("about-us");
+const { bannerTitle: title } = site.aboutStorySection;
+
+export const metadata: Metadata = { title };
 
 export default function AboutUsPage() {
-  return <PageRenderer page="about-us" />;
+  return (
+    <>
+      <PageBanner title={title} />
+      <AboutStory />
+      <Services />
+    </>
+  );
 }

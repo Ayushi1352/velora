@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import type { VeloraFooterData } from "@/data";
+import { label, type VeloraFooterData } from "@/data";
 
 function isActive(pathname: string, href: string) {
   if (href === "/") return pathname === "/";
@@ -14,8 +14,8 @@ export default function FooterLinks({ links }: { links: VeloraFooterData["links"
   const pathname = usePathname();
 
   return (
-    <nav aria-label="Footer navigation" data-reveal="up" data-delay="4" className="md:order-1 md:border-r md:border-gold-line md:pr-10 lg:order-none lg:border-r-0 lg:border-l lg:pr-0 lg:upl-99">
-      <ul className="grid grid-cols-2 gap-x-6 gap-y-[12px] md:flex md:flex-col md:py-1 lg:ugap-16 lg:upy-6">
+    <nav aria-label={label("footerNav")} data-reveal="up" data-delay="4" className="md:order-1 md:border-r md:border-gold-line md:pr-10 lg:order-none lg:border-r-0 lg:border-l lg:pr-0 lg:pl-[calc(99*var(--u))]">
+      <ul className="grid grid-cols-2 gap-x-6 gap-y-[12px] md:flex md:flex-col md:py-1 lg:gap-[calc(16*var(--u))] lg:py-[calc(6*var(--u))]">
         {links.map((link) => {
           const active = isActive(pathname, link.href);
           return (
@@ -23,7 +23,7 @@ export default function FooterLinks({ links }: { links: VeloraFooterData["links"
               <Link
                 href={link.href}
                 aria-current={active ? "page" : undefined}
-                className={`group relative inline-block pb-[9px] font-body text-[17px] leading-tight transition-colors hover:text-gold lg:upb-10 lg:ut-20 ${
+                className={`group relative inline-block pb-[9px] font-body text-[17px] leading-tight transition-colors hover:text-gold lg:pb-[calc(10*var(--u))] lg:text-[max(calc(20*var(--u)),var(--text-min))] ${
                   active ? "text-wine" : "text-ink-soft"
                 }`}
               >

@@ -1,7 +1,17 @@
-import PageRenderer, { pageMetadata } from "@/components/PageRenderer";
+import type { Metadata } from "next";
+import PageBanner from "@/components/PageBanner";
+import TestimonialsListing from "@/components/TestimonialsListing";
+import { site } from "@/data";
 
-export const metadata = pageMetadata("testimonials");
+const { bannerTitle: title } = site.testimonialsPage;
+
+export const metadata: Metadata = { title };
 
 export default function TestimonialsPage() {
-  return <PageRenderer page="testimonials" />;
+  return (
+    <>
+      <PageBanner title={title} />
+      <TestimonialsListing />
+    </>
+  );
 }

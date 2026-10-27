@@ -1,7 +1,21 @@
-import PageRenderer, { pageMetadata } from "@/components/PageRenderer";
+import type { Metadata } from "next";
+import PageBanner from "@/components/PageBanner";
+import ContactDetails from "@/components/ContactDetails";
+import MessageSection from "@/components/MessageSection";
+import OfficeLocations from "@/components/OfficeLocations";
+import { site } from "@/data";
 
-export const metadata = pageMetadata("contact-us");
+const { bannerTitle: title } = site.contactPage;
+
+export const metadata: Metadata = { title };
 
 export default function ContactUsPage() {
-  return <PageRenderer page="contact-us" />;
+  return (
+    <>
+      <PageBanner title={title} />
+      <ContactDetails />
+      <MessageSection />
+      <OfficeLocations />
+    </>
+  );
 }

@@ -1,9 +1,11 @@
-import { site, type SectionProps, type VeloraStory2Data } from "@/data";
+import { site } from "@/data";
 import StoryBlock from "@/components/StoryBlock";
 
-export default function AboutStory({ data: story = site.aboutStorySection }: SectionProps<VeloraStory2Data>) {
+const story = site.aboutStorySection;
+
+export default function AboutStory() {
   return (
-    <section aria-label={story.label} className="section-space">
+    <section aria-label={story.label} className="py-(--section-space)">
       <StoryBlock
         label={story.label}
         titleLine1={story.titleLine1}
@@ -11,8 +13,8 @@ export default function AboutStory({ data: story = site.aboutStorySection }: Sec
         paragraphs={story.paragraphs}
         imageLeft={story.imageLeft}
         imageRight={story.imageRight}
-        leftFrameClassName="aspect-[506/504] lg:uw-506 lg:umt-74"
-        textClassName="lg:umt-37 lg:ut-20.25"
+        leftFrameClassName="aspect-[506/504] lg:w-[calc(506*var(--u))] lg:mt-[calc(74*var(--u))]"
+        textClassName="lg:mt-[calc(37*var(--u))] lg:text-[max(calc(20.25*var(--u)),var(--text-min))]"
       />
     </section>
   );

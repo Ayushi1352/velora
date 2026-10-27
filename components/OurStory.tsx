@@ -1,9 +1,11 @@
-import { site, type SectionProps, type VeloraStoryData } from "@/data";
+import { site } from "@/data";
 import StoryBlock from "@/components/StoryBlock";
 
-export default function OurStory({ data: story = site.storySection }: SectionProps<VeloraStoryData>) {
+const story = site.storySection;
+
+export default function OurStory() {
   return (
-    <section aria-label={story.label} className="section-space">
+    <section aria-label={story.label} className="py-(--section-space)">
       <StoryBlock
         label={story.label}
         titleLine1={story.titleLine1}

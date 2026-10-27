@@ -3,20 +3,36 @@
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
-import type { SectionProps, VeloraHeaderData } from "@/data";
+import { useEffect, useRef, useState } from "react";
+import { label, site } from "@/data";
 import { ArrowRight, CloseIcon, MenuIcon } from "@/components/Icons";
+import { btnFrame } from "@/components/BookButton";
 
 function isActive(pathname: string, href: string) {
   if (href === "/") return pathname === "/";
   return pathname === href || pathname.startsWith(`${href}/`);
 }
 
-// Client component: the Header data comes in as props (not from `site`) so site.json stays out of the browser bundle.
-export default function Navbar({ data }: SectionProps<VeloraHeaderData>) {
+const data = site.navbar;
+const { brand } = data;
+
+export default function Navbar() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const progressRef = useRef<HTMLSpanElement>(null);
+
+  // Gold reading-progress bar, driven by the page scroll (browsers with scroll-driven animations only).
+  useEffect(() => {
+    const bar = progressRef.current;
+    const { ScrollTimeline } = window as typeof window & { ScrollTimeline?: new (options: { source: Element }) => AnimationTimeline };
+    if (!bar || !ScrollTimeline) return;
+    const animation = bar.animate([{ transform: "scaleX(0)" }, { transform: "scaleX(1)" }], {
+      fill: "both",
+      timeline: new ScrollTimeline({ source: document.documentElement }),
+    });
+    return () => animation.cancel();
+  }, []);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8);
@@ -32,16 +48,13 @@ export default function Navbar({ data }: SectionProps<VeloraHeaderData>) {
     };
   }, [open]);
 
-  if (!data) return null;
-  const { brand } = data;
-
   return (
     <header
       data-intro="down"
       className={`sticky top-0 z-50 bg-white transition-shadow duration-300 ${scrolled ? "shadow-[0_8px_28px_rgba(66,0,6,0.08)]" : ""}`}
     >
-      <span aria-hidden="true" className="scroll-progress pointer-events-none absolute inset-x-0 bottom-0 h-[2px] bg-linear-to-r from-gold via-gold-light to-gold-bright" />
-      <div className="mx-auto flex h-[76px] max-w-[1920px] items-center justify-between gap-4 px-5 md:h-[92px] md:px-8 lg:uh-135 lg:pl-[calc(56*var(--u))] lg:pr-[calc(44*var(--u))]">
+      <span ref={progressRef} aria-hidden="true" className="pointer-events-none hidden origin-left [transform:scaleX(0)] motion-safe:supports-[animation-timeline:scroll()]:block absolute inset-x-0 bottom-0 h-[2px] bg-linear-to-r from-gold via-gold-light to-gold-bright" />
+      <div className="mx-auto flex h-[76px] max-w-[1920px] items-center justify-between gap-4 px-5 md:h-[92px] md:px-8 lg:h-[calc(135*var(--u))] lg:pl-[calc(56*var(--u))] lg:pr-[calc(44*var(--u))]">
         <Link href="/" aria-label={brand.name} className="shrink-0" onClick={() => setOpen(false)}>
           <Image
             src={brand.logo.src}
@@ -51,12 +64,12 @@ export default function Navbar({ data }: SectionProps<VeloraHeaderData>) {
             loading="eager"
             fetchPriority="high"
             sizes="(min-width: 1024px) 15vw, 220px"
-            className="h-auto w-[190px] md:w-[210px] lg:uw-250"
+            className="h-auto w-[190px] md:w-[210px] lg:w-[calc(250*var(--u))]"
           />
         </Link>
 
-        <nav aria-label="Main navigation" className="hidden lg:block">
-          <ul className="flex items-center lg:ugap-14">
+        <nav aria-label={label("mainNav")} className="hidden lg:block">
+          <ul className="flex items-center lg:gap-[calc(14*var(--u))]">
             {data.navigation.map((item) => {
               const active = isActive(pathname, item.href);
               return (
@@ -64,7 +77,7 @@ export default function Navbar({ data }: SectionProps<VeloraHeaderData>) {
                   <Link
                     href={item.href}
                     aria-current={active ? "page" : undefined}
-                    className={`group relative block font-cormorant font-semibold leading-none transition-colors lg:upx-14 lg:upy-14 lg:ut-22 ${
+                    className={`group relative block font-cormorant font-semibold leading-none transition-colors lg:px-[calc(14*var(--u))] lg:py-[calc(14*var(--u))] lg:text-[max(calc(22*var(--u)),var(--text-min))] ${
                       active ? "text-wine" : "text-ink hover:text-gold"
                     }`}
                   >
@@ -85,14 +98,14 @@ export default function Navbar({ data }: SectionProps<VeloraHeaderData>) {
         <div className="flex items-center gap-3">
           <Link
             href={data.bookButton.href}
-            className="btn-frame hidden h-[46px] items-center gap-3 bg-maroon-dark px-5 font-marcellus text-[16px] tracking-[0.02em] text-white transition-colors hover:bg-gold hover:text-white sm:inline-flex lg:uh-58 lg:upx-31 lg:ut-20 lg:ugap-13"
+            className={`${btnFrame} hidden h-[46px] items-center gap-3 bg-maroon-dark px-5 font-marcellus text-[16px] tracking-[0.02em] text-white transition-colors hover:bg-gold hover:text-white sm:inline-flex lg:h-[calc(58*var(--u))] lg:px-[calc(31*var(--u))] lg:text-[max(calc(20*var(--u)),var(--text-min))] lg:gap-[calc(13*var(--u))]`}
           >
             {data.bookButton.label}
-            <ArrowRight className="size-[14px] lg:usize-15" />
+            <ArrowRight className="size-[14px] lg:size-[calc(15*var(--u))]" />
           </Link>
           <button
             type="button"
-            aria-label={open ? "Close menu" : "Open menu"}
+            aria-label={open ? label("closeMenu") : label("openMenu")}
             aria-expanded={open}
             aria-controls="mobile-menu"
             onClick={() => setOpen((v) => !v)}
@@ -110,7 +123,7 @@ export default function Navbar({ data }: SectionProps<VeloraHeaderData>) {
           open ? "visible scale-y-100 opacity-100" : "invisible scale-y-95 opacity-0"
         }`}
       >
-        <nav aria-label="Mobile navigation" className="px-5 pb-8 pt-2 md:px-8">
+        <nav aria-label={label("mobileNav")} className="px-5 pb-8 pt-2 md:px-8">
           <ul className="flex flex-col">
             {data.navigation.map((item) => {
               const active = isActive(pathname, item.href);
@@ -134,7 +147,7 @@ export default function Navbar({ data }: SectionProps<VeloraHeaderData>) {
           <Link
             href={data.bookButton.href}
             onClick={() => setOpen(false)}
-            className="btn-frame mt-7 inline-flex h-[50px] items-center gap-3 bg-maroon-dark px-6 font-marcellus text-[18px] text-white transition-colors hover:bg-gold hover:text-white sm:hidden"
+            className={`${btnFrame} mt-7 inline-flex h-[50px] items-center gap-3 bg-maroon-dark px-6 font-marcellus text-[18px] text-white transition-colors hover:bg-gold hover:text-white sm:hidden`}
           >
             {data.bookButton.label}
             <ArrowRight className="size-4" />

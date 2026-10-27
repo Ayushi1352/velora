@@ -10,9 +10,9 @@ export default function BlogList({ posts, perPage, meta }: { posts: Post[]; perP
 
   return (
     <div id="blog-list" className="scroll-mt-32">
-      <ul key={page} className="mt-[36px] lg:umt-36">
+      <ul key={page} className="mt-[36px] lg:mt-[calc(36*var(--u))]">
         {pageItems.map((post, i) => (
-          <li key={post.slug} data-reveal="up" data-delay="1" className={i > 0 ? "mt-[20px] border-t border-line pt-[20px] lg:umt-20 lg:upt-18" : ""}>
+          <li key={post.slug} data-reveal="up" data-delay="1" className={i > 0 ? "mt-[20px] border-t border-line pt-[20px] lg:mt-[calc(20*var(--u))] lg:pt-[calc(18*var(--u))]" : ""}>
             <BlogListItem post={post} meta={meta} />
           </li>
         ))}

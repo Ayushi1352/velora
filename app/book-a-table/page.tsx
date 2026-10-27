@@ -1,7 +1,17 @@
-import PageRenderer, { pageMetadata } from "@/components/PageRenderer";
+import type { Metadata } from "next";
+import PageBanner from "@/components/PageBanner";
+import Booking from "@/components/Booking";
+import { site } from "@/data";
 
-export const metadata = pageMetadata("book-a-table");
+const { bannerTitle: title } = site.bookingPage;
+
+export const metadata: Metadata = { title };
 
 export default function BookATablePage() {
-  return <PageRenderer page="book-a-table" />;
+  return (
+    <>
+      <PageBanner title={title} />
+      <Booking />
+    </>
+  );
 }

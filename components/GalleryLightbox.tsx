@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { useEffect, useRef } from "react";
 import { ChevronLeft, ChevronRight, CloseIcon } from "@/components/Icons";
+import { label } from "@/data";
 
 type LightboxImage = { src: string; alt: string };
 
@@ -14,7 +15,7 @@ type GalleryLightboxProps = {
 };
 
 const navButton =
-  "absolute top-1/2 z-10 grid size-[46px] -translate-y-1/2 place-items-center rounded-full border border-white/40 bg-black/30 text-white transition-colors hover:border-maroon hover:bg-maroon lg:usize-60";
+  "absolute top-1/2 z-10 grid size-[46px] -translate-y-1/2 place-items-center rounded-full border border-white/40 bg-black/30 text-white transition-colors hover:border-maroon hover:bg-maroon lg:size-[calc(60*var(--u))]";
 
 /** Full screen image viewer with previous / next navigation (arrows, keyboard and swipe). */
 export default function GalleryLightbox({ images, index, onChange, onClose }: GalleryLightboxProps) {
@@ -62,9 +63,9 @@ export default function GalleryLightbox({ images, index, onChange, onClose }: Ga
     >
       <button
         type="button"
-        aria-label="Close"
+        aria-label={label("close")}
         onClick={onClose}
-        className="absolute right-[16px] top-[16px] z-10 grid size-[44px] place-items-center rounded-full text-white transition-colors hover:bg-maroon lg:right-[calc(30*var(--u))] lg:top-[calc(30*var(--u))] lg:usize-52"
+        className="absolute right-[16px] top-[16px] z-10 grid size-[44px] place-items-center rounded-full text-white transition-colors hover:bg-maroon lg:right-[calc(30*var(--u))] lg:top-[calc(30*var(--u))] lg:size-[calc(52*var(--u))]"
       >
         <CloseIcon className="size-[55%]" />
       </button>
@@ -72,7 +73,7 @@ export default function GalleryLightbox({ images, index, onChange, onClose }: Ga
       {count > 1 && (
         <button
           type="button"
-          aria-label="Previous image"
+          aria-label={label("previousImage")}
           onClick={(e) => {
             e.stopPropagation();
             prev();
@@ -93,7 +94,7 @@ export default function GalleryLightbox({ images, index, onChange, onClose }: Ga
       {count > 1 && (
         <button
           type="button"
-          aria-label="Next image"
+          aria-label={label("nextImage")}
           onClick={(e) => {
             e.stopPropagation();
             next();
@@ -104,7 +105,7 @@ export default function GalleryLightbox({ images, index, onChange, onClose }: Ga
         </button>
       )}
 
-      <p className="absolute bottom-[16px] left-1/2 -translate-x-1/2 font-body text-[15px] tracking-[0.1em] text-white/80 lg:bottom-[calc(30*var(--u))] lg:ut-18">
+      <p className="absolute bottom-[16px] left-1/2 -translate-x-1/2 font-body text-[15px] tracking-[0.1em] text-white/80 lg:bottom-[calc(30*var(--u))] lg:text-[max(calc(18*var(--u)),var(--text-min))]">
         {index + 1} / {count}
       </p>
     </div>

@@ -1,7 +1,17 @@
-import PageRenderer, { pageMetadata } from "@/components/PageRenderer";
+import type { Metadata } from "next";
+import PageBanner from "@/components/PageBanner";
+import GallerySection from "@/components/GallerySection";
+import { site } from "@/data";
 
-export const metadata = pageMetadata("gallery");
+const { bannerTitle: title } = site.galleryPage;
+
+export const metadata: Metadata = { title };
 
 export default function GalleryPage() {
-  return <PageRenderer page="gallery" />;
+  return (
+    <>
+      <PageBanner title={title} />
+      <GallerySection />
+    </>
+  );
 }

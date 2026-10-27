@@ -1,22 +1,24 @@
-import { site, type SectionProps, type VeloraMenuPageData } from "@/data";
+import { site } from "@/data";
 import SectionHeading from "@/components/SectionHeading";
 import MenuSections from "@/components/MenuSections";
 
-export default function MenuPage({ data = site.menuPage }: SectionProps<VeloraMenuPageData>) {
+const data = site.menuPage;
+
+export default function MenuPage() {
   const { intro, sections } = data;
 
   return (
-    <section aria-label={intro.label} className="section-space">
+    <section aria-label={intro.label} className="py-(--section-space)">
       <SectionHeading
         className="px-5"
         label={intro.label}
-        labelLineClassName="w-[44px] lg:uw-60"
-        labelClassName="mb-[12px] lg:umb-20"
+        labelLineClassName="w-[44px] lg:w-[calc(60*var(--u))]"
+        labelClassName="mb-[12px] lg:mb-[calc(20*var(--u))]"
         line1={intro.titleLine1}
         line2={intro.titleLine2}
-        titleClassName="text-[40px] sm:text-[54px] lg:ut-70 leading-[1.12]"
+        titleClassName="text-[40px] sm:text-[54px] lg:text-[max(calc(70*var(--u)),var(--text-min))] leading-[1.12]"
         text={intro.text}
-        textClassName="mt-[14px] max-w-[760px] text-[17px] lg:umaxw-760 lg:umt-20 lg:ut-21"
+        textClassName="mt-[14px] max-w-[760px] text-[17px] lg:max-w-[calc(760*var(--u))] lg:mt-[calc(20*var(--u))] lg:text-[max(calc(21*var(--u)),var(--text-min))]"
       />
       <MenuSections sections={sections} />
     </section>

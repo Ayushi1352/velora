@@ -1,7 +1,17 @@
-import PageRenderer, { pageMetadata } from "@/components/PageRenderer";
+import type { Metadata } from "next";
+import PageBanner from "@/components/PageBanner";
+import MenuPage from "@/components/MenuPage";
+import { site } from "@/data";
 
-export const metadata = pageMetadata("our-menu");
+const { bannerTitle: title } = site.menuPage;
+
+export const metadata: Metadata = { title };
 
 export default function OurMenuPage() {
-  return <PageRenderer page="our-menu" />;
+  return (
+    <>
+      <PageBanner title={title} />
+      <MenuPage />
+    </>
+  );
 }

@@ -4,6 +4,7 @@ import Image from "next/image";
 import { Fragment, useState } from "react";
 import Pagination, { usePagination } from "@/components/Pagination";
 import GalleryLightbox from "@/components/GalleryLightbox";
+import { label } from "@/data";
 
 type GalleryImage = { src: string; alt: string; category: string };
 
@@ -24,18 +25,18 @@ export default function GalleryGrid({ filters, images }: { filters: string[]; im
 
   return (
     <>
-      <div id="gallery-grid" role="tablist" aria-label="Gallery categories" className="mt-[30px] flex scroll-mt-32 flex-wrap items-center justify-center gap-y-2 lg:umt-46">
+      <div id="gallery-grid" role="tablist" aria-label={label("galleryCategories")} className="mt-[30px] flex scroll-mt-32 flex-wrap items-center justify-center gap-y-2 lg:mt-[calc(46*var(--u))]">
         {filters.map((filter, i) => {
           const selected = filter === active;
           return (
             <Fragment key={filter}>
-              {i > 0 && <span aria-hidden="true" className="mx-[18px] h-[28px] w-[2px] bg-gold-line lg:uh-32 lg:umx-46" />}
+              {i > 0 && <span aria-hidden="true" className="mx-[18px] h-[28px] w-[2px] bg-gold-line lg:h-[calc(32*var(--u))] lg:mx-[calc(46*var(--u))]" />}
               <button
                 type="button"
                 role="tab"
                 aria-selected={selected}
                 onClick={() => selectFilter(filter)}
-                className={`relative px-[12px] pb-[8px] pt-[6px] font-body text-[18px] transition-colors lg:upx-12 lg:ut-22.5 ${
+                className={`relative px-[12px] pb-[8px] pt-[6px] font-body text-[18px] transition-colors lg:px-[calc(12*var(--u))] lg:text-[max(calc(22.5*var(--u)),var(--text-min))] ${
                   selected ? "text-wine" : "text-body hover:text-wine"
                 }`}
               >
@@ -50,19 +51,19 @@ export default function GalleryGrid({ filters, images }: { filters: string[]; im
         })}
       </div>
 
-      <ul className="mt-[24px] grid grid-cols-1 gap-[12px] xs:grid-cols-2 md:grid-cols-4 lg:umt-22 lg:grid-cols-[399fr_379fr_379fr_397fr] lg:ugap-12">
+      <ul className="mt-[24px] grid grid-cols-1 gap-[12px] xs:grid-cols-2 md:grid-cols-4 lg:mt-[calc(22*var(--u))] lg:grid-cols-[399fr_379fr_379fr_397fr] lg:gap-[calc(12*var(--u))]">
         {pageItems.map((img, i) => (
           <li
             key={img.src}
             data-reveal="zoom"
             data-delay={(i % 4) + 1}
             className={`group relative aspect-[399/300] overflow-hidden rounded-[4px] after:pointer-events-none after:absolute after:inset-0 after:bg-maroon/0 after:transition-colors after:duration-500 hover:after:bg-maroon/20 md:aspect-auto md:h-[clamp(200px,22vw,320px)] ${
-              i < 4 ? "lg:uh-292" : "lg:uh-313"
+              i < 4 ? "lg:h-[calc(292*var(--u))]" : "lg:h-[calc(313*var(--u))]"
             }`}
           >
             <button
               type="button"
-              aria-label={`View ${img.alt}`}
+              aria-label={label("viewImage", { name: img.alt })}
               onClick={() => setLightbox(visible.indexOf(img))}
               className="absolute inset-0 cursor-zoom-in"
             >

@@ -21,15 +21,118 @@
         "blush": "#f9ede1"
       },
       "fonts": {
-        "cormorant": "Cormorant Garamond",
-        "marcellus": "Marcellus",
-        "serif": "Newsreader",
-        "body": "Libre Caslon Text",
-        "jost": "Jost",
-        "montserrat": "Montserrat",
-        "signature": "Mrs Saint Delafield"
-      },
-      "fontsUrl": "https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300..700&family=Jost:wght@100..900&family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&family=Marcellus&family=Montserrat:wght@100..900&family=Mrs+Saint+Delafield&family=Newsreader:ital,wght@0,200..800;1,200..800&display=swap"
+        "cormorant": {
+          "family": "Cormorant Garamond",
+          "fallback": "Georgia, serif",
+          "weights": [
+            300,
+            400,
+            500,
+            600,
+            700
+          ],
+          "italic": false
+        },
+        "marcellus": {
+          "family": "Marcellus",
+          "fallback": "Georgia, serif",
+          "weights": [
+            400
+          ],
+          "italic": false
+        },
+        "serif": {
+          "family": "Newsreader",
+          "fallback": "Georgia, serif",
+          "weights": [
+            200,
+            300,
+            400,
+            500,
+            600,
+            700,
+            800
+          ],
+          "italic": true
+        },
+        "body": {
+          "family": "Libre Caslon Text",
+          "fallback": "Georgia, serif",
+          "weights": [
+            400,
+            700
+          ],
+          "italic": true
+        },
+        "jost": {
+          "family": "Jost",
+          "fallback": "Arial, sans-serif",
+          "weights": [
+            100,
+            200,
+            300,
+            400,
+            500,
+            600,
+            700,
+            800,
+            900
+          ],
+          "italic": false
+        },
+        "montserrat": {
+          "family": "Montserrat",
+          "fallback": "Arial, sans-serif",
+          "weights": [
+            100,
+            200,
+            300,
+            400,
+            500,
+            600,
+            700,
+            800,
+            900
+          ],
+          "italic": false
+        },
+        "signature": {
+          "family": "Mrs Saint Delafield",
+          "fallback": "cursive",
+          "weights": [
+            400
+          ],
+          "italic": false
+        }
+      }
+    },
+    "labels": {
+      "mainNav": "Main navigation",
+      "mobileNav": "Mobile navigation",
+      "openMenu": "Open menu",
+      "closeMenu": "Close menu",
+      "footerNav": "Footer navigation",
+      "breadcrumb": "Breadcrumb",
+      "welcome": "Welcome to {brand}",
+      "whyChoose": "Why choose {brand}",
+      "viewGallery": "View the full gallery",
+      "menuCategories": "Menu categories",
+      "galleryCategories": "Gallery categories",
+      "viewImage": "View {name}",
+      "close": "Close",
+      "previousImage": "Previous image",
+      "nextImage": "Next image",
+      "rating": "{rating} out of 5 stars",
+      "previousTestimonial": "Previous testimonial",
+      "nextTestimonial": "Next testimonial",
+      "showTestimonial": "Show testimonial {n}",
+      "pagination": "Pagination",
+      "previousPage": "Previous page",
+      "nextPage": "Next page",
+      "page": "Page {n}",
+      "readPost": "Read: {title}",
+      "closeMessage": "Close message",
+      "mapTitle": "Our location on the map"
     },
     "templateComponents": {
       "template-1": {
@@ -209,6 +312,7 @@
               }
             },
             "seo": {
+              "lang": "en",
               "title": "Velora | Fine Dining Restaurant",
               "description": "Experience exquisite flavors, warm hospitality and unforgettable moments at Velora, a fine dining restaurant in New York."
             },
@@ -1003,6 +1107,7 @@
             "items": [
               {
                 "slug": "the-art-of-plating",
+                "href": "/blog/blog-details",
                 "shortTitle": "The Art of Plating",
                 "titleLine1": "The Art of Plating:",
                 "titleLine2": "Making Food a Visual Delight",
@@ -1041,6 +1146,7 @@
               },
               {
                 "slug": "creating-the-perfect-dining-ambience",
+                "href": "/blog/blog-details",
                 "shortTitle": "Creating the Perfect Dining Ambience",
                 "titleLine1": "Creating the Perfect",
                 "titleLine2": "Dining Ambience",
@@ -1079,6 +1185,7 @@
               },
               {
                 "slug": "seasonal-ingredients-exceptional-flavors",
+                "href": "/blog/blog-details",
                 "shortTitle": "Seasonal Ingredients, Exceptional Flavors",
                 "titleLine1": "Seasonal Ingredients,",
                 "titleLine2": "Exceptional Flavors",
@@ -1117,6 +1224,7 @@
               },
               {
                 "slug": "crafting-signature-cocktails",
+                "href": "/blog/blog-details",
                 "shortTitle": "Crafting Signature Cocktails",
                 "titleLine1": "Crafting Signature",
                 "titleLine2": "Cocktails at Velora",
@@ -1335,7 +1443,7 @@
       "BlogDetail": {
         "variants": {
           "VeloraBlogDetail1": {
-            "meta": {
+                      "meta": {
               "by": "By"
             },
             "parent": {

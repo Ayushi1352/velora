@@ -83,4 +83,9 @@ const site = {
 };
 
 export { site };
+
+// ── Screen-reader labels from site.json; "{n}"-style slots are filled from `values`. ──
+export type LabelKey = keyof typeof siteData.Velora.labels;
+export const label = (key: LabelKey, values: Record<string, string | number> = {}) =>
+  siteData.Velora.labels[key].replace(/\{(\w+)\}/g, (slot, name: string) => (name in values ? String(values[name]) : slot));
 export default siteData;
