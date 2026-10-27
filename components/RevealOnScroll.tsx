@@ -11,8 +11,6 @@ declare global {
 const EASE = "cubic-bezier(0.22, 1, 0.36, 1)";
 const MASK_EASE = "cubic-bezier(0.77, 0, 0.18, 1)";
 const DELAY_STEP_MS = 90;
-// Give up waiting for hydration after this long and reveal anyway, so nothing stays hidden.
-const HYDRATION_WAIT_MS = 5000;
 
 type Motion = { frames: Keyframe[]; duration?: number; easing?: string };
 
@@ -80,14 +78,16 @@ export default function RevealOnScroll() {
     let cancelled = false;
     const seen = new WeakSet<Element>();
 
-    // Waits until React has hydrated the element, then marks it and plays its animation.
-    const start = (el: HTMLElement, attr: "data-played" | "data-revealed", type: string, since = performance.now()) => {
-      if (cancelled) return;
-      if (isHydrated(el) || performance.now() - since > HYDRATION_WAIT_MS) {
+    // Waits until React has hydrated the element, then marks it and plays its animation. It never marks an
+    // element early: React would report the extra attribute as a hydration mismatch (slow dev builds can take
+    // several seconds to hydrate). If the scripts never run at all, the layout's fallback shows everything.
+    const start = (el: HTMLElement, attr: "data-played" | "data-revealed", type: string) => {
+      if (cancelled || !el.isConnected) return;
+      if (isHydrated(el)) {
         el.setAttribute(attr, "");
         play(el, type);
       } else {
-        requestAnimationFrame(() => start(el, attr, type, since));
+        requestAnimationFrame(() => start(el, attr, type));
       }
     };
 
