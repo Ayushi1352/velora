@@ -25,18 +25,18 @@ export default function GalleryGrid({ filters, images }: { filters: string[]; im
 
   return (
     <>
-      <div id="gallery-grid" role="tablist" aria-label={label("galleryCategories")} className="mt-[30px] flex scroll-mt-32 flex-wrap items-center justify-center gap-y-2 lg:mt-[calc(46*var(--u))]">
+      <div id="gallery-grid" role="tablist" aria-label={label("galleryCategories")} className="mt-[30px] flex scroll-mt-32 items-center justify-center-safe gap-y-2 overflow-x-auto [scrollbar-width:none] sm:flex-wrap sm:overflow-x-visible lg:mt-[calc(46*var(--u))]">
         {filters.map((filter, i) => {
           const selected = filter === active;
           return (
             <Fragment key={filter}>
-              {i > 0 && <span aria-hidden="true" className="mx-[18px] h-[28px] w-[2px] bg-gold-line lg:h-[calc(32*var(--u))] lg:mx-[calc(46*var(--u))]" />}
+              {i > 0 && <span aria-hidden="true" className="mx-[6px] h-[28px] w-[2px] shrink-0 bg-gold-line sm:mx-[18px] lg:h-[calc(32*var(--u))] lg:mx-[calc(46*var(--u))]" />}
               <button
                 type="button"
                 role="tab"
                 aria-selected={selected}
                 onClick={() => selectFilter(filter)}
-                className={`relative px-[12px] pb-[8px] pt-[6px] font-body text-[18px] transition-colors lg:px-[calc(12*var(--u))] lg:text-[max(calc(22.5*var(--u)),var(--text-min))] ${
+                className={`relative shrink-0 whitespace-nowrap px-[8px] pb-[8px] pt-[6px] font-body text-[16px] transition-colors sm:px-[12px] sm:text-[18px] lg:px-[calc(12*var(--u))] lg:text-[max(calc(22.5*var(--u)),var(--text-min))] ${
                   selected ? "text-wine" : "text-body hover:text-wine"
                 }`}
               >

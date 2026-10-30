@@ -12,10 +12,10 @@ export default function FoodMenu() {
     <section aria-label={`${menu.label} ${menu.titleLine1} ${menu.titleLine2}`} className="mx-auto max-w-[1920px] py-(--section-space) px-5 md:px-8 lg:px-0 lg:pl-[calc(55*var(--u))]">
       <div className="grid items-start gap-12 lg:grid-cols-[calc(338*var(--u))_1fr] lg:gap-0">
         <div className="text-center lg:pt-[calc(76*var(--u))] lg:text-left">
-          <SectionLabel variant="sans" align="left" className="justify-center lg:justify-start" lineClassName="w-[44px] lg:w-[calc(59*var(--u))]">
+          <SectionLabel variant="sans" lines="both-mobile" align="left" className="justify-center lg:justify-start" lineClassName="w-[44px] lg:w-[calc(59*var(--u))]">
             {menu.label}
           </SectionLabel>
-          <h2 data-reveal="up" data-delay="1" className="mt-[10px] font-serif text-[78px] font-medium leading-[0.88] tracking-[-0.025em] text-wine sm:text-[96px] lg:mt-[calc(12*var(--u))] lg:text-[max(calc(115*var(--u)),var(--text-min))]">
+          <h2 data-reveal="up" data-delay="1" className="mt-[10px] font-serif text-[56px] font-medium leading-[0.88] tracking-[-0.025em] text-wine sm:text-[72px] lg:mt-[calc(12*var(--u))] lg:text-[max(calc(115*var(--u)),var(--text-min))]">
             {menu.titleLine1}
             <br />
             <span className="text-gold">{menu.titleLine2}</span>
@@ -40,7 +40,7 @@ export default function FoodMenu() {
               <li key={cat.title} data-reveal="up" data-delay={i * 2 + 1} className="mx-auto w-full max-w-[300px] md:max-w-none lg:w-[calc(297*var(--u))]">
                 <Link
                   href={cat.href}
-                  className="group relative mb-[7.5%] flex flex-col items-center rounded-[999px] border-[1.5px] border-gold-line p-[3.4%] pb-[64px] transition-[box-shadow,border-color,translate] duration-500 hover:-translate-y-2 hover:border-gold hover:shadow-[0_18px_40px_rgba(77,0,8,0.12)] lg:pb-[calc(69*var(--u))]"
+                  className="group relative mb-[7.5%] flex flex-col items-center rounded-[999px] border-[1.5px] border-gold-line p-[3.4%] pb-[25%] transition-[box-shadow,border-color,translate] duration-500 hover:-translate-y-2 hover:border-gold hover:shadow-[0_18px_40px_rgba(77,0,8,0.12)] lg:pb-[calc(69*var(--u))]"
                 >
                   <div className="relative aspect-[279/379] w-full overflow-hidden rounded-t-[999px] rounded-b-[50%_16%]">
                     <Image

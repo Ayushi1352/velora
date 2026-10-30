@@ -22,7 +22,7 @@ export default function GalleryPreview() {
         line2={gallery.titleLine2}
         accent="upright"
         inline
-        titleClassName="text-[40px] sm:text-[54px] lg:text-[max(calc(77*var(--u)),var(--text-min))]"
+        titleClassName="text-[clamp(26px,8.5vw,40px)] sm:text-[54px] lg:text-[max(calc(77*var(--u)),var(--text-min))]"
       />
 
       <Link

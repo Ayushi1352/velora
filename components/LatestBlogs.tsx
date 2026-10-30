@@ -56,7 +56,7 @@ export default function LatestBlogs() {
         line1={blog.titleLine1}
         line2={blog.titleLine2}
         accent="upright"
-        titleClassName="text-[44px] sm:text-[56px] lg:text-[max(calc(74*var(--u)),var(--text-min))] leading-[0.96]"
+        titleClassName="text-[clamp(26px,8.5vw,40px)] sm:text-[56px] lg:text-[max(calc(74*var(--u)),var(--text-min))] leading-[0.96]"
       />
       <span aria-hidden="true" data-reveal="line" data-delay="2" className="mx-auto mt-[16px] block h-[2px] w-[40px] bg-gold-soft lg:mt-[calc(22*var(--u))] lg:w-[calc(46*var(--u))]" />
 

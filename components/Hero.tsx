@@ -35,10 +35,10 @@ export default function Hero() {
               {hero.subtitle}
             </span>
           </h1>
-          <ul className="mt-[22px] flex flex-col items-center justify-center gap-x-[14px] gap-y-2 sm:flex-row sm:flex-wrap font-montserrat text-[12px] font-medium uppercase tracking-[0.2em] text-body md:justify-start lg:gap-x-[calc(22*var(--u))] lg:mt-[calc(20*var(--u))] lg:text-[max(calc(18*var(--u)),var(--text-min))]">
+          <ul className="mt-[22px] flex items-center justify-center gap-x-[8px] gap-y-2 font-montserrat text-[min(11px,3.2vw)] font-medium uppercase leading-[1.35] tracking-[0.08em] text-body sm:flex-wrap sm:gap-x-[14px] sm:text-[12px] sm:leading-normal sm:tracking-[0.2em] md:flex-nowrap md:justify-start md:gap-x-[8px] md:leading-[1.35] md:tracking-[0.08em] lg:flex-wrap lg:gap-x-[calc(22*var(--u))] lg:mt-[calc(20*var(--u))] lg:text-[max(calc(18*var(--u)),var(--text-min))] lg:leading-normal lg:tracking-[0.2em]">
             {hero.highlights.map((item, i) => (
-              <li key={item} data-intro="up" data-delay={7 + i} className="flex items-center gap-x-[14px] lg:gap-x-[calc(22*var(--u))]">
-                {i > 0 && <span aria-hidden="true" className="hidden h-[1.05em] w-[2px] bg-gold-bright sm:block" />}
+              <li key={item} data-intro="up" data-delay={7 + i} className="flex items-center gap-x-[8px] sm:gap-x-[14px] md:gap-x-[8px] lg:gap-x-[calc(22*var(--u))]">
+                {i > 0 && <span aria-hidden="true" className="h-[2.4em] w-[2px] shrink-0 bg-gold-bright sm:h-[1.05em] md:h-auto md:self-stretch lg:h-[1.05em] lg:self-center" />}
                 {item}
               </li>
             ))}

@@ -19,7 +19,7 @@ export default function ArticleHeader({ post, byLabel }: { post: Post; byLabel: 
             {byLabel} {post.author}
           </li>
         </ul>
-        <h1 data-intro="up" data-delay="3" className="mt-[24px] font-serif text-[40px] font-medium leading-[1.08] tracking-[-0.025em] text-wine sm:text-[56px] lg:mt-[calc(46*var(--u))] lg:text-[max(calc(90*var(--u)),var(--text-min))]">
+        <h1 data-intro="up" data-delay="3" className="mt-[24px] font-serif text-[clamp(26px,8.5vw,40px)] font-medium leading-[1.08] tracking-[-0.025em] text-wine sm:text-[56px] lg:mt-[calc(46*var(--u))] lg:text-[max(calc(90*var(--u)),var(--text-min))]">
           {post.titleLine1}
           <br />
           <span className="font-normal italic text-gold">{post.titleLine2}</span>

@@ -11,7 +11,8 @@ const labelStyles: Record<LabelStyle, string> = {
 type SectionLabelProps = {
   children: ReactNode;
   variant?: LabelStyle;
-  lines?: "left" | "both";
+  /** "both-mobile": rules on both sides below lg, left rule only from lg up. */
+  lines?: "left" | "both" | "both-mobile";
   align?: "center" | "left";
   className?: string;
   /** Text colour of the label; passed separately so it can be changed without `!important`. */
@@ -36,7 +37,7 @@ export function SectionLabel({
       {/* the rules grow outwards from the label text */}
       <span aria-hidden="true" data-reveal="line" data-delay="2" className={`h-[2px] shrink-0 origin-right bg-gold-soft ${lineClassName}`} />
       <span>{children}</span>
-      {lines === "both" && <span aria-hidden="true" data-reveal="line" data-delay="2" className={`h-[2px] shrink-0 origin-left bg-gold-soft ${lineClassName}`} />}
+      {lines !== "left" && <span aria-hidden="true" data-reveal="line" data-delay="2" className={`h-[2px] shrink-0 origin-left bg-gold-soft ${lineClassName} ${lines === "both-mobile" ? "lg:hidden" : ""}`} />}
     </p>
   );
 }
@@ -75,7 +76,7 @@ export default function SectionHeading({
   as: Tag = "h2",
   text,
   className = "",
-  titleClassName = "text-[40px] sm:text-[52px] lg:text-[max(calc(72*var(--u)),var(--text-min))]",
+  titleClassName = "text-[clamp(26px,8.5vw,40px)] sm:text-[52px] lg:text-[max(calc(72*var(--u)),var(--text-min))]",
   textClassName = "mt-[16px] lg:mt-[calc(18*var(--u))] text-[17px] lg:text-[max(calc(21*var(--u)),var(--text-min))]",
 }: SectionHeadingProps) {
   const center = align === "center";

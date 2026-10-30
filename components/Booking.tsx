@@ -19,7 +19,7 @@ export default function Booking() {
         labelClassName="mb-[12px] lg:mb-[calc(18*var(--u))] font-jost! tracking-[0.32em]! lg:text-[max(calc(21*var(--u)),var(--text-min))]!"
         line1={intro.titleLine1}
         line2={intro.titleLine2}
-        titleClassName="text-[40px] sm:text-[56px] lg:text-[max(calc(80*var(--u)),var(--text-min))] leading-[1.06]"
+        titleClassName="text-[clamp(26px,8.5vw,40px)] sm:text-[56px] lg:text-[max(calc(80*var(--u)),var(--text-min))] leading-[1.06]"
         text={intro.text.map((line, i) => (
           <Fragment key={i}>
             {i > 0 && " "}

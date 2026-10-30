@@ -40,14 +40,15 @@ const MOTIONS: Record<string, Motion> = {
 // A photo inside a mask (or a "settle" intro) eases in from a slight zoom while it is uncovered.
 const SETTLE: Motion = { frames: [{ transform: "scale(1.18)" }, {}], duration: 1800 };
 
-/**
- * React tags each DOM node it has hydrated with a `__reactFiber$…` key. This component lives in the
- * root layout, which can hydrate before the page segment; touching a not-yet-hydrated node's
- * attributes would trigger a hydration mismatch.
- */
-const isHydrated = (el: Element) => Object.keys(el).some((key) => key.startsWith("__reactFiber$"));
+// Elements that already played. Kept here, not in a DOM attribute: React can restart hydration at any
+// moment and would report an extra attribute as a mismatch. Survives Strict Mode's effect re-run.
+const played = new WeakSet<Element>();
 
 function play(el: HTMLElement, type: string) {
+  played.add(el);
+  // Overrides the `motion` class that hides the element (see app/layout.tsx) without touching the DOM. Created
+  // first, so the motion below eases towards it; persist() stops the browser dropping it once that one finishes.
+  el.animate({ opacity: 1 }, { duration: 0, fill: "forwards" }).persist();
   const delay = Number(el.dataset.delay ?? 0) * DELAY_STEP_MS;
   const run = (target: Element, { frames, duration = 950, easing = EASE }: Motion) =>
     target.animate(frames, { duration, easing, delay, fill: "both" });
@@ -63,10 +64,9 @@ function play(el: HTMLElement, type: string) {
  *   data-reveal="<type>" plays when the element scrolls into view.
  *   data-delay="1".."12" staggers either one in 90ms steps.
  *
- * Until then the elements are hidden by the `motion` class on <html> (see app/layout.tsx); playing one
- * marks it with `data-played` / `data-revealed`. Elements added later (route changes, tabs, pagination)
- * are picked up by a MutationObserver. Without JavaScript, or with reduced motion turned on, every
- * element is simply visible and nothing moves.
+ * Until then the elements are hidden by the `motion` class on <html> (see app/layout.tsx). Elements added
+ * later (route changes, tabs, pagination) are picked up by a MutationObserver. Without JavaScript, or with
+ * reduced motion turned on, every element is simply visible and nothing moves.
  */
 export default function RevealOnScroll() {
   useEffect(() => {
@@ -75,21 +75,6 @@ export default function RevealOnScroll() {
       document.documentElement.classList.remove("motion");
       return;
     }
-    let cancelled = false;
-    const seen = new WeakSet<Element>();
-
-    // Waits until React has hydrated the element, then marks it and plays its animation. It never marks an
-    // element early: React would report the extra attribute as a hydration mismatch (slow dev builds can take
-    // several seconds to hydrate). If the scripts never run at all, the layout's fallback shows everything.
-    const start = (el: HTMLElement, attr: "data-played" | "data-revealed", type: string) => {
-      if (cancelled || !el.isConnected) return;
-      if (isHydrated(el)) {
-        el.setAttribute(attr, "");
-        play(el, type);
-      } else {
-        requestAnimationFrame(() => start(el, attr, type));
-      }
-    };
 
     const io = new IntersectionObserver(
       (entries) => {
@@ -97,7 +82,7 @@ export default function RevealOnScroll() {
           if (!entry.isIntersecting) continue;
           io.unobserve(entry.target);
           const el = entry.target as HTMLElement;
-          start(el, "data-revealed", el.dataset.reveal ?? "");
+          play(el, el.dataset.reveal ?? "");
         }
       },
       // Start a little before the element is fully in, so it never sits empty on screen.
@@ -106,10 +91,9 @@ export default function RevealOnScroll() {
 
     const watch = (root: Element | Document) => {
       const all = (selector: string) => [...(root instanceof Element && root.matches(selector) ? [root] : []), ...root.querySelectorAll(selector)] as HTMLElement[];
-      for (const el of all("[data-intro]:not([data-played]), [data-reveal]:not([data-revealed])")) {
-        if (seen.has(el)) continue;
-        seen.add(el);
-        if (el.dataset.intro !== undefined) start(el, "data-played", el.dataset.intro);
+      for (const el of all("[data-intro], [data-reveal]")) {
+        if (played.has(el)) continue;
+        if (el.dataset.intro !== undefined) play(el, el.dataset.intro);
         else io.observe(el);
       }
     };
@@ -125,7 +109,6 @@ export default function RevealOnScroll() {
     mo.observe(document.body, { childList: true, subtree: true });
 
     return () => {
-      cancelled = true;
       io.disconnect();
       mo.disconnect();
     };

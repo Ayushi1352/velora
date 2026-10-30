@@ -97,7 +97,7 @@ export default async function Footer() {
 
       <div className="bg-[linear-gradient(90deg,var(--color-maroon-dark)_0%,var(--color-maroon)_50%,var(--color-maroon-dark)_100%)]">
         <div className="mx-auto flex max-w-[1920px] flex-col items-center gap-5 px-5 py-5 sm:flex-row sm:gap-8 md:px-8 lg:h-[calc(76*var(--u))] lg:gap-[calc(35*var(--u))] lg:py-0 lg:pl-[calc(68*var(--u))] lg:pr-[calc(63*var(--u))]">
-          <p className="shrink-0 text-center font-body text-[15px] text-white/90 lg:text-[max(calc(19*var(--u)),var(--text-min))]">{copyright}</p>
+          <p className="shrink-0 whitespace-nowrap text-center font-body text-[min(15px,3.75vw)] text-white/90 lg:text-[max(calc(19*var(--u)),var(--text-min))]">{copyright}</p>
           <span aria-hidden="true" className="hidden h-px flex-1 bg-gold-line sm:block" />
           <ul className="flex shrink-0 items-center gap-5 lg:gap-[calc(25*var(--u))] lg:ml-[calc(45*var(--u))]">
             {socials.map((s) => {

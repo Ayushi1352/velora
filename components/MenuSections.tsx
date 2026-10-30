@@ -40,7 +40,7 @@ function MenuRow({ section, reverse }: { section: MenuSection; reverse: boolean 
         <SectionLabel align="left" lineClassName="w-[44px] lg:w-[calc(61*var(--u))]">
           {section.label}
         </SectionLabel>
-        <h2 data-reveal="up" data-delay="1" className="mt-[14px] font-serif text-[38px] font-medium leading-[1.12] tracking-[-0.015em] text-wine sm:text-[46px] lg:mt-[calc(22*var(--u))] lg:text-[max(calc(65*var(--u)),var(--text-min))]">
+        <h2 data-reveal="up" data-delay="1" className="mt-[14px] font-serif text-[clamp(26px,8.5vw,38px)] font-medium leading-[1.12] tracking-[-0.015em] text-wine sm:text-[46px] lg:mt-[calc(22*var(--u))] lg:text-[max(calc(65*var(--u)),var(--text-min))]">
           {section.titleLine1}
           <br />
           <span className="font-normal italic text-gold">{section.titleLine2}</span>
@@ -77,7 +77,7 @@ export default function MenuSections({ sections }: { sections: MenuSection[] }) 
       <div
         role="tablist"
         aria-label={label("menuCategories")}
-        className="mx-auto mt-[30px] flex max-w-full flex-wrap items-center justify-center gap-y-3 px-5 lg:mt-[calc(34*var(--u))]"
+        className="mx-auto mt-[30px] flex max-w-full items-center justify-center-safe gap-y-3 overflow-x-auto px-5 [scrollbar-width:none] sm:flex-wrap sm:overflow-x-visible lg:mt-[calc(34*var(--u))]"
       >
         {sections.map((s, i) => {
           const active = s.id === activeTab;
@@ -89,10 +89,14 @@ export default function MenuSections({ sections }: { sections: MenuSection[] }) 
                 role="tab"
                 aria-selected={active}
                 // The first tab is the default overview, so it brings all featured sections back.
-                onClick={() => setSelected(i === 0 ? null : s.id)}
-                className={`rounded-full font-body text-[17px] transition-[background-color,color,padding] duration-300 lg:text-[max(calc(22*var(--u)),var(--text-min))] ${
+                onClick={(e) => {
+                  setSelected(i === 0 ? null : s.id);
+                  // On mobile the row scrolls sideways, so bring a partly hidden tab fully into view.
+                  e.currentTarget.scrollIntoView({ inline: "center", block: "nearest" });
+                }}
+                className={`shrink-0 whitespace-nowrap rounded-full font-body text-[17px] transition-[background-color,color,padding] duration-300 lg:text-[max(calc(22*var(--u)),var(--text-min))] ${
                   active
-                    ? "h-[48px] bg-maroon-dark px-[30px] text-white lg:h-[calc(60*var(--u))] lg:px-[calc(54*var(--u))]"
+                    ? "h-[48px] bg-maroon-dark px-[16px] text-white sm:px-[30px] lg:h-[calc(60*var(--u))] lg:px-[calc(54*var(--u))]"
                     : "h-[48px] px-[16px] text-ink-soft transition-colors hover:text-gold lg:h-[calc(60*var(--u))] lg:px-[calc(31*var(--u))]"
                 }`}
               >

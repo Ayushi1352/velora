@@ -10,7 +10,8 @@ const AUTOPLAY_MS = 6000;
 
 type Testimonial = {
   name: string;
-  role: string;
+  role?: string;
+  location?: string;
   rating: number;
   text: string;
   image: { src: string; alt: string };
@@ -47,19 +48,19 @@ function Card({ item, variant }: { item: Testimonial; variant: keyof typeof size
   const s = sizes[variant];
   return (
     <article
-      className={`flex flex-col items-center border border-gold-pale bg-cream text-center sm:flex-row sm:text-left ${s.card} ${s.gap}`}
+      className={`flex flex-col items-start border border-gold-pale bg-cream text-left sm:flex-row sm:items-center ${s.card} ${s.gap}`}
     >
       <div className={`relative shrink-0 overflow-hidden rounded-full ${s.avatar}`}>
         <Image src={item.image.src} alt={item.image.alt} fill sizes="(min-width: 1024px) 14vw, 170px" className="object-cover" />
       </div>
-      <div className="min-w-0 flex-1">
-        <QuoteMark className={`mx-auto text-gold-bright sm:mx-0 ${s.quote}`} />
+      <div className="w-full min-w-0 flex-1">
+        <QuoteMark className={`text-gold-bright ${s.quote}`} />
         <p className={`font-body leading-[1.4] text-ink-soft ${s.text}`}>{item.text}</p>
-        <span aria-hidden="true" className={`mx-auto block h-[2px] bg-gold-soft sm:mx-0 ${s.line}`} />
-        <div className={`flex flex-col items-center gap-3 sm:flex-row sm:items-center sm:justify-between ${s.meta}`}>
+        <span aria-hidden="true" className={`block h-[2px] bg-gold-soft ${s.line}`} />
+        <div className={`flex flex-col items-start gap-3 sm:flex-row sm:items-center sm:justify-between ${s.meta}`}>
           <div>
             <p className={`font-serif font-medium leading-tight text-wine ${s.name}`}>{item.name}</p>
-            <p className={`mt-[2px] font-montserrat text-body ${s.role}`}>{item.role}</p>
+            <p className={`mt-[2px] font-montserrat text-body ${s.role}`}>{item.role ?? item.location}</p>
           </div>
           <div className="flex shrink-0 gap-[0.28em] text-gold-bright" aria-label={label("rating", { rating: item.rating })} role="img">
             {Array.from({ length: item.rating }).map((_, i) => (

@@ -581,38 +581,7 @@
             "label": "Testimonials",
             "titleLine1": "What Our",
             "titleLine2": "Guests Say",
-            "items": [
-              {
-                "name": "Emily Carter",
-                "role": "Food Enthusiast",
-                "rating": 5,
-                "text": "An exceptional dining experience! The food, ambiance, and service were simply outstanding. Every detail made our evening truly special.",
-                "image": {
-                  "src": "/images/testimonials/emily-carter.webp",
-                  "alt": "Emily Carter"
-                }
-              },
-              {
-                "name": "Sophia Bennett",
-                "role": "Lifestyle Influencer",
-                "rating": 5,
-                "text": "Amazing flavors and a warm ambiance. This place never disappoints!",
-                "image": {
-                  "src": "/images/testimonials/sophia-bennett.webp",
-                  "alt": "Sophia Bennett"
-                }
-              },
-              {
-                "name": "James Wilson",
-                "role": "Travel Blogger",
-                "rating": 5,
-                "text": "Delicious food, beautiful atmosphere, and friendly staff. A perfect place for a memorable dining experience.",
-                "image": {
-                  "src": "/images/testimonials/james-wilson.webp",
-                  "alt": "James Wilson"
-                }
-              }
-            ]
+            "featured": ["Emily Carter", "Sophia Bennett", "James Wilson"]
           }
         }
       },
@@ -1015,6 +984,36 @@
             },
             "items": [
               {
+                "name": "Emily Carter",
+                "role": "Food Enthusiast",
+                "rating": 5,
+                "text": "An exceptional dining experience! The food, ambiance, and service were simply outstanding. Every detail made our evening truly special.",
+                "image": {
+                  "src": "/images/testimonials/emily-carter.webp",
+                  "alt": "Emily Carter"
+                }
+              },
+              {
+                "name": "Sophia Bennett",
+                "role": "Lifestyle Influencer",
+                "rating": 5,
+                "text": "Amazing flavors and a warm ambiance. This place never disappoints!",
+                "image": {
+                  "src": "/images/testimonials/sophia-bennett.webp",
+                  "alt": "Sophia Bennett"
+                }
+              },
+              {
+                "name": "James Wilson",
+                "role": "Travel Blogger",
+                "rating": 5,
+                "text": "Delicious food, beautiful atmosphere, and friendly staff. A perfect place for a memorable dining experience.",
+                "image": {
+                  "src": "/images/testimonials/james-wilson.webp",
+                  "alt": "James Wilson"
+                }
+              },
+              {
                 "name": "Priya Sharma",
                 "location": "New Delhi",
                 "rating": 5,
@@ -1072,16 +1071,6 @@
                 "image": {
                   "src": "/images/testimonials/amit-sinha.webp",
                   "alt": "Amit Sinha"
-                }
-              },
-              {
-                "name": "James Wilson",
-                "location": "Mumbai",
-                "rating": 5,
-                "text": "Elegant interiors, a thoughtful wine list and dishes full of flavour. The staff made our evening feel truly special from start to finish.",
-                "image": {
-                  "src": "/images/testimonials/james-wilson.webp",
-                  "alt": "James Wilson"
                 }
               }
             ],

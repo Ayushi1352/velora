@@ -16,7 +16,7 @@ export default function MenuPage() {
         labelClassName="mb-[12px] lg:mb-[calc(20*var(--u))]"
         line1={intro.titleLine1}
         line2={intro.titleLine2}
-        titleClassName="text-[40px] sm:text-[54px] lg:text-[max(calc(70*var(--u)),var(--text-min))] leading-[1.12]"
+        titleClassName="text-[clamp(26px,8.5vw,40px)] sm:text-[54px] lg:text-[max(calc(70*var(--u)),var(--text-min))] leading-[1.12]"
         text={intro.text}
         textClassName="mt-[14px] max-w-[760px] text-[17px] lg:max-w-[calc(760*var(--u))] lg:mt-[calc(20*var(--u))] lg:text-[max(calc(21*var(--u)),var(--text-min))]"
       />

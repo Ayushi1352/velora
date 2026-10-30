@@ -15,7 +15,7 @@ export default function GallerySection() {
         labelClassName="mb-[14px] lg:mb-[calc(22*var(--u))]"
         line1={intro.titleLine1}
         line2={intro.titleLine2}
-        titleClassName="text-[40px] sm:text-[54px] lg:text-[max(calc(73*var(--u)),var(--text-min))] leading-[1.06]"
+        titleClassName="text-[clamp(26px,8.5vw,40px)] sm:text-[54px] lg:text-[max(calc(73*var(--u)),var(--text-min))] leading-[1.06]"
         text={intro.text}
         textClassName="mt-[14px] max-w-[620px] text-[17px] lg:max-w-[calc(620*var(--u))] lg:mt-[calc(14*var(--u))] lg:text-[max(calc(23*var(--u)),var(--text-min))] leading-[1.45]"
       />

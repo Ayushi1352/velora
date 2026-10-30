@@ -15,7 +15,7 @@ export default function ChefsSection() {
         labelClassName="mb-[14px] lg:mb-[calc(44*var(--u))]"
         line1={intro.titleLine1}
         line2={intro.titleLine2}
-        titleClassName="text-[42px] sm:text-[56px] lg:text-[max(calc(82*var(--u)),var(--text-min))] leading-[1.1]"
+        titleClassName="text-[clamp(26px,8.5vw,40px)] sm:text-[56px] lg:text-[max(calc(82*var(--u)),var(--text-min))] leading-[1.1]"
         text={intro.text}
         textClassName="mt-[18px] max-w-[840px] text-[17px] leading-[1.56]! lg:max-w-[calc(840*var(--u))] lg:mt-[calc(11*var(--u))] lg:text-[max(calc(23*var(--u)),var(--text-min))]"
       />

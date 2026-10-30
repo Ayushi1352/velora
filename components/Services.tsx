@@ -16,7 +16,7 @@ export default function Services() {
           <SectionLabel variant="serif" align="left" className="font-body! font-normal!" colorClassName="text-body" lineClassName="w-[44px] lg:w-[calc(65*var(--u))]">
             {services.label}
           </SectionLabel>
-          <h2 data-reveal="up" data-delay="1" className="mt-[14px] font-serif text-[46px] font-medium leading-[1.06] tracking-[-0.02em] text-wine sm:text-[58px] lg:mt-[calc(16*var(--u))] lg:text-[max(calc(79*var(--u)),var(--text-min))]">
+          <h2 data-reveal="up" data-delay="1" className="mt-[14px] font-serif text-[clamp(26px,8.5vw,40px)] font-medium leading-[1.06] tracking-[-0.02em] text-wine sm:text-[58px] lg:mt-[calc(16*var(--u))] lg:text-[max(calc(79*var(--u)),var(--text-min))]">
             {services.titleLine1}
             <br />
             <span className="font-normal italic text-gold">{services.titleLine2}</span>

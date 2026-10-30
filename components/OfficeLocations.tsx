@@ -22,7 +22,7 @@ export default function OfficeLocations() {
       <SectionLabel variant="sans-wide" align="left" className="font-jost! font-medium! tracking-[0.3em]! lg:text-[max(calc(19*var(--u)),var(--text-min))]!" lineClassName="w-[50px] lg:w-[calc(64*var(--u))]">
         {locations.label}
       </SectionLabel>
-      <h2 data-reveal="up" data-delay="1" className="mt-[8px] font-serif text-[44px] font-medium leading-[1.1] tracking-[-0.02em] text-wine sm:text-[56px] lg:mt-[calc(6*var(--u))] lg:text-[max(calc(72*var(--u)),var(--text-min))]">
+      <h2 data-reveal="up" data-delay="1" className="mt-[8px] font-serif text-[clamp(26px,8.5vw,40px)] font-medium leading-[1.1] tracking-[-0.02em] text-wine sm:text-[56px] lg:mt-[calc(6*var(--u))] lg:text-[max(calc(72*var(--u)),var(--text-min))]">
         {locations.titleLine1} <span className="font-normal italic text-gold">{locations.titleLine2}</span>
       </h2>
 

@@ -43,7 +43,7 @@ export default function StoryBlock({
         <SectionLabel variant="sans" align="left" lineClassName="w-[44px] lg:w-[calc(61*var(--u))]">
           {label}
         </SectionLabel>
-        <h2 data-reveal="up" data-delay="1" className="mt-[12px] font-serif text-[42px] font-medium leading-[1.04] tracking-[-0.018em] text-wine sm:text-[56px] lg:mt-[calc(27*var(--u))] lg:text-[max(calc(73.5*var(--u)),var(--text-min))]">
+        <h2 data-reveal="up" data-delay="1" className="mt-[12px] font-serif text-[clamp(26px,8.5vw,40px)] font-medium leading-[1.04] tracking-[-0.018em] text-wine sm:text-[56px] lg:mt-[calc(27*var(--u))] lg:text-[max(calc(73.5*var(--u)),var(--text-min))]">
           {titleLine1}
           <br />
           <span className="text-gold">{titleLine2}</span>
