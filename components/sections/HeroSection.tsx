@@ -1,0 +1,67 @@
+import Image from "next/image";
+import { BookButton } from "@/components/ui/BookButton";
+import { Loop } from "@/components/ui/Loop";
+import { fill } from "@/components/ui/text";
+import type { CompanyData, GlobalUIData, HeroData } from "@/types/templates.types";
+
+export const HeroSection = ({ data: hero, company, ui }: { data?: HeroData; company?: CompanyData; ui?: GlobalUIData }) => {
+  if (!hero) return null;
+  return (
+    <section aria-label={ui && fill(ui.welcome, { brand: company?.name ?? "" })}>
+      {/* Intro: plays on load (data-intro), not on scroll, so the first screen is never empty */}
+      <div className="mx-auto grid max-w-[1920px] gap-10 py-[var(--section-space)] px-5 md:grid-cols-[38%_1fr] md:items-center md:gap-6 md:px-8 lg:grid-cols-[calc(683*var(--u))_1fr] lg:items-start lg:gap-0 lg:px-0">
+        <div data-intro="zoom" className="flex justify-center lg:block lg:pl-[calc(70*var(--u))] lg:pt-[calc(36*var(--u))]">
+          <Loop effect="float" delay={1400}>
+            <Image
+              src={hero.image.src}
+              alt={hero.image.alt}
+              width={hero.image.width}
+              height={hero.image.height}
+              loading="eager"
+              fetchPriority="high"
+              sizes="(min-width: 1024px) 24vw, (min-width: 768px) 36vw, 80vw"
+              className="h-auto w-[min(78vw,330px)] md:w-full lg:w-[calc(391*var(--u))]"
+            />
+          </Loop>
+        </div>
+
+        <div className="text-center md:text-left">
+          <span aria-hidden="true" data-intro="line" data-delay="2" className="mx-auto block h-[3px] w-[70px] origin-center bg-[var(--color-gold-bright)] md:mx-0 md:origin-left lg:h-[calc(3.5*var(--u))] lg:w-[calc(88*var(--u))]" />
+          <h1>
+            <span data-intro="up" data-delay="3" className="mt-[18px] block font-display text-[min(60px,15.5vw)] font-semibold uppercase leading-[0.8] tracking-[-0.005em] text-[var(--color-wine)] sm:text-[84px] md:text-[clamp(64px,8.6vw,96px)] lg:mt-[calc(24*var(--u))] lg:text-[max(calc(127*var(--u)),var(--text-min))] lg:tracking-[-0.03em] lg:scale-y-[1.12] lg:origin-bottom">
+              {hero.title}
+            </span>
+            <span data-intro="up" data-delay="5" className="mt-[14px] block font-accent text-[38px] leading-none tracking-[-0.012em] text-[var(--color-ink)] sm:text-[56px] md:text-[clamp(44px,6.9vw,74px)] lg:mt-[calc(15*var(--u))] lg:text-[max(calc(101*var(--u)),var(--text-min))]">
+              {hero.subtitle}
+            </span>
+          </h1>
+          <ul className="mt-[22px] flex items-center justify-center gap-x-[8px] gap-y-2 font-label text-[min(11px,3.2vw)] font-medium uppercase leading-[1.35] tracking-[0.08em] text-[var(--color-body)] sm:flex-wrap sm:gap-x-[14px] sm:text-[12px] sm:leading-normal sm:tracking-[0.2em] md:flex-nowrap md:justify-start md:gap-x-[8px] md:leading-[1.35] md:tracking-[0.08em] lg:flex-wrap lg:gap-x-[calc(22*var(--u))] lg:mt-[calc(20*var(--u))] lg:text-[max(calc(18*var(--u)),var(--text-min))] lg:leading-normal lg:tracking-[0.2em]">
+            {hero.highlights.map((item, i) => (
+              <li key={item} data-intro="up" data-delay={7 + i} className="flex items-center gap-x-[8px] sm:gap-x-[14px] md:gap-x-[8px] lg:gap-x-[calc(22*var(--u))]">
+                {i > 0 && <span aria-hidden="true" className="h-[2.4em] w-[2px] shrink-0 bg-[var(--color-gold-bright)] sm:h-[1.05em] md:h-auto md:self-stretch lg:h-[1.05em] lg:self-center" />}
+                {item}
+              </li>
+            ))}
+          </ul>
+          <BookButton
+            data-intro="up"
+            data-delay="10"
+            href={hero.button.href}
+            label={hero.button.label}
+            className="mt-[28px] h-[58px] px-[30px] text-[21px] lg:h-[calc(76*var(--u))] lg:mt-[calc(37*var(--u))] lg:px-[calc(42*var(--u))] lg:text-[max(calc(28*var(--u)),var(--text-min))]"
+          />
+        </div>
+      </div>
+
+      {/* Signature dish on the maroon band: the band sweeps in, then the photo is uncovered */}
+      <div className="pb-[var(--section-space)] relative">
+        <div aria-hidden="true" data-reveal="line" className="absolute inset-x-0 top-0 h-[42%] origin-left bg-[var(--color-maroon)] lg:h-[calc(444*var(--u))]" />
+        <div className="relative mx-auto w-[calc(100%-40px)] pt-[56px] md:w-[calc(100%-64px)] lg:w-[calc(1229*var(--u))] lg:pt-[calc(170*var(--u))]">
+          <div data-reveal="mask-up" data-delay="3" className="relative aspect-[1414/729] overflow-hidden">
+            <Image src={hero.banner.src} alt={hero.banner.alt} fill sizes="(min-width: 1024px) 73vw, 100vw" className="object-cover" />
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};

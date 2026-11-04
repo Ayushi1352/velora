@@ -1,17 +1,20 @@
 import type { Metadata } from "next";
-import PageBanner from "@/components/PageBanner";
-import BlogListing from "@/components/BlogListing";
-import { site } from "@/data";
+import rawData from "@/data/templates.json";
+import type { RestaurantTemplateData } from "@/types/templates.types";
+import { Breadcrumb } from "@/components/common/Breadcrumb";
+import { Blogs } from "@/components/sections/Blogs";
 
-const { bannerTitle: title } = site.blogPage;
+const templateData: RestaurantTemplateData = rawData;
+const sectionData = templateData.categories.Restaurant.sections;
+const commonData = templateData.common;
 
-export const metadata: Metadata = { title };
+export const metadata: Metadata = { title: commonData.blogsBreadcrumb?.seoTitle ?? commonData.blogsBreadcrumb?.title, description: commonData.blogsBreadcrumb?.description };
 
 export default function BlogPage() {
   return (
-    <>
-      <PageBanner title={title} />
-      <BlogListing />
-    </>
+    <main className="flex-1">
+      <Breadcrumb data={commonData.blogsBreadcrumb} ui={commonData.globalUI} />
+      <Blogs data={sectionData.Blogs?.variants?.RestaurantBlogs1} ui={commonData.globalUI} />
+    </main>
   );
 }

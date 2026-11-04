@@ -1,23 +1,20 @@
 import type { Metadata } from "next";
-import PageBanner from "@/components/PageBanner";
-import BlogDetail from "@/components/BlogDetail";
-import { site } from "@/data";
+import rawData from "@/data/templates.json";
+import type { RestaurantTemplateData } from "@/types/templates.types";
+import { Breadcrumb } from "@/components/common/Breadcrumb";
+import { BlogDetail } from "@/components/sections/BlogDetail";
 
-const { blogPage, blogDetailPage } = site;
+const templateData: RestaurantTemplateData = rawData;
+const sectionData = templateData.categories.Restaurant.sections;
+const commonData = templateData.common;
 
-// One common detail page for every blog post: all blog links point here and it shows the first post.
-const post = blogPage.items[0];
-
-export const metadata: Metadata = {
-  title: `${post.titleLine1} ${post.titleLine2}`,
-  description: post.excerpt,
-};
+export const metadata: Metadata = { title: commonData.blogDetailBreadcrumb?.seoTitle ?? commonData.blogDetailBreadcrumb?.title, description: commonData.blogDetailBreadcrumb?.description };
 
 export default function BlogDetailPage() {
   return (
-    <>
-      <PageBanner title={post.shortTitle} parent={blogDetailPage.parent} />
-      <BlogDetail post={post} />
-    </>
+    <main className="flex-1">
+      <Breadcrumb data={commonData.blogDetailBreadcrumb} ui={commonData.globalUI} />
+      <BlogDetail data={sectionData.BlogDetail?.variants?.RestaurantBlogDetail1} blogs={sectionData.Blogs?.variants?.RestaurantBlogs1} />
+    </main>
   );
 }

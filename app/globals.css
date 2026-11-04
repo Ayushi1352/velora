@@ -1,12 +1,22 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 /*
   The mockups are drawn on a 1688px wide canvas. Desktop sizes are written in design pixels as
   calc(N*var(--u)); --u is set on <html> in app/layout.tsx (1px below 1024px, then it follows the
   screen up to 1920px), so the desktop layout keeps the design's exact proportions on every screen.
 */
-@theme {
-  /* Brand colours. These are only defaults: site.json (theme.colors) overrides them in app/layout.tsx. */
+:root {
+  --font-display: Georgia, serif;
+  --font-accent: Georgia, serif;
+  --font-heading: Georgia, serif;
+  --font-body: Georgia, serif;
+  --font-ui: Arial, sans-serif;
+  --font-label: Arial, sans-serif;
+  --font-signature: cursive;
+
+  /* Velora theme */
   --color-maroon: #520008;
   --color-maroon-dark: #420006;
   --color-wine: #600010;
@@ -26,19 +36,34 @@
   --color-cream: #fcf7f3;
   --color-sand: #f8f2ec;
   --color-blush: #f9ede1;
+  --color-white: #ffffff;
 
-  /* Fonts from site.json (theme.fonts) via app/fonts.generated.ts; the second part is the fallback. */
-  --font-cormorant: var(--font-cormorant-face, Georgia, serif);
-  --font-marcellus: var(--font-marcellus-face, Georgia, serif);
-  --font-serif: var(--font-serif-face, Georgia, serif);
-  --font-body: var(--font-body-face, Georgia, serif);
-  --font-jost: var(--font-jost-face, Arial, sans-serif);
-  --font-montserrat: var(--font-montserrat-face, Arial, sans-serif);
-  --font-signature: var(--font-signature-face, cursive);
+  --color-line-70: rgba(232, 221, 210, 0.7);
+  --color-maroon-20: rgba(82, 0, 8, 0.2);
+  --color-white-40: rgba(255, 255, 255, 0.4);
+  --color-white-80: rgba(255, 255, 255, 0.8);
+  --color-white-90: rgba(255, 255, 255, 0.9);
+  --color-black-30: rgba(0, 0, 0, 0.3);
+  --color-black-90: rgba(0, 0, 0, 0.9);
 
-  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
-  --ease-pop: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --color-shadow-header: rgba(66, 0, 6, 0.08);
+  --color-shadow-badge: rgba(0, 0, 0, 0.14);
+  --color-shadow-menu: rgba(77, 0, 8, 0.12);
+  --color-shadow-slider: rgba(77, 30, 10, 0.08);
+  --color-shadow-chef: rgba(120, 80, 40, 0.05);
+  --color-shadow-chef-hover: rgba(120, 80, 40, 0.14);
+  --color-shadow-review: rgba(140, 90, 40, 0.04);
+  --color-shadow-review-hover: rgba(140, 90, 40, 0.12);
+  --color-shadow-button: rgba(115, 12, 21, 0.25);
+}
 
-  --breakpoint-xs: 480px;
-  --breakpoint-3xl: 1680px;
+body {
+  background-color: var(--color-white);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+}
+
+::selection {
+  background-color: var(--color-maroon);
+  color: var(--color-white);
 }
