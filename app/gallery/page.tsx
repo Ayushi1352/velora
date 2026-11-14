@@ -4,17 +4,19 @@ import type { RestaurantTemplateData } from "@/types/templates.types";
 import { Breadcrumb } from "@/components/common/Breadcrumb";
 import { Gallery } from "@/components/sections/Gallery";
 
-const templateData: RestaurantTemplateData = rawData;
-const sectionData = templateData.categories.Restaurant.sections;
-const commonData = templateData.common;
-
-export const metadata: Metadata = { title: commonData.galleryBreadcrumb?.seoTitle ?? commonData.galleryBreadcrumb?.title, description: commonData.galleryBreadcrumb?.description };
+export const metadata: Metadata = { ...(rawData as RestaurantTemplateData).common.galleryBreadcrumb?.seo };
 
 export default function GalleryPage() {
+  const templateData: RestaurantTemplateData = rawData;
+  const sectionData = templateData?.categories?.Restaurant?.sections;
+  const commonData = templateData?.common;
+
+  if (!sectionData || !commonData) return null;
+
   return (
     <main className="flex-1">
       <Breadcrumb data={commonData.galleryBreadcrumb} ui={commonData.globalUI} />
-      <Gallery data={sectionData.Gallery?.variants?.RestaurantGallery1} ui={commonData.globalUI} />
+      <Gallery data={sectionData.Gallery?.variants?.RestaurantGallery1} />
     </main>
   );
 }

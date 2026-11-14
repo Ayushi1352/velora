@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { FooterLinks } from "@/components/common/FooterLinks";
 import { Icon } from "@/components/ui/Icon";
-import type { CompanyData, FooterData, GlobalUIData } from "@/types/templates.types";
+import type { FooterProps } from "@/types/templates.types";
 
 const contactText = "font-body text-[17px] leading-[1.38] text-[var(--color-ink-soft)] lg:text-[max(calc(20*var(--u)),var(--text-min))]";
 const iconCircle = "grid size-[44px] shrink-0 place-items-center rounded-full border border-[var(--color-gold-line)] text-[var(--color-maroon)] lg:size-[calc(46*var(--u))]";
@@ -14,8 +14,8 @@ async function currentYear() {
   return new Date().getFullYear();
 }
 
-export const Footer = async ({ data: footer, company, ui }: { data?: FooterData; company?: CompanyData; ui?: GlobalUIData }) => {
-  if (!footer || !company) return null;
+export const Footer = async ({ data: footer }: FooterProps) => {
+  if (!footer) return null;
   const copyright = footer.copyright.replace("{year}", String(await currentYear()));
 
   return (
@@ -24,7 +24,7 @@ export const Footer = async ({ data: footer, company, ui }: { data?: FooterData;
         <div className="mx-auto grid max-w-[1920px] gap-10 px-5 py-[44px] md:grid-cols-2 md:px-8 lg:grid-cols-[calc(815*var(--u))_calc(441*var(--u))_1fr] lg:items-center lg:gap-0 lg:pl-[calc(80*var(--u))] lg:pr-[calc(40*var(--u))] lg:py-[calc(48*var(--u))]">
           {/* Brand */}
           <div data-reveal="up" className="md:col-span-2 lg:col-span-1">
-            <Link href={footer.logoUrl} aria-label={company.name} className="inline-block">
+            <Link href={footer.logoUrl} aria-label={footer.logoLabel} className="inline-block">
               <Image
                 src={footer.logo.src}
                 alt={footer.logo.alt}
@@ -60,7 +60,7 @@ export const Footer = async ({ data: footer, company, ui }: { data?: FooterData;
                 <Icon name="FaMapMarkerAlt" className="size-[18px] lg:size-[calc(18*var(--u))]" />
               </span>
               <span className={contactText}>
-                {company.address.map((line, i) => (
+                {footer.address.map((line, i) => (
                   <Fragment key={i}>
                     {i > 0 && <br />}
                     {line}
@@ -72,22 +72,22 @@ export const Footer = async ({ data: footer, company, ui }: { data?: FooterData;
               <span className={iconCircle}>
                 <Icon name="FaPhoneAlt" className="size-[16px] lg:size-[calc(16*var(--u))]" />
               </span>
-              <a href={`tel:${company.phone.replace(/\s/g, "")}`} className={`${contactText} transition-colors hover:text-[var(--color-gold)]`}>
-                {company.phone}
+              <a href={`tel:${footer.phone.replace(/\s/g, "")}`} className={`${contactText} transition-colors hover:text-[var(--color-gold)]`}>
+                {footer.phone}
               </a>
             </li>
             <li className="flex items-center gap-5 lg:gap-[calc(37*var(--u))]">
               <span className={iconCircle}>
                 <Icon name="FaEnvelope" className="size-[16px] lg:size-[calc(16*var(--u))]" />
               </span>
-              <a href={`mailto:${company.email}`} className={`${contactText} break-all transition-colors hover:text-[var(--color-gold)]`}>
-                {company.email}
+              <a href={`mailto:${footer.email}`} className={`${contactText} break-all transition-colors hover:text-[var(--color-gold)]`}>
+                {footer.email}
               </a>
             </li>
           </ul>
 
           {/* Links */}
-          <FooterLinks links={footer.links} label={ui?.footerNav} />
+          <FooterLinks links={footer.links} label={footer.menuLabel} />
         </div>
       </div>
 
@@ -96,7 +96,7 @@ export const Footer = async ({ data: footer, company, ui }: { data?: FooterData;
           <p className="shrink-0 whitespace-nowrap text-center font-body text-[min(15px,3.75vw)] text-[var(--color-white-90)] lg:text-[max(calc(19*var(--u)),var(--text-min))]">{copyright}</p>
           <span aria-hidden="true" className="hidden h-px flex-1 bg-[var(--color-gold-line)] sm:block" />
           <ul className="flex shrink-0 items-center gap-5 lg:gap-[calc(25*var(--u))] lg:ml-[calc(45*var(--u))]">
-            {company.socialLinks.map((s) => (
+            {footer.socialLinks.map((s) => (
               <li key={s.id}>
                 <a
                   href={s.url}

@@ -74,9 +74,9 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <ScrollReveal />
         {/* Each section caps its own content at 1920px; their backgrounds still run the full screen width. */}
         <div className="flex min-h-screen flex-col">
-          <Header data={sectionData.Header?.variants?.RestaurantHeader1} company={commonData.company} ui={commonData.globalUI} />
+          <Header data={sectionData.Header?.variants?.RestaurantHeader1} />
           <ScrollToTop>{children}</ScrollToTop>
-          <Footer data={commonData.Footer} company={commonData.company} ui={commonData.globalUI} />
+          <Footer data={commonData.Footer} />
         </div>
       </body>
     </html>

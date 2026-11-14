@@ -1,9 +1,9 @@
 import Image from "next/image";
 import { Icon } from "@/components/ui/Icon";
 import { SectionLabel } from "@/components/ui/SectionHeading";
-import type { ServicesData } from "@/types/templates.types";
+import type { ServicesProps } from "@/types/templates.types";
 
-export const Services = ({ data: services }: { data?: ServicesData }) => {
+export const Services = ({ data: services }: ServicesProps) => {
   if (!services) return null;
   const { main, top, bottom } = services.images;
 

@@ -1,11 +1,11 @@
 import Image from "next/image";
 import Link from "next/link";
 import { SectionHeading } from "@/components/ui/SectionHeading";
-import type { GalleryPreviewData, GlobalUIData } from "@/types/templates.types";
+import type { GalleryPreviewProps } from "@/types/templates.types";
 
 const zoom = "object-cover transition-transform duration-700 group-hover:scale-105";
 
-export const GalleryPreview = ({ data: gallery, ui }: { data?: GalleryPreviewData; ui?: GlobalUIData }) => {
+export const GalleryPreview = ({ data: gallery }: GalleryPreviewProps) => {
   if (!gallery) return null;
   const [steak, room, cake, table] = gallery.images;
 
@@ -26,7 +26,7 @@ export const GalleryPreview = ({ data: gallery, ui }: { data?: GalleryPreviewDat
 
       <Link
         href={gallery.href}
-        aria-label={ui?.viewGallery}
+        aria-label={gallery.viewGalleryLabel}
         className="mt-[28px] grid gap-[12px] px-5 sm:grid-cols-2 md:px-8 lg:mt-[calc(14*var(--u))] lg:grid-cols-[calc(497*var(--u))_calc(474*var(--u))_calc(585*var(--u))] lg:gap-[calc(11*var(--u))] lg:px-0 lg:pl-[calc(58*var(--u))]"
       >
         <div data-reveal="mask-up" className="group relative aspect-[562/520] overflow-hidden lg:aspect-auto lg:h-[calc(460*var(--u))]">

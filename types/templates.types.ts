@@ -20,33 +20,17 @@ export interface SiteMetadataData {
   lang: string;
 }
 
+/** Only the breadcrumb reads these; every section keeps its own labels in its data. */
 export interface GlobalUIData {
-  mainNav: string;
-  mobileNav: string;
-  openMenu: string;
-  closeMenu: string;
-  footerNav: string;
-  breadcrumb: string;
-  welcome: string;
-  whyChoose: string;
-  viewGallery: string;
-  menuCategories: string;
-  galleryCategories: string;
-  viewImage: string;
-  close: string;
-  previousImage: string;
-  nextImage: string;
-  rating: string;
-  previousTestimonial: string;
-  nextTestimonial: string;
-  showTestimonial: string;
-  pagination: string;
-  previousPage: string;
-  nextPage: string;
-  page: string;
-  readPost: string;
-  closeMessage: string;
-  mapTitle: string;
+  breadcrumbLabel: string;
+}
+
+/** Screen-reader labels for the page numbers under a paged list; "{n}" is the page number. */
+export interface PaginationLabels {
+  paginationLabel: string;
+  previousPageLabel: string;
+  nextPageLabel: string;
+  pageLabel: string;
 }
 
 export interface SocialLink {
@@ -57,26 +41,21 @@ export interface SocialLink {
   label: string;
 }
 
-export interface CompanyData {
-  name: string;
-  address: string[];
-  phone: string;
-  email: string;
-  mapQuery: string;
-  socialLinks: SocialLink[];
-}
-
 export interface BreadcrumbPath {
   id: string;
   label: string;
   url: string;
 }
 
-export interface BreadcrumbData {
+/** Page title and description for the browser tab and search results (spread into a page's metadata). */
+export interface SeoData {
   title: string;
   description: string;
-  /** Page title for the browser tab when it differs from the banner title. */
-  seoTitle?: string;
+}
+
+export interface BreadcrumbData {
+  title: string;
+  seo?: SeoData;
   paths: BreadcrumbPath[];
 }
 
@@ -100,7 +79,7 @@ export interface NavLink extends LinkData {
 }
 
 export interface NotFoundData {
-  title: string;
+  seo: SeoData;
   code: string;
   titleLine1: string;
   titleLine2: string;
@@ -116,13 +95,18 @@ export interface FooterData {
   text: string[];
   links: NavLink[];
   copyright: string;
+  menuLabel: string;
+  logoLabel: string;
+  address: string[];
+  phone: string;
+  email: string;
+  socialLinks: SocialLink[];
 }
 
 export interface CommonData {
   theme: ThemeData;
   metadata: SiteMetadataData;
   globalUI: GlobalUIData;
-  company: CompanyData;
   aboutBreadcrumb?: BreadcrumbData;
   menuBreadcrumb?: BreadcrumbData;
   chefsBreadcrumb?: BreadcrumbData;
@@ -141,6 +125,11 @@ export interface HeaderData {
   logoUrl: string;
   nav: NavLink[];
   button: LinkData;
+  logoLabel: string;
+  menuLabel: string;
+  mobileMenuLabel: string;
+  openMenuLabel: string;
+  closeMenuLabel: string;
 }
 
 export interface HeroData {
@@ -150,6 +139,7 @@ export interface HeroData {
   button: LinkData;
   image: SizedImageData;
   banner: ImageData;
+  sectionLabel: string;
 }
 
 export interface HighlightItem {
@@ -160,6 +150,7 @@ export interface HighlightItem {
 
 export interface HighlightsData {
   items: HighlightItem[];
+  sectionLabel: string;
 }
 
 export interface AboutUsData {
@@ -194,6 +185,12 @@ export interface TestimonialsData {
   titleLine2: string;
   /** Names of the guests (from TestimonialListing) shown in the home slider. */
   featured: string[];
+  /** "{rating}" is the guest's star rating */
+  ratingLabel: string;
+  previousLabel: string;
+  nextLabel: string;
+  /** "{n}" is the slide number */
+  showSlideLabel: string;
 }
 
 export interface GalleryPreviewData {
@@ -202,6 +199,7 @@ export interface GalleryPreviewData {
   titleLine1: string;
   titleLine2: string;
   images: ImageData[];
+  viewGalleryLabel: string;
 }
 
 export interface BlogPreviewCard {
@@ -269,6 +267,7 @@ export interface MenuSection {
 export interface MenuData {
   intro: SectionIntroData;
   sections: MenuSection[];
+  categoriesLabel: string;
 }
 
 export interface Chef {
@@ -287,11 +286,17 @@ export interface GalleryImage extends ImageData {
   category: string;
 }
 
-export interface GalleryData {
+export interface GalleryData extends PaginationLabels {
   intro: SectionIntroData;
   filters: string[];
   images: GalleryImage[];
   perPage: number;
+  categoriesLabel: string;
+  /** "{name}" is the image's alt text */
+  openImageLabel: string;
+  closeLabel: string;
+  previousLabel: string;
+  nextLabel: string;
 }
 
 export interface Testimonial {
@@ -303,10 +308,12 @@ export interface Testimonial {
   image: ImageData;
 }
 
-export interface TestimonialListingData {
+export interface TestimonialListingData extends PaginationLabels {
   intro: SectionIntroData;
   items: Testimonial[];
   perPage: number;
+  /** "{rating}" is the guest's star rating */
+  ratingLabel: string;
 }
 
 export interface BlogMetaLabels {
@@ -337,11 +344,13 @@ export interface BlogPost {
   closing: string;
 }
 
-export interface BlogsData {
+export interface BlogsData extends PaginationLabels {
   intro: SectionIntroData;
   meta: BlogMetaLabels;
   perPage: number;
   items: BlogPost[];
+  /** "{title}" is the post title */
+  readPostLabel: string;
 }
 
 export interface BlogDetailData {
@@ -374,14 +383,13 @@ export interface BookingData {
   image: ImageData;
   form: BookingFormData;
   features: BookingFeature[];
+  closeMessageLabel: string;
 }
 
 export interface ContactInfoItem {
   icon: string;
   title: string;
-  /** Shows this field of common.company instead of `lines`. */
-  contactKey?: string;
-  lines?: string[];
+  lines: string[];
 }
 
 export interface ContactData {
@@ -404,16 +412,15 @@ export interface ContactFormData {
     title: string;
     text: string;
   };
+  closeMessageLabel: string;
 }
 
 export interface LocationItem {
   city: string;
-  /** The main location shows common.company's address, phone and email. */
-  isMain?: boolean;
-  address?: string[];
-  phone?: string;
-  email?: string;
-  mapQuery?: string;
+  address: string[];
+  phone: string;
+  email: string;
+  mapQuery: string;
 }
 
 export interface LocationsData {
@@ -422,32 +429,133 @@ export interface LocationsData {
   titleLine2: string;
   directionLabel: string;
   items: LocationItem[];
+  /** Place shown on the embedded map */
+  mapQuery: string;
+  mapLabel: string;
 }
 
-type Section<Variant extends string, Data> = {
-  variants?: { [Name in Variant]?: Data };
-};
+// ── Component props ──
+
+export interface HeaderProps {
+  data?: HeaderData;
+}
+
+export interface FooterProps {
+  data?: FooterData;
+}
+
+export interface FooterLinksProps {
+  links: NavLink[];
+  label?: string;
+}
+
+export interface BreadcrumbProps {
+  data?: BreadcrumbData;
+  ui?: GlobalUIData;
+}
+
+export interface HeroSectionProps {
+  data?: HeroData;
+}
+
+export interface HighlightsProps {
+  data?: HighlightsData;
+}
+
+export interface AboutUsProps {
+  data?: AboutUsData;
+  /** "page" is the About Us page version of the section */
+  layout?: "home" | "page";
+}
+
+export interface FoodMenuProps {
+  data?: FoodMenuData;
+}
+
+export interface TestimonialsProps {
+  data?: TestimonialsData;
+  /** The Testimonials page reviews; the home slider only names its guests, so both always match. */
+  reviews?: TestimonialListingData;
+}
+
+export interface GalleryPreviewProps {
+  data?: GalleryPreviewData;
+}
+
+export interface BlogPreviewProps {
+  data?: BlogPreviewData;
+  blogs?: BlogsData;
+}
+
+export interface ServicesProps {
+  data?: ServicesData;
+}
+
+export interface MenuProps {
+  data?: MenuData;
+}
+
+export interface ChefsProps {
+  data?: ChefsData;
+}
+
+export interface GalleryProps {
+  data?: GalleryData;
+}
+
+export interface TestimonialListingProps {
+  data?: TestimonialListingData;
+}
+
+export interface BlogsProps {
+  data?: BlogsData;
+}
+
+export interface BlogDetailProps {
+  data?: BlogDetailData;
+  blogs?: BlogsData;
+}
+
+export interface BookingProps {
+  data?: BookingData;
+}
+
+export interface ContactProps {
+  data?: ContactData;
+}
+
+export interface ContactFormProps {
+  data?: ContactFormData;
+}
+
+export interface LocationsProps {
+  data?: LocationsData;
+}
+
+export interface NotFoundSectionProps {
+  data?: NotFoundData;
+}
 
 export interface RestaurantSections {
-  Header?: Section<"RestaurantHeader1", HeaderData>;
-  Hero?: Section<"RestaurantHero1", HeroData>;
-  Highlights?: Section<"RestaurantHighlights1", HighlightsData>;
-  AboutUs?: Section<"RestaurantAboutUs1" | "RestaurantAboutUs2", AboutUsData>;
-  FoodMenu?: Section<"RestaurantFoodMenu1", FoodMenuData>;
-  Testimonials?: Section<"RestaurantTestimonials1", TestimonialsData>;
-  GalleryPreview?: Section<"RestaurantGalleryPreview1", GalleryPreviewData>;
-  BlogPreview?: Section<"RestaurantBlogPreview1", BlogPreviewData>;
-  Services?: Section<"RestaurantServices1", ServicesData>;
-  Menu?: Section<"RestaurantMenu1", MenuData>;
-  Chefs?: Section<"RestaurantChefs1", ChefsData>;
-  Gallery?: Section<"RestaurantGallery1", GalleryData>;
-  TestimonialListing?: Section<"RestaurantTestimonialListing1", TestimonialListingData>;
-  Blogs?: Section<"RestaurantBlogs1", BlogsData>;
-  BlogDetail?: Section<"RestaurantBlogDetail1", BlogDetailData>;
-  Booking?: Section<"RestaurantBooking1", BookingData>;
-  Contact?: Section<"RestaurantContact1", ContactData>;
-  ContactForm?: Section<"RestaurantContactForm1", ContactFormData>;
-  Locations?: Section<"RestaurantLocations1", LocationsData>;
+  Header?: { variants?: { RestaurantHeader1?: HeaderData } };
+  Hero?: { variants?: { RestaurantHero1?: HeroData } };
+  Highlights?: { variants?: { RestaurantHighlights1?: HighlightsData } };
+  AboutUs?: { variants?: { RestaurantAboutUs1?: AboutUsData; RestaurantAboutUs2?: AboutUsData } };
+  FoodMenu?: { variants?: { RestaurantFoodMenu1?: FoodMenuData } };
+  Testimonials?: { variants?: { RestaurantTestimonials1?: TestimonialsData } };
+  GalleryPreview?: { variants?: { RestaurantGalleryPreview1?: GalleryPreviewData } };
+  BlogPreview?: { variants?: { RestaurantBlogPreview1?: BlogPreviewData } };
+  Services?: { variants?: { RestaurantServices1?: ServicesData } };
+  Menu?: { variants?: { RestaurantMenu1?: MenuData } };
+  Chefs?: { variants?: { RestaurantChefs1?: ChefsData } };
+  Gallery?: { variants?: { RestaurantGallery1?: GalleryData } };
+  TestimonialListing?: { variants?: { RestaurantTestimonialListing1?: TestimonialListingData } };
+  Blogs?: { variants?: { RestaurantBlogs1?: BlogsData } };
+  BlogDetail?: { variants?: { RestaurantBlogDetail1?: BlogDetailData } };
+  Booking?: { variants?: { RestaurantBooking1?: BookingData } };
+  Contact?: { variants?: { RestaurantContact1?: ContactData } };
+  ContactForm?: { variants?: { RestaurantContactForm1?: ContactFormData } };
+  Locations?: { variants?: { RestaurantLocations1?: LocationsData } };
 }
 
 export interface TemplateComponentEntry {
@@ -455,7 +563,7 @@ export interface TemplateComponentEntry {
   component: string;
 }
 
-export interface TemplateComponents {
+export interface TemplateComponentsData {
   shared: {
     Header: string;
     Footer: string;
@@ -463,14 +571,12 @@ export interface TemplateComponents {
   pages: Record<string, { components: TemplateComponentEntry[] }>;
 }
 
-export interface RestaurantCategory {
-  sections: RestaurantSections;
-  templateComponents: TemplateComponents;
-}
-
 export interface RestaurantTemplateData {
   common: CommonData;
   categories: {
-    Restaurant: RestaurantCategory;
+    Restaurant: {
+      templateComponents?: TemplateComponentsData;
+      sections: RestaurantSections;
+    };
   };
 }

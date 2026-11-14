@@ -1,12 +1,11 @@
 import Image from "next/image";
 import { Icon } from "@/components/ui/Icon";
-import { fill } from "@/components/ui/text";
-import type { CompanyData, GlobalUIData, HighlightsData } from "@/types/templates.types";
+import type { HighlightsProps } from "@/types/templates.types";
 
-export const Highlights = ({ data, company, ui }: { data?: HighlightsData; company?: CompanyData; ui?: GlobalUIData }) => {
+export const Highlights = ({ data }: HighlightsProps) => {
   if (!data) return null;
   return (
-    <section aria-label={ui && fill(ui.whyChoose, { brand: company?.name ?? "" })} className="mx-auto max-w-[1920px] py-[var(--section-space)] px-5 md:px-8 lg:px-0">
+    <section aria-label={data.sectionLabel} className="mx-auto max-w-[1920px] py-[var(--section-space)] px-5 md:px-8 lg:px-0">
       <div className="grid gap-16 sm:grid-cols-2 sm:gap-8 lg:grid-cols-[calc(963*var(--u))_1fr] lg:gap-0">
         {data.items.map((item, i) => {
           // The second card follows the first one in.

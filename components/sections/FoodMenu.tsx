@@ -3,9 +3,9 @@ import Link from "next/link";
 import { BookButton } from "@/components/ui/BookButton";
 import { Icon } from "@/components/ui/Icon";
 import { SectionLabel } from "@/components/ui/SectionHeading";
-import type { FoodMenuData } from "@/types/templates.types";
+import type { FoodMenuProps } from "@/types/templates.types";
 
-export const FoodMenu = ({ data: menu }: { data?: FoodMenuData }) => {
+export const FoodMenu = ({ data: menu }: FoodMenuProps) => {
   if (!menu) return null;
   return (
     <section aria-label={`${menu.label} ${menu.titleLine1} ${menu.titleLine2}`} className="mx-auto max-w-[1920px] py-[var(--section-space)] px-5 md:px-8 lg:px-0 lg:pl-[calc(55*var(--u))]">

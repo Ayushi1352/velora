@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Icon } from "@/components/ui/Icon";
-import type { BlogPreviewData, BlogsData } from "@/types/templates.types";
+import type { BlogPreviewData, BlogsData, BlogPreviewProps } from "@/types/templates.types";
 
 type Post = { slug: string; href: string; title: string; date: string; category: string; image: { src: string; alt: string } };
 
@@ -39,7 +39,7 @@ function ReadMore({ href, label }: { href: string; label: string }) {
   );
 }
 
-export const BlogPreview = ({ data: blog, blogs }: { data?: BlogPreviewData; blogs?: BlogsData }) => {
+export const BlogPreview = ({ data: blog, blogs }: BlogPreviewProps) => {
   if (!blog || !blogs) return null;
   const [featured, ...rest] = resolvePosts(blog.posts, blogs);
   if (!featured) return null;

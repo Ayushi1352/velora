@@ -1,19 +1,14 @@
 import { Fragment } from "react";
 import { Icon } from "@/components/ui/Icon";
 import { SectionLabel } from "@/components/ui/SectionHeading";
-import type { CompanyData, GlobalUIData, LocationsData } from "@/types/templates.types";
+import type { LocationsProps } from "@/types/templates.types";
 
 const mapUrl = (query: string) => `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(query)}`;
 
-export const Locations = ({ data: locations, company: contact, ui }: { data?: LocationsData; company?: CompanyData; ui?: GlobalUIData }) => {
-  if (!locations || !contact) return null;
-  // The main office uses common.company (also shown in the footer).
-  const items = locations.items.map((loc) =>
-    loc.isMain
-      ? { city: loc.city, address: contact.address, phone: contact.phone, email: contact.email, mapQuery: contact.mapQuery }
-      : { city: loc.city, address: loc.address ?? [], phone: loc.phone ?? "", email: loc.email ?? "", mapQuery: loc.mapQuery ?? "" },
-  );
-  const mapEmbed = `https://maps.google.com/maps?q=${encodeURIComponent(contact.mapQuery)}&z=16&output=embed`;
+export const Locations = ({ data: locations }: LocationsProps) => {
+  if (!locations) return null;
+  const items = locations.items;
+  const mapEmbed = `https://maps.google.com/maps?q=${encodeURIComponent(locations.mapQuery)}&z=16&output=embed`;
 
   return (
     <section aria-label={locations.label} className="mx-auto max-w-[1920px] py-[var(--section-space)] px-5 md:px-8 lg:px-[calc(80*var(--u))]">
@@ -68,7 +63,7 @@ export const Locations = ({ data: locations, company: contact, ui }: { data?: Lo
       <div data-reveal="up" data-delay="2" className="mt-[40px] overflow-hidden rounded-[12px] lg:mt-[calc(47*var(--u))] lg:-mx-[calc(7*var(--u))]">
         <iframe
           src={mapEmbed}
-          title={ui?.mapTitle}
+          title={locations.mapLabel}
           loading="lazy"
           referrerPolicy="no-referrer-when-downgrade"
           className="block h-[320px] w-full border-0 lg:h-[calc(378*var(--u))]"

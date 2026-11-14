@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Icon } from "@/components/ui/Icon";
 import { SectionLabel } from "@/components/ui/SectionHeading";
-import type { AboutUsData } from "@/types/templates.types";
+import type { AboutUsProps } from "@/types/templates.types";
 
 // The About Us page draws the left photo and the text a little differently from the home page.
 const layouts = {
@@ -17,7 +17,7 @@ const layouts = {
 };
 
 /** Three column "Our Story" layout used on the Home and About Us pages. */
-export const AboutUs = ({ data, layout = "home" }: { data?: AboutUsData; layout?: keyof typeof layouts }) => {
+export const AboutUs = ({ data, layout = "home" }: AboutUsProps) => {
   if (!data) return null;
   const { label, titleLine1, titleLine2, paragraphs, imageLeft, imageRight, button } = data;
   const classes = layouts[layout];

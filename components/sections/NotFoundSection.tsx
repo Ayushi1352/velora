@@ -1,7 +1,7 @@
 import { BookButton } from "@/components/ui/BookButton";
-import type { NotFoundData } from "@/types/templates.types";
+import type { NotFoundSectionProps } from "@/types/templates.types";
 
-export const NotFoundSection = ({ data }: { data?: NotFoundData }) => {
+export const NotFoundSection = ({ data }: NotFoundSectionProps) => {
   if (!data) return null;
   return (
     <section aria-labelledby="not-found-title" className="mx-auto flex max-w-[1920px] flex-col items-center px-5 py-[var(--section-space)] text-center md:px-8">

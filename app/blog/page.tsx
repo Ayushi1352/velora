@@ -4,17 +4,19 @@ import type { RestaurantTemplateData } from "@/types/templates.types";
 import { Breadcrumb } from "@/components/common/Breadcrumb";
 import { Blogs } from "@/components/sections/Blogs";
 
-const templateData: RestaurantTemplateData = rawData;
-const sectionData = templateData.categories.Restaurant.sections;
-const commonData = templateData.common;
-
-export const metadata: Metadata = { title: commonData.blogsBreadcrumb?.seoTitle ?? commonData.blogsBreadcrumb?.title, description: commonData.blogsBreadcrumb?.description };
+export const metadata: Metadata = { ...(rawData as RestaurantTemplateData).common.blogsBreadcrumb?.seo };
 
 export default function BlogPage() {
+  const templateData: RestaurantTemplateData = rawData;
+  const sectionData = templateData?.categories?.Restaurant?.sections;
+  const commonData = templateData?.common;
+
+  if (!sectionData || !commonData) return null;
+
   return (
     <main className="flex-1">
       <Breadcrumb data={commonData.blogsBreadcrumb} ui={commonData.globalUI} />
-      <Blogs data={sectionData.Blogs?.variants?.RestaurantBlogs1} ui={commonData.globalUI} />
+      <Blogs data={sectionData.Blogs?.variants?.RestaurantBlogs1} />
     </main>
   );
 }

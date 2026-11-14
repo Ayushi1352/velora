@@ -3,10 +3,10 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { isActive } from "@/components/ui/text";
-import type { NavLink } from "@/types/templates.types";
+import type { FooterLinksProps } from "@/types/templates.types";
 
 /** Footer page links; the current page is underlined, like in the header. */
-export const FooterLinks = ({ links, label }: { links: NavLink[]; label?: string }) => {
+export const FooterLinks = ({ links, label }: FooterLinksProps) => {
   const pathname = usePathname();
 
   return (

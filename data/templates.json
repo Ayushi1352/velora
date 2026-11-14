@@ -19,69 +19,14 @@
       "lang": "en"
     },
     "globalUI": {
-      "mainNav": "Main navigation",
-      "mobileNav": "Mobile navigation",
-      "openMenu": "Open menu",
-      "closeMenu": "Close menu",
-      "footerNav": "Footer navigation",
-      "breadcrumb": "Breadcrumb",
-      "welcome": "Welcome to {brand}",
-      "whyChoose": "Why choose {brand}",
-      "viewGallery": "View the full gallery",
-      "menuCategories": "Menu categories",
-      "galleryCategories": "Gallery categories",
-      "viewImage": "View {name}",
-      "close": "Close",
-      "previousImage": "Previous image",
-      "nextImage": "Next image",
-      "rating": "{rating} out of 5 stars",
-      "previousTestimonial": "Previous testimonial",
-      "nextTestimonial": "Next testimonial",
-      "showTestimonial": "Show testimonial {n}",
-      "pagination": "Pagination",
-      "previousPage": "Previous page",
-      "nextPage": "Next page",
-      "page": "Page {n}",
-      "readPost": "Read: {title}",
-      "closeMessage": "Close message",
-      "mapTitle": "Our location on the map"
-    },
-    "company": {
-      "name": "Velora",
-      "address": [
-        "350 Fifth Avenue,",
-        "New York, NY 10118, USA"
-      ],
-      "phone": "+1 0000000000",
-      "email": "info@xyz.com",
-      "mapQuery": "350 Fifth Avenue, New York, NY 10118, USA",
-      "socialLinks": [
-        {
-          "id": "facebook",
-          "name": "Facebook",
-          "icon": "FaFacebookF",
-          "url": "https://www.facebook.com/",
-          "label": "Facebook"
-        },
-        {
-          "id": "instagram",
-          "name": "Instagram",
-          "icon": "FaInstagram",
-          "url": "https://www.instagram.com/",
-          "label": "Instagram"
-        },
-        {
-          "id": "youtube",
-          "name": "YouTube",
-          "icon": "FaYoutube",
-          "url": "https://www.youtube.com/",
-          "label": "YouTube"
-        }
-      ]
+      "breadcrumbLabel": "Breadcrumb"
     },
     "aboutBreadcrumb": {
       "title": "About Us",
-      "description": "Discover the story of Velora, a fine dining restaurant crafting exceptional dining experiences.",
+      "seo": {
+        "title": "About Us",
+        "description": "Discover the story of Velora, a fine dining restaurant crafting exceptional dining experiences."
+      },
       "paths": [
         {
           "id": "home",
@@ -97,7 +42,10 @@
     },
     "menuBreadcrumb": {
       "title": "Our Menu",
-      "description": "Experience a thoughtfully curated menu featuring seasonal ingredients, refined flavors, and timeless culinary traditions.",
+      "seo": {
+        "title": "Our Menu",
+        "description": "Experience a thoughtfully curated menu featuring seasonal ingredients, refined flavors, and timeless culinary traditions."
+      },
       "paths": [
         {
           "id": "home",
@@ -113,7 +61,10 @@
     },
     "chefsBreadcrumb": {
       "title": "Our Chefs",
-      "description": "Meet the chefs behind Velora's memorable flavors.",
+      "seo": {
+        "title": "Our Chefs",
+        "description": "Meet the chefs behind Velora's memorable flavors."
+      },
       "paths": [
         {
           "id": "home",
@@ -129,7 +80,10 @@
     },
     "galleryBreadcrumb": {
       "title": "Gallery",
-      "description": "A glimpse into our food, ambience, and the unforgettable experiences we create for our guests.",
+      "seo": {
+        "title": "Gallery",
+        "description": "A glimpse into our food, ambience, and the unforgettable experiences we create for our guests."
+      },
       "paths": [
         {
           "id": "home",
@@ -145,7 +99,10 @@
     },
     "testimonialsBreadcrumb": {
       "title": "Testimonials",
-      "description": "Real experiences from our valued guests who have enjoyed our food, ambiance, and hospitality.",
+      "seo": {
+        "title": "Testimonials",
+        "description": "Real experiences from our valued guests who have enjoyed our food, ambiance, and hospitality."
+      },
       "paths": [
         {
           "id": "home",
@@ -161,7 +118,10 @@
     },
     "blogsBreadcrumb": {
       "title": "Blog",
-      "description": "Discover our latest stories, culinary inspirations, events, and behind-the-scenes moments from our restaurant.",
+      "seo": {
+        "title": "Blog",
+        "description": "Discover our latest stories, culinary inspirations, events, and behind-the-scenes moments from our restaurant."
+      },
       "paths": [
         {
           "id": "home",
@@ -177,7 +137,10 @@
     },
     "blogDetailBreadcrumb": {
       "title": "The Art of Plating",
-      "description": "Discover how our chefs turn fresh ingredients into beautiful works of art. Learn about the techniques, creativity, and thought process behind every plate we serve.",
+      "seo": {
+        "title": "The Art of Plating: Making Food a Visual Delight",
+        "description": "Discover how our chefs turn fresh ingredients into beautiful works of art. Learn about the techniques, creativity, and thought process behind every plate we serve."
+      },
       "paths": [
         {
           "id": "home",
@@ -194,12 +157,14 @@
           "label": "The Art of Plating",
           "url": ""
         }
-      ],
-      "seoTitle": "The Art of Plating: Making Food a Visual Delight"
+      ]
     },
     "bookingBreadcrumb": {
       "title": "Book a Table",
-      "description": "Reserve your table at Velora for a memorable dining experience.",
+      "seo": {
+        "title": "Book a Table",
+        "description": "Reserve your table at Velora for a memorable dining experience."
+      },
       "paths": [
         {
           "id": "home",
@@ -215,7 +180,10 @@
     },
     "contactBreadcrumb": {
       "title": "Contact Us",
-      "description": "Get in touch with Velora by phone, email or the contact form.",
+      "seo": {
+        "title": "Contact Us",
+        "description": "Get in touch with Velora by phone, email or the contact form."
+      },
       "paths": [
         {
           "id": "home",
@@ -230,7 +198,10 @@
       ]
     },
     "notFound": {
-      "title": "Page Not Found",
+      "seo": {
+        "title": "Page Not Found",
+        "description": "The page you are looking for may have been moved or no longer exists. Let us take you back to the table."
+      },
       "code": "404",
       "titleLine1": "This Page Is",
       "titleLine2": "Not on the Menu",
@@ -286,7 +257,38 @@
           "href": "/contact-us"
         }
       ],
-      "copyright": "© {year} All Rights Reserved. Powered by Lestow."
+      "copyright": "© {year} All Rights Reserved. Powered by Lestow.",
+      "menuLabel": "Footer navigation",
+      "logoLabel": "Velora",
+      "address": [
+        "350 Fifth Avenue,",
+        "New York, NY 10118, USA"
+      ],
+      "phone": "+1 0000000000",
+      "email": "info@xyz.com",
+      "socialLinks": [
+        {
+          "id": "facebook",
+          "name": "Facebook",
+          "icon": "FaFacebookF",
+          "url": "https://www.facebook.com/",
+          "label": "Facebook"
+        },
+        {
+          "id": "instagram",
+          "name": "Instagram",
+          "icon": "FaInstagram",
+          "url": "https://www.instagram.com/",
+          "label": "Instagram"
+        },
+        {
+          "id": "youtube",
+          "name": "YouTube",
+          "icon": "FaYoutube",
+          "url": "https://www.youtube.com/",
+          "label": "YouTube"
+        }
+      ]
     }
   },
   "categories": {
@@ -347,7 +349,12 @@
               "button": {
                 "label": "Book a Table",
                 "href": "/book-a-table"
-              }
+              },
+              "menuLabel": "Main navigation",
+              "mobileMenuLabel": "Mobile navigation",
+              "openMenuLabel": "Open menu",
+              "closeMenuLabel": "Close menu",
+              "logoLabel": "Velora"
             }
           }
         },
@@ -374,7 +381,8 @@
               "banner": {
                 "src": "/images/home/hero-signature-steak.webp",
                 "alt": "Signature filet mignon with asparagus and red wine jus"
-              }
+              },
+              "sectionLabel": "Welcome to Velora"
             }
           }
         },
@@ -398,7 +406,8 @@
                     "alt": "Seared steak with roasted vegetables"
                   }
                 }
-              ]
+              ],
+              "sectionLabel": "Why choose Velora"
             }
           }
         },
@@ -505,7 +514,11 @@
                 "Emily Carter",
                 "Sophia Bennett",
                 "James Wilson"
-              ]
+              ],
+              "ratingLabel": "{rating} out of 5 stars",
+              "previousLabel": "Previous testimonial",
+              "nextLabel": "Next testimonial",
+              "showSlideLabel": "Show testimonial {n}"
             }
           }
         },
@@ -533,7 +546,8 @@
                   "src": "/images/home/glimpse-velvet-table.webp",
                   "alt": "Velvet chairs around a candlelit table"
                 }
-              ]
+              ],
+              "viewGalleryLabel": "View the full gallery"
             }
           }
         },
@@ -774,7 +788,8 @@
                   ],
                   "showByDefault": false
                 }
-              ]
+              ],
+              "categoriesLabel": "Menu categories"
             }
           }
         },
@@ -890,7 +905,16 @@
                   "category": "Ambience"
                 }
               ],
-              "perPage": 8
+              "perPage": 8,
+              "categoriesLabel": "Gallery categories",
+              "openImageLabel": "View {name}",
+              "closeLabel": "Close",
+              "previousLabel": "Previous image",
+              "nextLabel": "Next image",
+              "paginationLabel": "Pagination",
+              "previousPageLabel": "Previous page",
+              "nextPageLabel": "Next page",
+              "pageLabel": "Page {n}"
             }
           }
         },
@@ -995,7 +1019,12 @@
                   }
                 }
               ],
-              "perPage": 6
+              "perPage": 6,
+              "ratingLabel": "{rating} out of 5 stars",
+              "paginationLabel": "Pagination",
+              "previousPageLabel": "Previous page",
+              "nextPageLabel": "Next page",
+              "pageLabel": "Page {n}"
             }
           }
         },
@@ -1170,7 +1199,12 @@
                   },
                   "closing": "Next time you visit, ask our team for a pairing suggestion and let us craft the perfect drink to begin your evening."
                 }
-              ]
+              ],
+              "readPostLabel": "Read: {title}",
+              "paginationLabel": "Pagination",
+              "previousPageLabel": "Previous page",
+              "nextPageLabel": "Next page",
+              "pageLabel": "Page {n}"
             }
           }
         },
@@ -1251,7 +1285,8 @@
                   "title": "Warm Hospitality",
                   "text": "Enjoy exceptional service and a memorable dining experience."
                 }
-              ]
+              ],
+              "closeMessageLabel": "Close message"
             }
           }
         },
@@ -1271,12 +1306,16 @@
                 {
                   "icon": "FaPhoneAlt",
                   "title": "Call Us",
-                  "contactKey": "phone"
+                  "lines": [
+                    "+1 0000000000"
+                  ]
                 },
                 {
                   "icon": "FaEnvelope",
                   "title": "Email Us",
-                  "contactKey": "email"
+                  "lines": [
+                    "info@xyz.com"
+                  ]
                 },
                 {
                   "icon": "FaRegClock",
@@ -1326,7 +1365,8 @@
                 },
                 "title": "Planning Something Special?",
                 "text": "Whether it's a casual meal, a family gathering, or a special celebration, feel free to reach out. We're always happy to assist you."
-              }
+              },
+              "closeMessageLabel": "Close message"
             }
           }
         },
@@ -1340,7 +1380,13 @@
               "items": [
                 {
                   "city": "New York",
-                  "isMain": true
+                  "address": [
+                    "350 Fifth Avenue,",
+                    "New York, NY 10118, USA"
+                  ],
+                  "phone": "+1 0000000000",
+                  "email": "info@xyz.com",
+                  "mapQuery": "350 Fifth Avenue, New York, NY 10118, USA"
                 },
                 {
                   "city": "San Francisco",
@@ -1352,7 +1398,9 @@
                   "email": "info@xyz.com",
                   "mapQuery": "1 Market Street, San Francisco, CA 94105, USA"
                 }
-              ]
+              ],
+              "mapLabel": "Our location on the map",
+              "mapQuery": "350 Fifth Avenue, New York, NY 10118, USA"
             }
           }
         }
@@ -1360,7 +1408,7 @@
       "templateComponents": {
         "shared": {
           "Header": "RestaurantHeader1",
-          "Footer": "common.Footer"
+          "Footer": "RestaurantFooter1"
         },
         "pages": {
           "home": {
@@ -1399,7 +1447,7 @@
               },
               {
                 "key": "Footer",
-                "component": "common.Footer"
+                "component": "RestaurantFooter1"
               }
             ]
           },
@@ -1423,7 +1471,7 @@
               },
               {
                 "key": "Footer",
-                "component": "common.Footer"
+                "component": "RestaurantFooter1"
               }
             ]
           },
@@ -1443,7 +1491,7 @@
               },
               {
                 "key": "Footer",
-                "component": "common.Footer"
+                "component": "RestaurantFooter1"
               }
             ]
           },
@@ -1463,7 +1511,7 @@
               },
               {
                 "key": "Footer",
-                "component": "common.Footer"
+                "component": "RestaurantFooter1"
               }
             ]
           },
@@ -1483,7 +1531,7 @@
               },
               {
                 "key": "Footer",
-                "component": "common.Footer"
+                "component": "RestaurantFooter1"
               }
             ]
           },
@@ -1503,7 +1551,7 @@
               },
               {
                 "key": "Footer",
-                "component": "common.Footer"
+                "component": "RestaurantFooter1"
               }
             ]
           },
@@ -1523,7 +1571,7 @@
               },
               {
                 "key": "Footer",
-                "component": "common.Footer"
+                "component": "RestaurantFooter1"
               }
             ]
           },
@@ -1543,7 +1591,7 @@
               },
               {
                 "key": "Footer",
-                "component": "common.Footer"
+                "component": "RestaurantFooter1"
               }
             ]
           },
@@ -1563,7 +1611,7 @@
               },
               {
                 "key": "Footer",
-                "component": "common.Footer"
+                "component": "RestaurantFooter1"
               }
             ]
           },
@@ -1591,7 +1639,7 @@
               },
               {
                 "key": "Footer",
-                "component": "common.Footer"
+                "component": "RestaurantFooter1"
               }
             ]
           },
@@ -1607,7 +1655,7 @@
               },
               {
                 "key": "Footer",
-                "component": "common.Footer"
+                "component": "RestaurantFooter1"
               }
             ]
           }

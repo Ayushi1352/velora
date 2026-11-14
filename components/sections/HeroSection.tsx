@@ -1,13 +1,12 @@
 import Image from "next/image";
 import { BookButton } from "@/components/ui/BookButton";
 import { Loop } from "@/components/ui/Loop";
-import { fill } from "@/components/ui/text";
-import type { CompanyData, GlobalUIData, HeroData } from "@/types/templates.types";
+import type { HeroSectionProps } from "@/types/templates.types";
 
-export const HeroSection = ({ data: hero, company, ui }: { data?: HeroData; company?: CompanyData; ui?: GlobalUIData }) => {
+export const HeroSection = ({ data: hero }: HeroSectionProps) => {
   if (!hero) return null;
   return (
-    <section aria-label={ui && fill(ui.welcome, { brand: company?.name ?? "" })}>
+    <section aria-label={hero.sectionLabel}>
       {/* Intro: plays on load (data-intro), not on scroll, so the first screen is never empty */}
       <div className="mx-auto grid max-w-[1920px] gap-10 py-[var(--section-space)] px-5 md:grid-cols-[38%_1fr] md:items-center md:gap-6 md:px-8 lg:grid-cols-[calc(683*var(--u))_1fr] lg:items-start lg:gap-0 lg:px-0">
         <div data-intro="zoom" className="flex justify-center lg:block lg:pl-[calc(70*var(--u))] lg:pt-[calc(36*var(--u))]">

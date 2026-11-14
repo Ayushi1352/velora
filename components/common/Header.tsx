@@ -7,9 +7,9 @@ import { useEffect, useRef, useState } from "react";
 import { Icon } from "@/components/ui/Icon";
 import { btnFrame } from "@/components/ui/BookButton";
 import { isActive } from "@/components/ui/text";
-import type { CompanyData, GlobalUIData, HeaderData } from "@/types/templates.types";
+import type { HeaderProps } from "@/types/templates.types";
 
-export const Header = ({ data, company, ui }: { data?: HeaderData; company?: CompanyData; ui?: GlobalUIData }) => {
+export const Header = ({ data }: HeaderProps) => {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -50,7 +50,7 @@ export const Header = ({ data, company, ui }: { data?: HeaderData; company?: Com
     >
       <span ref={progressRef} aria-hidden="true" className="pointer-events-none hidden origin-left [transform:scaleX(0)] motion-safe:supports-[animation-timeline:scroll()]:block absolute inset-x-0 bottom-0 h-[2px] bg-gradient-to-r from-[var(--color-gold)] via-[var(--color-gold-light)] to-[var(--color-gold-bright)]" />
       <div className="mx-auto flex h-[76px] max-w-[1920px] items-center justify-between gap-4 px-5 md:h-[92px] md:px-8 lg:h-[calc(135*var(--u))] lg:pl-[calc(56*var(--u))] lg:pr-[calc(44*var(--u))]">
-        <Link href={data.logoUrl} aria-label={company?.name} className="shrink-0" onClick={() => setOpen(false)}>
+        <Link href={data.logoUrl} aria-label={data.logoLabel} className="shrink-0" onClick={() => setOpen(false)}>
           <Image
             src={data.logo.src}
             alt={data.logo.alt}
@@ -63,7 +63,7 @@ export const Header = ({ data, company, ui }: { data?: HeaderData; company?: Com
           />
         </Link>
 
-        <nav aria-label={ui?.mainNav} className="hidden lg:block">
+        <nav aria-label={data.menuLabel} className="hidden lg:block">
           <ul className="flex items-center lg:gap-[calc(14*var(--u))]">
             {data.nav.map((item) => {
               const active = isActive(pathname, item.href);
@@ -100,7 +100,7 @@ export const Header = ({ data, company, ui }: { data?: HeaderData; company?: Com
           </Link>
           <button
             type="button"
-            aria-label={open ? ui?.closeMenu : ui?.openMenu}
+            aria-label={open ? data.closeMenuLabel : data.openMenuLabel}
             aria-expanded={open}
             aria-controls="mobile-menu"
             onClick={() => setOpen((v) => !v)}
@@ -118,7 +118,7 @@ export const Header = ({ data, company, ui }: { data?: HeaderData; company?: Com
           open ? "visible scale-y-100 opacity-100" : "invisible scale-y-95 opacity-0"
         }`}
       >
-        <nav aria-label={ui?.mobileNav} className="px-5 pb-8 pt-2 md:px-8">
+        <nav aria-label={data.mobileMenuLabel} className="px-5 pb-8 pt-2 md:px-8">
           <ul className="flex flex-col">
             {data.nav.map((item) => {
               const active = isActive(pathname, item.href);

@@ -1,16 +1,16 @@
 import { Fragment } from "react";
 import Link from "next/link";
-import type { BreadcrumbData, GlobalUIData } from "@/types/templates.types";
+import type { BreadcrumbProps } from "@/types/templates.types";
 
 const Separator = () => <span aria-hidden="true" className="block h-px w-[16px] bg-[var(--color-line)] lg:w-[calc(18*var(--u))]" />;
 
 /** Maroon page banner: the breadcrumb trail (last path, without a url, is the current page) and the page title. */
-export const Breadcrumb = ({ data, ui }: { data?: BreadcrumbData; ui?: GlobalUIData }) => {
+export const Breadcrumb = ({ data, ui }: BreadcrumbProps) => {
   if (!data) return null;
   return (
     <section className="bg-[var(--color-maroon)]">
       <div className="mx-auto flex max-w-[1920px] flex-col items-center px-5 pb-[52px] pt-[52px] text-center sm:pb-[64px] sm:pt-[72px] lg:h-[calc(370*var(--u))] lg:pb-0 lg:pt-[calc(140*var(--u))]">
-        <nav aria-label={ui?.breadcrumb} data-intro="down" data-delay="1">
+        <nav aria-label={ui?.breadcrumbLabel} data-intro="down" data-delay="1">
           <ol className="flex flex-wrap items-center justify-center gap-x-[12px] gap-y-1 rounded-full bg-[var(--color-white)] px-[20px] py-[9px] font-ui text-[15px] font-medium tracking-[0.07em] lg:gap-x-[calc(15*var(--u))] lg:px-[calc(25*var(--u))] lg:py-[calc(13*var(--u))] lg:text-[max(calc(19*var(--u)),var(--text-min))]">
             {data.paths.map((item, i) => (
               <Fragment key={item.id}>
