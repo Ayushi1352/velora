@@ -1,5 +1,5 @@
-import type { JSX, SVGProps } from "react";
-import type { IconType } from "react-icons";
+import type { JSX, SVGProps } from 'react';
+import type { IconType } from 'react-icons';
 import {
   FaCheckCircle,
   FaEnvelope,
@@ -11,7 +11,7 @@ import {
   FaRegClock,
   FaStar,
   FaYoutube,
-} from "react-icons/fa";
+} from 'react-icons/fa';
 import {
   HiOutlineArrowRight,
   HiOutlineArrowUpRight,
@@ -27,16 +27,16 @@ import {
   HiOutlineUserCircle,
   HiOutlineUsers,
   HiOutlineXMark,
-} from "react-icons/hi2";
+} from 'react-icons/hi2';
 
 type GlyphProps = SVGProps<SVGSVGElement>;
 
 const line = {
-  fill: "none",
-  stroke: "currentColor",
+  fill: 'none',
+  stroke: 'currentColor',
   strokeWidth: 1.5,
-  strokeLinecap: "round" as const,
-  strokeLinejoin: "round" as const,
+  strokeLinecap: 'round' as const,
+  strokeLinejoin: 'round' as const,
 };
 
 /* Restaurant illustrations drawn for the Velora design; react-icons has no matching set. */
@@ -181,7 +181,7 @@ type Props = {
 export const Icon = ({ name, className, strokeWidth }: Props) => {
   const Glyph = icons[name];
   if (!Glyph) {
-    if (process.env.NODE_ENV !== "production") console.warn(`Icon "${name}" is not in components/ui/Icon.tsx`);
+    if (process.env.NODE_ENV !== 'production') console.warn(`Icon "${name}" is not in components/ui/Icon.tsx`);
     return <FaRegCircle aria-hidden="true" className={className} />;
   }
   // strokeWidth is only passed when set, so each glyph keeps its own default.

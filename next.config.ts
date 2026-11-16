@@ -1,15 +1,15 @@
-import type { NextConfig } from "next";
+import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
   /* config options here */
   experimental: {
     agentFeedback: true,
-    agentUpgrade: "security",
+    agentUpgrade: 'security',
   },
   cacheComponents: true,
   partialPrefetching: true,
   images: {
-    formats: ["image/webp"],
+    formats: ['image/webp'],
     qualities: [75, 90],
   },
 };

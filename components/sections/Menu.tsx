@@ -1,41 +1,41 @@
-"use client";
+'use client';
 
-import Image from "next/image";
-import { Fragment, useState } from "react";
-import { SectionLabel, SectionHeading } from "@/components/ui/SectionHeading";
-import type { MenuSection, MenuProps } from "@/types/templates.types";
+import Image from 'next/image';
+import { Fragment, useState } from 'react';
+import { SectionLabel, SectionHeading } from '@/components/ui/SectionHeading';
+import type { MenuSection, MenuProps } from '@/types/templates.types';
 
 function MenuRow({ section, reverse }: { section: MenuSection; reverse: boolean }) {
   return (
     <article
       id={section.id}
       className={`grid scroll-mt-28 items-start gap-8 lg:gap-0 ${
-        reverse ? "lg:grid-cols-[calc(848*var(--u))_1fr]" : "lg:grid-cols-[1fr_calc(848*var(--u))]"
+        reverse ? 'lg:grid-cols-[calc(848*var(--u))_1fr]' : 'lg:grid-cols-[1fr_calc(848*var(--u))]'
       }`}
     >
       <div
         // The photo is uncovered from the outer edge of the page.
-        data-reveal={reverse ? "mask-left" : "mask-right"}
-        className={`relative overflow-hidden ${reverse ? "lg:order-1" : "lg:order-2"}`}
-        style={{ aspectRatio: `${section.image.width} / ${section.image.height}` }}
+        data-reveal={reverse ? 'mask-left' : 'mask-right'}
+        className={`relative overflow-hidden ${reverse ? 'lg:order-1' : 'lg:order-2'}`}
+        style={{ aspectRatio: `${section.imageWidth} / ${section.imageHeight}` }}
       >
-        <Image src={section.image.src} alt={section.image.alt} fill sizes="(min-width: 1024px) 50vw, 100vw" className="object-cover" />
+        <Image src={section.image} alt={section.imageAlt} fill sizes="(min-width: 1024px) 50vw, 100vw" className="object-cover" />
       </div>
 
-      <div className={`${reverse ? "lg:order-2 lg:pl-[calc(71*var(--u))] lg:pr-[calc(76*var(--u))]" : "lg:order-1 lg:pl-[calc(85*var(--u))] lg:pr-[calc(65*var(--u))]"}`}>
+      <div className={`${reverse ? 'lg:order-2 lg:pl-[calc(71*var(--u))] lg:pr-[calc(76*var(--u))]' : 'lg:order-1 lg:pl-[calc(85*var(--u))] lg:pr-[calc(65*var(--u))]'}`}>
         <SectionLabel align="left" lineClassName="w-[44px] lg:w-[calc(61*var(--u))]">
           {section.label}
         </SectionLabel>
         <h2 data-reveal="up" data-delay="1" className="mt-[14px] font-heading text-[clamp(26px,8.5vw,38px)] font-medium leading-[1.12] tracking-[-0.015em] text-[var(--color-wine)] sm:text-[46px] lg:mt-[calc(22*var(--u))] lg:text-[max(calc(65*var(--u)),var(--text-min))]">
-          {section.titleLine1}
+          {section.title}
           <br />
-          <span className="font-normal italic text-[var(--color-gold)]">{section.titleLine2}</span>
+          <span className="font-normal italic text-[var(--color-gold)]">{section.titleHighlight}</span>
         </h2>
         <p data-reveal="up" data-delay="2" className="mt-[12px] max-w-[580px] font-body text-[18px] leading-[1.5] text-[var(--color-body)] lg:max-w-[calc(560*var(--u))] lg:mt-[calc(10*var(--u))] lg:text-[max(calc(23*var(--u)),var(--text-min))]">{section.text}</p>
 
         <ul className="mt-[26px] lg:mt-[calc(44*var(--u))]">
           {section.items.map((item, i) => (
-            <Fragment key={item.name}>
+            <Fragment key={item.id}>
               {i > 0 && <li aria-hidden="true" data-reveal="line" data-delay={Math.min(i + 2, 12)} className="bg-[linear-gradient(to_right,var(--color-line)_50%,transparent_50%)] bg-[length:7px_1px] bg-repeat-x origin-left my-[14px] h-px lg:mb-[calc(12*var(--u))] lg:mt-[calc(10*var(--u))]" />}
               <li data-reveal="up" data-delay={Math.min(i + 3, 12)}>
                 <div className="flex items-baseline justify-between gap-4">
@@ -78,12 +78,12 @@ const MenuSections = ({ sections, label }: { sections: MenuSection[]; label?: st
                 onClick={(e) => {
                   setSelected(i === 0 ? null : s.id);
                   // On mobile the row scrolls sideways, so bring a partly hidden tab fully into view.
-                  e.currentTarget.scrollIntoView({ inline: "center", block: "nearest" });
+                  e.currentTarget.scrollIntoView({ inline: 'center', block: 'nearest' });
                 }}
                 className={`shrink-0 whitespace-nowrap rounded-full font-body text-[17px] transition-[background-color,color,padding] duration-300 lg:text-[max(calc(22*var(--u)),var(--text-min))] ${
                   active
-                    ? "h-[48px] bg-[var(--color-maroon-dark)] px-[16px] text-[var(--color-white)] sm:px-[30px] lg:h-[calc(60*var(--u))] lg:px-[calc(54*var(--u))]"
-                    : "h-[48px] px-[16px] text-[var(--color-ink-soft)] transition-colors hover:text-[var(--color-gold)] lg:h-[calc(60*var(--u))] lg:px-[calc(31*var(--u))]"
+                    ? 'h-[48px] bg-[var(--color-maroon-dark)] px-[16px] text-[var(--color-white)] sm:px-[30px] lg:h-[calc(60*var(--u))] lg:px-[calc(54*var(--u))]'
+                    : 'h-[48px] px-[16px] text-[var(--color-ink-soft)] transition-colors hover:text-[var(--color-gold)] lg:h-[calc(60*var(--u))] lg:px-[calc(31*var(--u))]'
                 }`}
               >
                 {s.tab}
@@ -113,8 +113,8 @@ export const Menu = ({ data }: MenuProps) => {
         label={intro.label}
         labelLineClassName="w-[44px] lg:w-[calc(60*var(--u))]"
         labelClassName="mb-[12px] lg:mb-[calc(20*var(--u))]"
-        line1={intro.titleLine1}
-        line2={intro.titleLine2}
+        title={intro.title}
+        titleHighlight={intro.titleHighlight}
         titleClassName="text-[clamp(26px,8.5vw,40px)] sm:text-[54px] lg:text-[max(calc(70*var(--u)),var(--text-min))] !leading-[1.12]"
         text={intro.text}
         textClassName="mt-[14px] max-w-[760px] text-[17px] lg:max-w-[calc(760*var(--u))] lg:mt-[calc(20*var(--u))] lg:text-[max(calc(21*var(--u)),var(--text-min))]"

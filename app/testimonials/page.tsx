@@ -1,8 +1,8 @@
-import type { Metadata } from "next";
-import rawData from "@/data/templates.json";
-import type { RestaurantTemplateData } from "@/types/templates.types";
-import { Breadcrumb } from "@/components/common/Breadcrumb";
-import { TestimonialListing } from "@/components/sections/TestimonialListing";
+import type { Metadata } from 'next';
+import rawData from '@/data/templates.json';
+import type { RestaurantTemplateData } from '@/types/templates.types';
+import { Breadcrumb } from '@/components/common/Breadcrumb';
+import { Testimonials } from '@/components/sections/Testimonials';
 
 export const metadata: Metadata = { ...(rawData as RestaurantTemplateData).common.testimonialsBreadcrumb?.seo };
 
@@ -16,7 +16,7 @@ export default function TestimonialsPage() {
   return (
     <main className="flex-1">
       <Breadcrumb data={commonData.testimonialsBreadcrumb} ui={commonData.globalUI} />
-      <TestimonialListing data={sectionData.TestimonialListing?.variants?.RestaurantTestimonialListing1} />
+      <Testimonials data={sectionData.Testimonials?.variants?.RestaurantTestimonials1} showAll />
     </main>
   );
 }

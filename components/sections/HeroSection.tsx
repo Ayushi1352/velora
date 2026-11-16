@@ -1,7 +1,7 @@
-import Image from "next/image";
-import { BookButton } from "@/components/ui/BookButton";
-import { Loop } from "@/components/ui/Loop";
-import type { HeroSectionProps } from "@/types/templates.types";
+import Image from 'next/image';
+import { BookButton } from '@/components/ui/BookButton';
+import { Loop } from '@/components/ui/Loop';
+import type { HeroSectionProps } from '@/types/templates.types';
 
 export const HeroSection = ({ data: hero }: HeroSectionProps) => {
   if (!hero) return null;
@@ -12,10 +12,10 @@ export const HeroSection = ({ data: hero }: HeroSectionProps) => {
         <div data-intro="zoom" className="flex justify-center lg:block lg:pl-[calc(70*var(--u))] lg:pt-[calc(36*var(--u))]">
           <Loop effect="float" delay={1400}>
             <Image
-              src={hero.image.src}
-              alt={hero.image.alt}
-              width={hero.image.width}
-              height={hero.image.height}
+              src={hero.image}
+              alt={hero.imageAlt}
+              width={hero.imageWidth}
+              height={hero.imageHeight}
               loading="eager"
               fetchPriority="high"
               sizes="(min-width: 1024px) 24vw, (min-width: 768px) 36vw, 80vw"
@@ -45,8 +45,9 @@ export const HeroSection = ({ data: hero }: HeroSectionProps) => {
           <BookButton
             data-intro="up"
             data-delay="10"
-            href={hero.button.href}
+            href={hero.button.url}
             label={hero.button.label}
+            icon={hero.buttonIcon}
             className="mt-[28px] h-[58px] px-[30px] text-[21px] lg:h-[calc(76*var(--u))] lg:mt-[calc(37*var(--u))] lg:px-[calc(42*var(--u))] lg:text-[max(calc(28*var(--u)),var(--text-min))]"
           />
         </div>
@@ -57,7 +58,7 @@ export const HeroSection = ({ data: hero }: HeroSectionProps) => {
         <div aria-hidden="true" data-reveal="line" className="absolute inset-x-0 top-0 h-[42%] origin-left bg-[var(--color-maroon)] lg:h-[calc(444*var(--u))]" />
         <div className="relative mx-auto w-[calc(100%-40px)] pt-[56px] md:w-[calc(100%-64px)] lg:w-[calc(1229*var(--u))] lg:pt-[calc(170*var(--u))]">
           <div data-reveal="mask-up" data-delay="3" className="relative aspect-[1414/729] overflow-hidden">
-            <Image src={hero.banner.src} alt={hero.banner.alt} fill sizes="(min-width: 1024px) 73vw, 100vw" className="object-cover" />
+            <Image src={hero.bannerImage} alt={hero.bannerImageAlt} fill sizes="(min-width: 1024px) 73vw, 100vw" className="object-cover" />
           </div>
         </div>
       </div>

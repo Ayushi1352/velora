@@ -1,6 +1,6 @@
-"use client";
+'use client';
 
-import { useEffect, useRef, type ReactNode } from "react";
+import { useEffect, useRef, type ReactNode } from 'react';
 
 type Props = {
   /** Milliseconds. */
@@ -17,8 +17,8 @@ export function FadeIn({ duration, children }: Props) {
 
   useEffect(() => {
     const el = ref.current?.firstElementChild;
-    if (!el || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-    const animation = el.animate([{ opacity: 0, transform: "translateY(8px)" }, { opacity: 1, transform: "none" }], { duration, easing: "ease" });
+    if (!el || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const animation = el.animate([{ opacity: 0, transform: 'translateY(8px)' }, { opacity: 1, transform: 'none' }], { duration, easing: 'ease' });
     return () => animation.cancel();
   }, [duration]);
 

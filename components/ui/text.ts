@@ -5,6 +5,6 @@ export function fill(template: string, values: Record<string, string | number> =
 
 /** Current page check for nav links: "/" only matches itself, other links also match their sub pages. */
 export function isActive(pathname: string, href: string) {
-  if (href === "/") return pathname === "/";
+  if (href === '/') return pathname === '/';
   return pathname === href || pathname.startsWith(`${href}/`);
 }

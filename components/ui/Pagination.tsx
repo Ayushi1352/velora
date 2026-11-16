@@ -1,9 +1,9 @@
-"use client";
+'use client';
 
-import { useState } from "react";
-import { Icon } from "@/components/ui/Icon";
-import { fill } from "@/components/ui/text";
-import type { PaginationLabels } from "@/types/templates.types";
+import { useState } from 'react';
+import { Icon } from '@/components/ui/Icon';
+import { fill } from '@/components/ui/text';
+import type { PaginationData } from '@/types/templates.types';
 
 /** Splits a list into pages. `page` is 1-based and clamped to the valid range. */
 export function usePagination<T>(items: T[], perPage: number) {
@@ -21,31 +21,31 @@ type PaginationProps = {
   /** Element to scroll back to when the page changes. */
   scrollTargetId?: string;
   className?: string;
-  labels: PaginationLabels;
+  labels: PaginationData;
 };
 
 const circle =
-  "grid size-[46px] place-items-center rounded-full border font-body text-[17px] transition-colors lg:size-[calc(52*var(--u))] lg:text-[max(calc(19*var(--u)),var(--text-min))]";
+  'grid size-[46px] place-items-center rounded-full border font-body text-[17px] transition-colors lg:size-[calc(52*var(--u))] lg:text-[max(calc(19*var(--u)),var(--text-min))]';
 
-export const Pagination = ({ page, totalPages, onChange, scrollTargetId, className = "", labels }: PaginationProps) => {
+export const Pagination = ({ page, totalPages, onChange, scrollTargetId, className = '', labels }: PaginationProps) => {
   if (totalPages <= 1) return null;
 
   function go(next: number) {
     if (next < 1 || next > totalPages || next === page) return;
     onChange(next);
-    if (scrollTargetId) document.getElementById(scrollTargetId)?.scrollIntoView({ behavior: "smooth", block: "start" });
+    if (scrollTargetId) document.getElementById(scrollTargetId)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
 
   return (
-    <nav aria-label={labels.paginationLabel} className={`mt-[40px] flex items-center justify-center gap-[10px] lg:mt-[calc(56*var(--u))] lg:gap-[calc(14*var(--u))] ${className}`}>
+    <nav aria-label={labels.label} className={`mt-[40px] flex items-center justify-center gap-[10px] lg:mt-[calc(56*var(--u))] lg:gap-[calc(14*var(--u))] ${className}`}>
       <button
         type="button"
         onClick={() => go(page - 1)}
         disabled={page === 1}
-        aria-label={labels.previousPageLabel}
+        aria-label={labels.previousLabel}
         className={`${circle} border-[var(--color-gold-line)] text-[var(--color-ink)] hover:bg-[var(--color-maroon)] hover:text-[var(--color-white)] disabled:pointer-events-none disabled:opacity-40`}
       >
-        <Icon name="HiOutlineChevronLeft" strokeWidth={2} className="size-[16px] lg:size-[calc(18*var(--u))]" />
+        <Icon name={labels.previousIcon} strokeWidth={2} className="size-[16px] lg:size-[calc(18*var(--u))]" />
       </button>
 
       {Array.from({ length: totalPages }, (_, i) => i + 1).map((n) => (
@@ -54,8 +54,8 @@ export const Pagination = ({ page, totalPages, onChange, scrollTargetId, classNa
           type="button"
           onClick={() => go(n)}
           aria-label={fill(labels.pageLabel, { n })}
-          aria-current={n === page ? "page" : undefined}
-          className={`${circle} ${n === page ? "border-[var(--color-maroon)] bg-[var(--color-maroon)] text-[var(--color-white)]" : "border-[var(--color-gold-line)] text-[var(--color-ink)] hover:border-[var(--color-gold)] hover:bg-[var(--color-blush)] hover:text-[var(--color-wine)]"}`}
+          aria-current={n === page ? 'page' : undefined}
+          className={`${circle} ${n === page ? 'border-[var(--color-maroon)] bg-[var(--color-maroon)] text-[var(--color-white)]' : 'border-[var(--color-gold-line)] text-[var(--color-ink)] hover:border-[var(--color-gold)] hover:bg-[var(--color-blush)] hover:text-[var(--color-wine)]'}`}
         >
           {n}
         </button>
@@ -65,10 +65,10 @@ export const Pagination = ({ page, totalPages, onChange, scrollTargetId, classNa
         type="button"
         onClick={() => go(page + 1)}
         disabled={page === totalPages}
-        aria-label={labels.nextPageLabel}
+        aria-label={labels.nextLabel}
         className={`${circle} border-[var(--color-gold-line)] text-[var(--color-ink)] hover:bg-[var(--color-maroon)] hover:text-[var(--color-white)] disabled:pointer-events-none disabled:opacity-40`}
       >
-        <Icon name="HiOutlineChevronRight" strokeWidth={2} className="size-[16px] lg:size-[calc(18*var(--u))]" />
+        <Icon name={labels.nextIcon} strokeWidth={2} className="size-[16px] lg:size-[calc(18*var(--u))]" />
       </button>
     </nav>
   );

@@ -1,7 +1,7 @@
-import type { Metadata } from "next";
-import rawData from "@/data/templates.json";
-import type { RestaurantTemplateData } from "@/types/templates.types";
-import { NotFoundSection } from "@/components/sections/NotFoundSection";
+import type { Metadata } from 'next';
+import rawData from '@/data/templates.json';
+import type { RestaurantTemplateData } from '@/types/templates.types';
+import { NotFound } from '@/components/sections/NotFound';
 
 export const metadata: Metadata = { ...(rawData as RestaurantTemplateData).common.notFound?.seo };
 
@@ -13,7 +13,7 @@ export default function NotFoundPage() {
 
   return (
     <main className="flex-1">
-      <NotFoundSection data={commonData.notFound} />
+      <NotFound data={commonData.notFound} />
     </main>
   );
 }

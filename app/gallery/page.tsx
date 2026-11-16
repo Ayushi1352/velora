@@ -1,8 +1,8 @@
-import type { Metadata } from "next";
-import rawData from "@/data/templates.json";
-import type { RestaurantTemplateData } from "@/types/templates.types";
-import { Breadcrumb } from "@/components/common/Breadcrumb";
-import { Gallery } from "@/components/sections/Gallery";
+import type { Metadata } from 'next';
+import rawData from '@/data/templates.json';
+import type { RestaurantTemplateData } from '@/types/templates.types';
+import { Breadcrumb } from '@/components/common/Breadcrumb';
+import { Gallery } from '@/components/sections/Gallery';
 
 export const metadata: Metadata = { ...(rawData as RestaurantTemplateData).common.galleryBreadcrumb?.seo };
 

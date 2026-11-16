@@ -1,37 +1,37 @@
-import type { CSSProperties } from "react";
-import type { Metadata } from "next";
-import { Cormorant_Garamond, Jost, Libre_Caslon_Text, Marcellus, Montserrat, Mrs_Saint_Delafield, Newsreader } from "next/font/google";
-import rawData from "@/data/templates.json";
-import type { RestaurantTemplateData } from "@/types/templates.types";
-import { Header } from "@/components/common/Header";
-import { Footer } from "@/components/common/Footer";
-import { ScrollToTop } from "@/components/ui/ScrollToTop";
-import { ScrollReveal } from "@/components/ui/ScrollReveal";
-import "./globals.css";
+import type { Metadata } from 'next';
+import { Cormorant_Garamond, Jost, Libre_Caslon_Text, Marcellus, Montserrat, Mrs_Saint_Delafield, Newsreader } from 'next/font/google';
+import rawData from '@/data/templates.json';
+import type { RestaurantTemplateData, ThemeFontVariables } from '@/types/templates.types';
+import { Header } from '@/components/common/Header';
+import { Footer } from '@/components/common/Footer';
+import { ScrollToTop } from '@/components/ui/ScrollToTop';
+import { ScrollReveal } from '@/components/ui/ScrollReveal';
+import './globals.css';
 
-const cormorant = Cormorant_Garamond({ subsets: ["latin"], weight: ["300", "400", "500", "600", "700"], style: ["normal"], display: "swap", fallback: ["Georgia", "serif"], variable: "--font-cormorant-garamond" });
-const marcellus = Marcellus({ subsets: ["latin"], weight: ["400"], style: ["normal"], display: "swap", fallback: ["Georgia", "serif"], variable: "--font-marcellus" });
-const newsreader = Newsreader({ subsets: ["latin"], weight: ["200", "300", "400", "500", "600", "700", "800"], style: ["normal", "italic"], display: "swap", fallback: ["Georgia", "serif"], variable: "--font-newsreader" });
-const caslon = Libre_Caslon_Text({ subsets: ["latin"], weight: ["400", "700"], style: ["normal", "italic"], display: "swap", fallback: ["Georgia", "serif"], variable: "--font-libre-caslon" });
-const jost = Jost({ subsets: ["latin"], weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"], style: ["normal"], display: "swap", fallback: ["Arial", "sans-serif"], variable: "--font-jost" });
-const montserrat = Montserrat({ subsets: ["latin"], weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"], style: ["normal"], display: "swap", fallback: ["Arial", "sans-serif"], variable: "--font-montserrat" });
-const signature = Mrs_Saint_Delafield({ subsets: ["latin"], weight: ["400"], style: ["normal"], display: "swap", fallback: ["cursive"], variable: "--font-mrs-saint-delafield" });
-const fontClasses = [cormorant, marcellus, newsreader, caslon, jost, montserrat, signature].map((font) => font.variable).join(" ");
+const cormorant = Cormorant_Garamond({ subsets: ['latin'], weight: ['300', '400', '500', '600', '700'], style: ['normal'], display: 'swap', fallback: ['Georgia', 'serif'], variable: '--font-cormorant-garamond' });
+const marcellus = Marcellus({ subsets: ['latin'], weight: ['400'], style: ['normal'], display: 'swap', fallback: ['Georgia', 'serif'], variable: '--font-marcellus' });
+const newsreader = Newsreader({ subsets: ['latin'], weight: ['200', '300', '400', '500', '600', '700', '800'], style: ['normal', 'italic'], display: 'swap', fallback: ['Georgia', 'serif'], variable: '--font-newsreader' });
+const caslon = Libre_Caslon_Text({ subsets: ['latin'], weight: ['400', '700'], style: ['normal', 'italic'], display: 'swap', fallback: ['Georgia', 'serif'], variable: '--font-libre-caslon' });
+const jost = Jost({ subsets: ['latin'], weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'], style: ['normal'], display: 'swap', fallback: ['Arial', 'sans-serif'], variable: '--font-jost' });
+const montserrat = Montserrat({ subsets: ['latin'], weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'], style: ['normal'], display: 'swap', fallback: ['Arial', 'sans-serif'], variable: '--font-montserrat' });
+const signature = Mrs_Saint_Delafield({ subsets: ['latin'], weight: ['400'], style: ['normal'], display: 'swap', fallback: ['cursive'], variable: '--font-mrs-saint-delafield' });
+const fontClasses = [cormorant, marcellus, newsreader, caslon, jost, montserrat, signature].map((font) => font.variable).join(' ');
 
 const templateData: RestaurantTemplateData = rawData;
 const sectionData = templateData.categories.Restaurant.sections;
 const commonData = templateData.common;
 
+// Which font each part of the site uses comes from templates.json (common.theme.fonts).
 const { fonts } = commonData.theme;
-const fontVariables = {
-  "--font-display": fonts.display,
-  "--font-accent": fonts.accent,
-  "--font-heading": fonts.heading,
-  "--font-body": fonts.body,
-  "--font-ui": fonts.ui,
-  "--font-label": fonts.label,
-  "--font-signature": fonts.signature,
-} as CSSProperties;
+const fontVariables: ThemeFontVariables = {
+  '--font-display': fonts.display,
+  '--font-accent': fonts.accent,
+  '--font-heading': fonts.heading,
+  '--font-body': fonts.body,
+  '--font-ui': fonts.ui,
+  '--font-label': fonts.label,
+  '--font-signature': fonts.signature,
+};
 
 export const metadata: Metadata = {
   title: {
@@ -53,7 +53,7 @@ export const metadata: Metadata = {
  */
 const motionScript = `(function(d){if(matchMedia("(prefers-reduced-motion: reduce)").matches)return;d.classList.add("motion");setTimeout(function(){if(!window.__revealReady)d.classList.remove("motion")},3500)})(document.documentElement)`;
 
-export default function RootLayout({ children }: LayoutProps<"/">) {
+export default function RootLayout({ children }: LayoutProps<'/'>) {
   return (
     // suppressHydrationWarning: the inline script adds the `motion` class before React hydrates.
     <html

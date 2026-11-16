@@ -1,6 +1,6 @@
-import { Fragment } from "react";
-import Link from "next/link";
-import type { BreadcrumbProps } from "@/types/templates.types";
+import { Fragment } from 'react';
+import Link from 'next/link';
+import type { BreadcrumbProps } from '@/types/templates.types';
 
 const Separator = () => <span aria-hidden="true" className="block h-px w-[16px] bg-[var(--color-line)] lg:w-[calc(18*var(--u))]" />;
 

@@ -1,7 +1,7 @@
-import { BookButton } from "@/components/ui/BookButton";
-import type { NotFoundSectionProps } from "@/types/templates.types";
+import { BookButton } from '@/components/ui/BookButton';
+import type { NotFoundProps } from '@/types/templates.types';
 
-export const NotFoundSection = ({ data }: NotFoundSectionProps) => {
+export const NotFound = ({ data }: NotFoundProps) => {
   if (!data) return null;
   return (
     <section aria-labelledby="not-found-title" className="mx-auto flex max-w-[1920px] flex-col items-center px-5 py-[var(--section-space)] text-center md:px-8">
@@ -10,9 +10,9 @@ export const NotFoundSection = ({ data }: NotFoundSectionProps) => {
       </p>
       <span aria-hidden="true" data-intro="line" data-delay="2" className="mt-[12px] block h-[2px] w-[64px] bg-[var(--color-gold-soft)] lg:mt-[calc(16*var(--u))] lg:w-[calc(75*var(--u))]" />
       <h1 id="not-found-title" data-intro="up" data-delay="3" className="mt-[20px] font-heading text-[clamp(26px,8.5vw,40px)] font-medium leading-[1.08] tracking-[-0.015em] text-[var(--color-wine)] sm:text-[52px] lg:mt-[calc(26*var(--u))] lg:text-[max(calc(72*var(--u)),var(--text-min))]">
-        {data.titleLine1}
+        {data.title}
         <br />
-        <span className="font-normal italic text-[var(--color-gold)]">{data.titleLine2}</span>
+        <span className="font-normal italic text-[var(--color-gold)]">{data.titleHighlight}</span>
       </h1>
       <p data-intro="up" data-delay="4" className="mt-[16px] max-w-[620px] font-body text-[17px] leading-[1.5] text-[var(--color-body)] lg:mt-[calc(18*var(--u))] lg:max-w-[calc(680*var(--u))] lg:text-[max(calc(21*var(--u)),var(--text-min))]">
         {data.text}
@@ -20,8 +20,9 @@ export const NotFoundSection = ({ data }: NotFoundSectionProps) => {
       <BookButton
         data-intro="up"
         data-delay="6"
-        href={data.button.href}
+        href={data.button.url}
         label={data.button.label}
+        icon={data.buttonIcon}
         className="mt-[28px] h-[54px] px-[30px] text-[18px] lg:mt-[calc(37*var(--u))] lg:h-[calc(61*var(--u))] lg:px-[calc(40*var(--u))] lg:text-[max(calc(19*var(--u)),var(--text-min))]"
       />
     </section>

@@ -1,21 +1,21 @@
-"use client";
+'use client';
 
-import { FormThankYou } from "@/components/ui/FormThankYou";
-import { useDummySubmit } from "@/components/ui/useDummySubmit";
-import { Icon } from "@/components/ui/Icon";
-import { Fragment } from "react";
-import Image from "next/image";
-import { SectionHeading } from "@/components/ui/SectionHeading";
-import type { ReactNode } from "react";
-import type { BookingFormData, BookingFeature, BookingProps } from "@/types/templates.types";
+import { FormThankYou } from '@/components/ui/FormThankYou';
+import { useDummySubmit } from '@/components/ui/useDummySubmit';
+import { Icon } from '@/components/ui/Icon';
+import { Fragment } from 'react';
+import Image from 'next/image';
+import { SectionHeading } from '@/components/ui/SectionHeading';
+import type { ReactNode } from 'react';
+import type { BookingFormData, BookingFeature, BookingProps } from '@/types/templates.types';
 
 const box =
-  "relative flex rounded-[4px] border border-[var(--color-line)] bg-[var(--color-white)] transition-colors focus-within:border-[var(--color-gold-soft)]";
+  'relative flex rounded-[4px] border border-[var(--color-line)] bg-[var(--color-white)] transition-colors focus-within:border-[var(--color-gold-soft)]';
 // The single-line height is kept separate so the message box can set its own height (no two h-* on one element).
-const row = "h-[60px] items-center lg:h-[calc(72*var(--u))]";
+const row = 'h-[60px] items-center lg:h-[calc(72*var(--u))]';
 const control =
-  "h-full w-full bg-transparent pl-[52px] pr-[16px] font-ui text-[16px] text-[var(--color-ink)] outline-none placeholder:text-[var(--color-body)] lg:pl-[calc(68*var(--u))] lg:text-[max(calc(20*var(--u)),var(--text-min))]";
-const iconClass = "pointer-events-none absolute left-[18px] size-[20px] text-[var(--color-muted)] lg:left-[calc(30*var(--u))] lg:size-[calc(27*var(--u))]";
+  'h-full w-full bg-transparent pl-[52px] pr-[16px] font-ui text-[16px] text-[var(--color-ink)] outline-none placeholder:text-[var(--color-body)] lg:pl-[calc(68*var(--u))] lg:text-[max(calc(20*var(--u)),var(--text-min))]';
+const iconClass = 'pointer-events-none absolute left-[18px] size-[20px] text-[var(--color-muted)] lg:left-[calc(30*var(--u))] lg:size-[calc(27*var(--u))]';
 
 function Field({ icon, children }: { icon: string; children: ReactNode }) {
   return (
@@ -26,7 +26,7 @@ function Field({ icon, children }: { icon: string; children: ReactNode }) {
   );
 }
 
-function SelectField({ icon, name, placeholder, options }: { icon: string; name: string; placeholder: string; options: string[] }) {
+function SelectField({ icon, arrowIcon, name, placeholder, options }: { icon: string; arrowIcon: string; name: string; placeholder: string; options: string[] }) {
   return (
     <Field icon={icon}>
       <select name={name} required defaultValue="" aria-label={placeholder} className={`${control} appearance-none !pr-[44px] invalid:text-[var(--color-body)]`}>
@@ -39,14 +39,14 @@ function SelectField({ icon, name, placeholder, options }: { icon: string; name:
           </option>
         ))}
       </select>
-      <Icon name="HiOutlineChevronDown" strokeWidth={2} className="pointer-events-none absolute right-[18px] size-[18px] text-[var(--color-gold)] lg:right-[calc(24*var(--u))] lg:size-[calc(20*var(--u))]" />
+      <Icon name={arrowIcon} strokeWidth={2} className="pointer-events-none absolute right-[18px] size-[18px] text-[var(--color-gold)] lg:right-[calc(24*var(--u))] lg:size-[calc(20*var(--u))]" />
     </Field>
   );
 }
 
-const ReservationForm = ({ form, closeLabel }: { form: BookingFormData; closeLabel: string }) => {
+const ReservationForm = ({ form, closeLabel, closeIcon }: { form: BookingFormData; closeLabel: string; closeIcon: string }) => {
   const { status, name, onSubmit, dismiss, showThanks, hiding } = useDummySubmit();
-  const { fields } = form;
+  const { fields, fieldIcons } = form;
 
   return (
     <div data-reveal="right" data-delay="2" className="rounded-[12px] bg-[var(--color-cream)] px-5 py-8 sm:px-8 lg:pb-[calc(44*var(--u))] lg:pl-[calc(41*var(--u))] lg:pr-[calc(41*var(--u))] lg:pt-[calc(48*var(--u))]">
@@ -55,49 +55,49 @@ const ReservationForm = ({ form, closeLabel }: { form: BookingFormData; closeLab
       <p className="mt-[16px] max-w-[640px] font-body text-[17px] leading-[1.3] text-[var(--color-body)] lg:mt-[calc(22*var(--u))] lg:text-[max(calc(23*var(--u)),var(--text-min))]">{form.text}</p>
 
       {showThanks ? (
-        <FormThankYou title={form.successTitle} message={form.success} closeLabel={closeLabel} name={name} hiding={hiding} onClose={dismiss} />
+        <FormThankYou title={form.successTitle} message={form.success} icon={form.successIcon} closeLabel={closeLabel} closeIcon={closeIcon} name={name} hiding={hiding} onClose={dismiss} />
       ) : (
-        <form onSubmit={onSubmit} aria-busy={status === "sending"} className="mt-[24px] grid gap-[16px] sm:grid-cols-2 lg:mt-[calc(28*var(--u))] lg:gap-x-[calc(24*var(--u))] lg:gap-y-[calc(23*var(--u))]">
-          <Field icon="HiOutlineUser">
+        <form onSubmit={onSubmit} aria-busy={status === 'sending'} className="mt-[24px] grid gap-[16px] sm:grid-cols-2 lg:mt-[calc(28*var(--u))] lg:gap-x-[calc(24*var(--u))] lg:gap-y-[calc(23*var(--u))]">
+          <Field icon={fieldIcons.name}>
             <input type="text" name="name" required autoComplete="name" placeholder={fields.name} aria-label={fields.name} className={control} />
           </Field>
-          <Field icon="HiOutlineEnvelope">
+          <Field icon={fieldIcons.email}>
             <input type="email" name="email" required autoComplete="email" placeholder={fields.email} aria-label={fields.email} className={control} />
           </Field>
-          <Field icon="HiOutlinePhone">
+          <Field icon={fieldIcons.phone}>
             <input type="tel" name="phone" required autoComplete="tel" placeholder={fields.phone} aria-label={fields.phone} className={control} />
           </Field>
-          <SelectField icon="HiOutlineUsers" name="guests" placeholder={fields.guests} options={form.guestOptions} />
-          <Field icon="HiOutlineCalendarDays">
+          <SelectField icon={fieldIcons.guests} arrowIcon={form.selectIcon} name="guests" placeholder={fields.guests} options={form.guestOptions} />
+          <Field icon={fieldIcons.date}>
             <input
               type="text"
               name="date"
               required
               placeholder={fields.date}
               aria-label={fields.date}
-              onFocus={(e) => (e.currentTarget.type = "date")}
+              onFocus={(e) => (e.currentTarget.type = 'date')}
               onBlur={(e) => {
-                if (!e.currentTarget.value) e.currentTarget.type = "text";
+                if (!e.currentTarget.value) e.currentTarget.type = 'text';
               }}
               className={control}
             />
-            <Icon name="HiOutlineChevronDown" strokeWidth={2} className="pointer-events-none absolute right-[18px] size-[18px] text-[var(--color-gold)] lg:right-[calc(24*var(--u))] lg:size-[calc(20*var(--u))]" />
+            <Icon name={form.selectIcon} strokeWidth={2} className="pointer-events-none absolute right-[18px] size-[18px] text-[var(--color-gold)] lg:right-[calc(24*var(--u))] lg:size-[calc(20*var(--u))]" />
           </Field>
-          <SelectField icon="FaRegClock" name="time" placeholder={fields.time} options={form.timeOptions} />
+          <SelectField icon={fieldIcons.time} arrowIcon={form.selectIcon} name="time" placeholder={fields.time} options={form.timeOptions} />
           <label className={`${box} h-[140px] items-start sm:col-span-2 lg:h-[calc(165*var(--u))]`}>
-            <Icon name="HiOutlineChatBubbleLeftEllipsis" className={`${iconClass} top-[20px] lg:top-[calc(26*var(--u))]`} />
+            <Icon name={fieldIcons.message} className={`${iconClass} top-[20px] lg:top-[calc(26*var(--u))]`} />
             <textarea name="message" placeholder={fields.message} aria-label={fields.message} className={`${control} resize-none pt-[18px] lg:pt-[calc(24*var(--u))]`} />
           </label>
           <button
             type="submit"
-            disabled={status === "sending"}
+            disabled={status === 'sending'}
             className="mt-[4px] flex h-[62px] items-center justify-center gap-[14px] rounded-[2px] bg-[linear-gradient(180deg,var(--color-wine),var(--color-maroon))] font-ui text-[18px] font-medium text-[var(--color-white)] shadow-[0_8px_18px_var(--color-shadow-button)] transition-colors hover:bg-none hover:bg-[var(--color-gold)] disabled:opacity-80 sm:col-span-2 lg:h-[calc(77*var(--u))] lg:mt-0 lg:gap-[calc(16*var(--u))] lg:text-[max(calc(21*var(--u)),var(--text-min))]"
           >
-            {status === "sending" ? form.sending : form.button}
-            {status === "sending" ? (
+            {status === 'sending' ? form.sending : form.button}
+            {status === 'sending' ? (
               <span aria-hidden="true" className="size-[18px] animate-spin rounded-full border-2 border-[var(--color-white-40)] border-t-[var(--color-white)]" />
             ) : (
-              <Icon name="HiOutlineArrowRight" strokeWidth={2} className="size-[18px] lg:size-[calc(20*var(--u))]" />
+              <Icon name={form.buttonIcon} strokeWidth={2} className="size-[18px] lg:size-[calc(20*var(--u))]" />
             )}
           </button>
         </form>
@@ -112,10 +112,10 @@ const BookingFeatures = ({ features }: { features: BookingFeature[] }) => {
       {features.map((f, i) => {
         return (
           <li
-            key={f.title}
+            key={f.id}
             data-reveal="up"
             data-delay={i * 2 + 1}
-            className={`group flex flex-col items-center px-4 text-center lg:px-0 ${i > 0 ? "md:border-l md:border-[var(--color-gold-line)]" : ""} md:py-[8px]`}
+            className={`group flex flex-col items-center px-4 text-center lg:px-0 ${i > 0 ? 'md:border-l md:border-[var(--color-gold-line)]' : ''} md:py-[8px]`}
           >
             <span data-reveal="pop" data-delay={i * 2 + 3} className="grid size-[80px] place-items-center rounded-full bg-[var(--color-blush)] text-[var(--color-gold)] transition-colors duration-300 group-hover:bg-[var(--color-maroon)] group-hover:text-[var(--color-gold-bright)] lg:size-[calc(90*var(--u))]">
               <Icon name={f.icon} className="size-[36px] lg:size-[calc(38*var(--u))]" />
@@ -131,7 +131,7 @@ const BookingFeatures = ({ features }: { features: BookingFeature[] }) => {
 
 export const Booking = ({ data }: BookingProps) => {
   if (!data) return null;
-  const { intro, image, form, features } = data;
+  const { intro, image, imageAlt, form, features } = data;
 
   return (
     <section aria-label={intro.label} className="mx-auto max-w-[1920px] py-[var(--section-space)] px-5 md:px-8 lg:px-[calc(41*var(--u))]">
@@ -140,12 +140,12 @@ export const Booking = ({ data }: BookingProps) => {
         labelVariant="sans-wide"
         labelLineClassName="w-[50px] lg:w-[calc(70*var(--u))]"
         labelClassName="mb-[12px] lg:mb-[calc(18*var(--u))] !font-ui !tracking-[0.32em] lg:!text-[max(calc(21*var(--u)),var(--text-min))]"
-        line1={intro.titleLine1}
-        line2={intro.titleLine2}
+        title={intro.title}
+        titleHighlight={intro.titleHighlight}
         titleClassName="text-[clamp(26px,8.5vw,40px)] sm:text-[56px] lg:text-[max(calc(80*var(--u)),var(--text-min))]"
         text={intro.text.map((line, i) => (
           <Fragment key={i}>
-            {i > 0 && " "}
+            {i > 0 && ' '}
             <span className="md:block">{line}</span>
           </Fragment>
         ))}
@@ -154,9 +154,9 @@ export const Booking = ({ data }: BookingProps) => {
 
       <div className="mt-[40px] grid gap-8 lg:grid-cols-2 lg:mt-[calc(62*var(--u))] lg:gap-[calc(32*var(--u))]">
         <div data-reveal="mask-left" className="relative aspect-[789/837] overflow-hidden rounded-[6px] lg:aspect-auto">
-          <Image src={image.src} alt={image.alt} fill sizes="(min-width: 1024px) 47vw, 100vw" className="object-cover" />
+          <Image src={image} alt={imageAlt} fill sizes="(min-width: 1024px) 47vw, 100vw" className="object-cover" />
         </div>
-        <ReservationForm form={form} closeLabel={data.closeMessageLabel} />
+        <ReservationForm form={form} closeLabel={data.closeMessageLabel} closeIcon={data.closeMessageIcon} />
       </div>
 
       <BookingFeatures features={features} />

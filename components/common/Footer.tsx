@@ -1,22 +1,22 @@
-import { Fragment } from "react";
-import Image from "next/image";
-import Link from "next/link";
-import { FooterLinks } from "@/components/common/FooterLinks";
-import { Icon } from "@/components/ui/Icon";
-import type { FooterProps } from "@/types/templates.types";
+import { Fragment } from 'react';
+import Image from 'next/image';
+import Link from 'next/link';
+import { FooterLinks } from '@/components/common/FooterLinks';
+import { Icon } from '@/components/ui/Icon';
+import type { FooterProps } from '@/types/templates.types';
 
-const contactText = "font-body text-[17px] leading-[1.38] text-[var(--color-ink-soft)] lg:text-[max(calc(20*var(--u)),var(--text-min))]";
-const iconCircle = "grid size-[44px] shrink-0 place-items-center rounded-full border border-[var(--color-gold-line)] text-[var(--color-maroon)] lg:size-[calc(46*var(--u))]";
+const contactText = 'font-body text-[17px] leading-[1.38] text-[var(--color-ink-soft)] lg:text-[max(calc(20*var(--u)),var(--text-min))]';
+const iconCircle = 'grid size-[44px] shrink-0 place-items-center rounded-full border border-[var(--color-gold-line)] text-[var(--color-maroon)] lg:size-[calc(46*var(--u))]';
 
 /** Fills `{year}` in the copyright line; cached so the footer can still be prerendered. */
 async function currentYear() {
-  "use cache";
+  'use cache';
   return new Date().getFullYear();
 }
 
 export const Footer = async ({ data: footer }: FooterProps) => {
   if (!footer) return null;
-  const copyright = footer.copyright.replace("{year}", String(await currentYear()));
+  const copyright = footer.copyrightText.replace('{year}', String(await currentYear()));
 
   return (
     <footer>
@@ -26,17 +26,17 @@ export const Footer = async ({ data: footer }: FooterProps) => {
           <div data-reveal="up" className="md:col-span-2 lg:col-span-1">
             <Link href={footer.logoUrl} aria-label={footer.logoLabel} className="inline-block">
               <Image
-                src={footer.logo.src}
-                alt={footer.logo.alt}
-                width={footer.logo.width}
-                height={footer.logo.height}
+                src={footer.logo}
+                alt={footer.logoAlt}
+                width={footer.logoWidth}
+                height={footer.logoHeight}
                 sizes="(min-width: 1024px) 15vw, 220px"
                 className="h-auto w-[190px] md:w-[210px] lg:w-[calc(250*var(--u))]"
               />
             </Link>
             <p className="mt-4 pl-[16px] font-heading text-[34px] font-normal italic leading-[1.08] tracking-[-0.02em] text-[var(--color-wine)] lg:mt-[calc(18*var(--u))] lg:pl-[calc(17*var(--u))] lg:text-[max(calc(50*var(--u)),var(--text-min))]">
-              {footer.titleLine1}
-              <span className="block pl-[0.16em] text-[var(--color-gold)]">{footer.titleLine2}</span>
+              {footer.title}
+              <span className="block pl-[0.16em] text-[var(--color-gold)]">{footer.titleHighlight}</span>
             </p>
             <span aria-hidden="true" data-reveal="line" data-delay="3" className="ml-[22px] mt-4 block h-[2px] w-[48px] origin-left bg-[var(--color-gold-soft)] lg:ml-[calc(24*var(--u))] lg:mt-[calc(16*var(--u))] lg:w-[calc(52*var(--u))]" />
             <p className="mt-4 pl-[22px] font-body text-[16px] leading-[1.45] text-[var(--color-ink-soft)] lg:mt-[calc(18*var(--u))] lg:pl-[calc(24*var(--u))] lg:text-[max(calc(19*var(--u)),var(--text-min))]">
@@ -44,7 +44,7 @@ export const Footer = async ({ data: footer }: FooterProps) => {
                 <Fragment key={i}>
                   {i > 0 && (
                     <>
-                      <br className="hidden sm:block" />{" "}
+                      <br className="hidden sm:block" />{' '}
                     </>
                   )}
                   {line}
@@ -57,7 +57,7 @@ export const Footer = async ({ data: footer }: FooterProps) => {
           <ul data-reveal="up" data-delay="2" className="flex flex-col gap-5 md:order-2 lg:order-none lg:gap-[calc(24*var(--u))]">
             <li className="flex items-center gap-5 lg:gap-[calc(37*var(--u))]">
               <span className={iconCircle}>
-                <Icon name="FaMapMarkerAlt" className="size-[18px] lg:size-[calc(18*var(--u))]" />
+                <Icon name={footer.addressIcon} className="size-[18px] lg:size-[calc(18*var(--u))]" />
               </span>
               <span className={contactText}>
                 {footer.address.map((line, i) => (
@@ -70,17 +70,17 @@ export const Footer = async ({ data: footer }: FooterProps) => {
             </li>
             <li className="flex items-center gap-5 lg:gap-[calc(37*var(--u))]">
               <span className={iconCircle}>
-                <Icon name="FaPhoneAlt" className="size-[16px] lg:size-[calc(16*var(--u))]" />
+                <Icon name={footer.phoneIcon} className="size-[16px] lg:size-[calc(16*var(--u))]" />
               </span>
-              <a href={`tel:${footer.phone.replace(/\s/g, "")}`} className={`${contactText} transition-colors hover:text-[var(--color-gold)]`}>
+              <a href={footer.phoneUrl} className={`${contactText} transition-colors hover:text-[var(--color-gold)]`}>
                 {footer.phone}
               </a>
             </li>
             <li className="flex items-center gap-5 lg:gap-[calc(37*var(--u))]">
               <span className={iconCircle}>
-                <Icon name="FaEnvelope" className="size-[16px] lg:size-[calc(16*var(--u))]" />
+                <Icon name={footer.emailIcon} className="size-[16px] lg:size-[calc(16*var(--u))]" />
               </span>
-              <a href={`mailto:${footer.email}`} className={`${contactText} break-all transition-colors hover:text-[var(--color-gold)]`}>
+              <a href={footer.emailUrl} className={`${contactText} break-all transition-colors hover:text-[var(--color-gold)]`}>
                 {footer.email}
               </a>
             </li>

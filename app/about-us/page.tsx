@@ -1,9 +1,9 @@
-import type { Metadata } from "next";
-import rawData from "@/data/templates.json";
-import type { RestaurantTemplateData } from "@/types/templates.types";
-import { Breadcrumb } from "@/components/common/Breadcrumb";
-import { AboutUs } from "@/components/sections/AboutUs";
-import { Services } from "@/components/sections/Services";
+import type { Metadata } from 'next';
+import rawData from '@/data/templates.json';
+import type { RestaurantTemplateData } from '@/types/templates.types';
+import { Breadcrumb } from '@/components/common/Breadcrumb';
+import { AboutUs } from '@/components/sections/AboutUs';
+import { Services } from '@/components/sections/Services';
 
 export const metadata: Metadata = { ...(rawData as RestaurantTemplateData).common.aboutBreadcrumb?.seo };
 
