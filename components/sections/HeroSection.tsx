@@ -36,17 +36,17 @@ export const HeroSection = ({ data: hero }: HeroSectionProps) => {
           </h1>
           <ul className="mt-[22px] flex items-center justify-center gap-x-[8px] gap-y-2 font-label text-[min(11px,3.2vw)] font-medium uppercase leading-[1.35] tracking-[0.08em] text-[var(--color-body)] sm:flex-wrap sm:gap-x-[14px] sm:text-[12px] sm:leading-normal sm:tracking-[0.2em] md:flex-nowrap md:justify-start md:gap-x-[8px] md:leading-[1.35] md:tracking-[0.08em] lg:flex-wrap lg:gap-x-[calc(22*var(--u))] lg:mt-[calc(20*var(--u))] lg:text-[max(calc(18*var(--u)),var(--text-min))] lg:leading-normal lg:tracking-[0.2em]">
             {hero.highlights.map((item, i) => (
-              <li key={item} data-intro="up" data-delay={7 + i} className="flex items-center gap-x-[8px] sm:gap-x-[14px] md:gap-x-[8px] lg:gap-x-[calc(22*var(--u))]">
+              <li key={item.id} data-intro="up" data-delay={7 + i} className="flex items-center gap-x-[8px] sm:gap-x-[14px] md:gap-x-[8px] lg:gap-x-[calc(22*var(--u))]">
                 {i > 0 && <span aria-hidden="true" className="h-[2.4em] w-[2px] shrink-0 bg-[var(--color-gold-bright)] sm:h-[1.05em] md:h-auto md:self-stretch lg:h-[1.05em] lg:self-center" />}
-                {item}
+                {item.text}
               </li>
             ))}
           </ul>
           <BookButton
             data-intro="up"
             data-delay="10"
-            href={hero.button.url}
-            label={hero.button.label}
+            href={hero.buttonUrl}
+            label={hero.buttonText}
             icon={hero.buttonIcon}
             className="mt-[28px] h-[58px] px-[30px] text-[21px] lg:h-[calc(76*var(--u))] lg:mt-[calc(37*var(--u))] lg:px-[calc(42*var(--u))] lg:text-[max(calc(28*var(--u)),var(--text-min))]"
           />

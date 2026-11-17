@@ -26,8 +26,8 @@ export const FoodMenu = ({ data: menu }: FoodMenuProps) => {
           <BookButton
             data-reveal="up"
             data-delay="4"
-            href={menu.button.url}
-            label={menu.button.label}
+            href={menu.buttonUrl}
+            label={menu.buttonText}
             icon={menu.buttonIcon}
             className="mt-[26px] h-[54px] px-[30px] text-[18px] lg:h-[calc(61*var(--u))] lg:mt-[calc(30*var(--u))] lg:px-[calc(40*var(--u))] lg:text-[max(calc(19*var(--u)),var(--text-min))]"
           />

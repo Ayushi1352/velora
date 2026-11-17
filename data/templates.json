@@ -197,10 +197,8 @@
       "title": "This Page Is",
       "titleHighlight": "Not on the Menu",
       "text": "The page you are looking for may have been moved or no longer exists. Let us take you back to the table.",
-      "button": {
-        "label": "Back to Home",
-        "url": "/"
-      },
+      "buttonText": "Back to Home",
+      "buttonUrl": "/",
       "buttonIcon": "HiOutlineArrowRight"
     },
     "Footer": {
@@ -212,54 +210,61 @@
       "logoLabel": "Velora",
       "title": "A Fine Dining",
       "titleHighlight": "Experience Awaits",
-      "text": [
-        "Experience exquisite flavors, warm hospitality",
-        "and unforgettable moments at Velora."
-      ],
-      "addressIcon": "FaMapMarkerAlt",
-      "address": [
-        "350 Fifth Avenue,",
-        "New York, NY 10118, USA"
-      ],
-      "phoneIcon": "FaPhoneAlt",
-      "phone": "+1 0000000000",
-      "phoneUrl": "tel:+10000000000",
-      "emailIcon": "FaEnvelope",
-      "email": "info@xyz.com",
-      "emailUrl": "mailto:info@xyz.com",
-      "menuLabel": "Footer navigation",
-      "links": [
+      "description": "Experience exquisite flavors, warm hospitality\nand unforgettable moments at Velora.",
+      "contactItems": [
         {
-          "id": "home",
-          "label": "Home",
-          "url": "/"
+          "id": "address",
+          "icon": "FaMapMarkerAlt",
+          "text": "350 Fifth Avenue,\nNew York, NY 10118, USA"
         },
         {
-          "id": "about-us",
-          "label": "About Us",
-          "url": "/about-us"
+          "id": "phone",
+          "icon": "FaPhoneAlt",
+          "text": "+1 0000000000",
+          "url": "tel:+10000000000"
         },
         {
-          "id": "our-menu",
-          "label": "Our Menu",
-          "url": "/our-menu"
-        },
-        {
-          "id": "gallery",
-          "label": "Gallery",
-          "url": "/gallery"
-        },
-        {
-          "id": "blog",
-          "label": "Blog",
-          "url": "/blog"
-        },
-        {
-          "id": "contact-us",
-          "label": "Contact Us",
-          "url": "/contact-us"
+          "id": "email",
+          "icon": "FaEnvelope",
+          "text": "info@xyz.com",
+          "url": "mailto:info@xyz.com"
         }
       ],
+      "quickLinks": {
+        "title": "Footer navigation",
+        "links": [
+          {
+            "id": "home",
+            "label": "Home",
+            "url": "/"
+          },
+          {
+            "id": "about-us",
+            "label": "About Us",
+            "url": "/about-us"
+          },
+          {
+            "id": "our-menu",
+            "label": "Our Menu",
+            "url": "/our-menu"
+          },
+          {
+            "id": "gallery",
+            "label": "Gallery",
+            "url": "/gallery"
+          },
+          {
+            "id": "blog",
+            "label": "Blog",
+            "url": "/blog"
+          },
+          {
+            "id": "contact-us",
+            "label": "Contact Us",
+            "url": "/contact-us"
+          }
+        ]
+      },
       "copyrightText": "© {year} All Rights Reserved. Powered by Lestow.",
       "socialLinks": [
         {
@@ -337,10 +342,8 @@
                   "url": "/contact-us"
                 }
               ],
-              "button": {
-                "label": "Book a Table",
-                "url": "/book-a-table"
-              },
+              "buttonText": "Book a Table",
+              "buttonUrl": "/book-a-table",
               "buttonIcon": "HiOutlineArrowRight",
               "menuLabel": "Main navigation",
               "mobileMenuLabel": "Mobile navigation",
@@ -358,14 +361,21 @@
               "title": "Delicacies",
               "subtitle": "Flavors the Seasons",
               "highlights": [
-                "Exquisite Cuisine",
-                "Elegant Ambience",
-                "Memorable Moments"
+                {
+                  "id": "exquisite-cuisine",
+                  "text": "Exquisite Cuisine"
+                },
+                {
+                  "id": "elegant-ambience",
+                  "text": "Elegant Ambience"
+                },
+                {
+                  "id": "memorable-moments",
+                  "text": "Memorable Moments"
+                }
               ],
-              "button": {
-                "label": "Book a Table",
-                "url": "/book-a-table"
-              },
+              "buttonText": "Book a Table",
+              "buttonUrl": "/book-a-table",
               "buttonIcon": "HiOutlineArrowRight",
               "image": "/images/home/hero-grill.webp",
               "imageAlt": "Grilled steak, sausages and skewers on a barbecue grill",
@@ -405,13 +415,9 @@
               "label": "Our Story",
               "title": "Crafting Exceptional",
               "titleHighlight": "Dining Experiences",
-              "paragraphs": [
-                "At Velora, we bring together exquisite flavors, fresh ingredients, and culinary artistry to create unforgettable dining experiences. Our passion for food, attention to detail, and warm hospitality make every visit a celebration of taste, elegance, and cherished moments."
-              ],
-              "button": {
-                "label": "Explore Our Restaurant",
-                "url": "/about-us"
-              },
+              "description": "At Velora, we bring together exquisite flavors, fresh ingredients, and culinary artistry to create unforgettable dining experiences. Our passion for food, attention to detail, and warm hospitality make every visit a celebration of taste, elegance, and cherished moments.",
+              "buttonText": "Explore Our Restaurant",
+              "buttonUrl": "/about-us",
               "buttonIcon": "HiOutlineArrowRight",
               "leftImage": "/images/shared/chef-plating.webp",
               "leftImageAlt": "Chef plating a steak dish in the kitchen",
@@ -422,10 +428,7 @@
               "label": "Our Story",
               "title": "Crafting Exceptional",
               "titleHighlight": "Dining Experiences",
-              "paragraphs": [
-                "At Velora, we bring together exquisite flavors, fresh ingredients, and culinary artistry to create unforgettable dining experiences. Our passion for food, attention to detail, and warm hospitality make every visit a celebration of taste, elegance, and cherished moments.",
-                "At Velora, we bring together exquisite flavors, fresh ingredients, and culinary artistry to create unforgettable dining experiences. Our passion for food, attention to detail, and warm hospitality make every visit a celebration of taste, elegance, and cherished moments."
-              ],
+              "description": "At Velora, we bring together exquisite flavors, fresh ingredients, and culinary artistry to create unforgettable dining experiences. Our passion for food, attention to detail, and warm hospitality make every visit a celebration of taste, elegance, and cherished moments.\nAt Velora, we bring together exquisite flavors, fresh ingredients, and culinary artistry to create unforgettable dining experiences. Our passion for food, attention to detail, and warm hospitality make every visit a celebration of taste, elegance, and cherished moments.",
               "leftImage": "/images/shared/chef-plating.webp",
               "leftImageAlt": "Chef plating a steak dish in the kitchen",
               "rightImage": "/images/shared/table-flowers-wine.webp",
@@ -440,10 +443,8 @@
               "title": "Food",
               "titleHighlight": "Menu",
               "text": "A Selection of Exceptional Flavors",
-              "button": {
-                "label": "View Full Menu",
-                "url": "/our-menu"
-              },
+              "buttonText": "View Full Menu",
+              "buttonUrl": "/our-menu",
               "buttonIcon": "HiOutlineArrowRight",
               "categories": [
                 {
@@ -1060,15 +1061,20 @@
                   "homeImageAlt": "Chef garnishing a plated steak",
                   "coverImage": "/images/blog/plating-scallops.webp",
                   "coverImageAlt": "Seared scallops plated on a textured ceramic dish by candlelight",
-                  "content": [
-                    "Food is not just about taste; it's a complete sensory experience, and presentation plays a big role in that journey. At our restaurant, we believe that a beautifully plated dish not only looks inviting but also enhances the overall dining experience. A well-presented dish can spark curiosity, set the mood and make the first bite even more memorable.",
-                    "Our chefs pay close attention to every detail, from the choice of plate and color combinations to the arrangement of ingredients. Each element is thoughtfully placed to create balance, contrast and harmony on the plate. Fresh herbs, vibrant sauces and seasonal ingredients are used to add both color and texture, making the dish as pleasing to the eyes as it is to the palate.",
-                    "Plating is also a way for our chefs to showcase creativity and tell a story through food. Whether it's a modern twist on a classic recipe or an entirely new creation, every plate is designed to reflect our passion for culinary artistry."
-                  ],
+                  "content": "Food is not just about taste; it's a complete sensory experience, and presentation plays a big role in that journey. At our restaurant, we believe that a beautifully plated dish not only looks inviting but also enhances the overall dining experience. A well-presented dish can spark curiosity, set the mood and make the first bite even more memorable.\nOur chefs pay close attention to every detail, from the choice of plate and color combinations to the arrangement of ingredients. Each element is thoughtfully placed to create balance, contrast and harmony on the plate. Fresh herbs, vibrant sauces and seasonal ingredients are used to add both color and texture, making the dish as pleasing to the eyes as it is to the palate.\nPlating is also a way for our chefs to showcase creativity and tell a story through food. Whether it's a modern twist on a classic recipe or an entirely new creation, every plate is designed to reflect our passion for culinary artistry.",
                   "highlights": [
-                    "Fresh and seasonal ingredients for vibrant and natural colors",
-                    "Thoughtful arrangement to create balance and harmony",
-                    "A perfect blend of taste, texture and visual appeal"
+                    {
+                      "id": "fresh-and-seasonal-ingredients-for-vibrant-and-natural-colors",
+                      "text": "Fresh and seasonal ingredients for vibrant and natural colors"
+                    },
+                    {
+                      "id": "thoughtful-arrangement-to-create-balance-and-harmony",
+                      "text": "Thoughtful arrangement to create balance and harmony"
+                    },
+                    {
+                      "id": "a-perfect-blend-of-taste-texture-and-visual-appeal",
+                      "text": "A perfect blend of taste, texture and visual appeal"
+                    }
                   ],
                   "quote": {
                     "text": "Great food is a feast for the eyes before it is a treat for the taste buds.",
@@ -1095,15 +1101,20 @@
                   "homeImageAlt": "Candlelit restaurant table with wine glasses",
                   "coverImage": "/images/contact/restaurant-interior.webp",
                   "coverImageAlt": "Warmly lit dining room with velvet chairs",
-                  "content": [
-                    "A memorable meal begins long before the first course arrives. The moment our guests step through the door, the lighting, music, textures and scents work together to set the tone for the evening ahead.",
-                    "Our dining room is designed around warmth and intimacy. Soft, layered lighting, rich velvet seating and carefully chosen table settings create a space that feels elegant yet relaxed, so every guest can settle in and enjoy the moment.",
-                    "Every detail, from fresh flowers on each table to the spacing between seats, is chosen to make conversation easy and the experience feel personal."
-                  ],
+                  "content": "A memorable meal begins long before the first course arrives. The moment our guests step through the door, the lighting, music, textures and scents work together to set the tone for the evening ahead.\nOur dining room is designed around warmth and intimacy. Soft, layered lighting, rich velvet seating and carefully chosen table settings create a space that feels elegant yet relaxed, so every guest can settle in and enjoy the moment.\nEvery detail, from fresh flowers on each table to the spacing between seats, is chosen to make conversation easy and the experience feel personal.",
                   "highlights": [
-                    "Warm, layered lighting that sets a relaxed mood",
-                    "Comfortable seating and thoughtfully spaced tables",
-                    "Fresh flowers and fine tableware on every table"
+                    {
+                      "id": "warm-layered-lighting-that-sets-a-relaxed-mood",
+                      "text": "Warm, layered lighting that sets a relaxed mood"
+                    },
+                    {
+                      "id": "comfortable-seating-and-thoughtfully-spaced-tables",
+                      "text": "Comfortable seating and thoughtfully spaced tables"
+                    },
+                    {
+                      "id": "fresh-flowers-and-fine-tableware-on-every-table",
+                      "text": "Fresh flowers and fine tableware on every table"
+                    }
                   ],
                   "quote": {
                     "text": "Ambience is the silent host that welcomes every guest.",
@@ -1130,15 +1141,20 @@
                   "homeImageAlt": "Chocolate cake with berries and vanilla ice cream",
                   "coverImage": "/images/menu/desserts-lava-cake.webp",
                   "coverImageAlt": "Chocolate lava cake with vanilla ice cream and berries",
-                  "content": [
-                    "Great cooking starts with great ingredients. At Velora, our menu follows the seasons, so every dish is built around produce at its natural peak of flavor.",
-                    "We work closely with local farmers and trusted suppliers to source fresh vegetables, herbs, fruits and proteins. This lets our chefs keep recipes simple and let the ingredients speak for themselves.",
-                    "Cooking with the seasons is also a commitment to sustainability, reducing waste and supporting the community that helps bring our dishes to life."
-                  ],
+                  "content": "Great cooking starts with great ingredients. At Velora, our menu follows the seasons, so every dish is built around produce at its natural peak of flavor.\nWe work closely with local farmers and trusted suppliers to source fresh vegetables, herbs, fruits and proteins. This lets our chefs keep recipes simple and let the ingredients speak for themselves.\nCooking with the seasons is also a commitment to sustainability, reducing waste and supporting the community that helps bring our dishes to life.",
                   "highlights": [
-                    "Locally sourced produce picked at its peak",
-                    "Menus that change with every season",
-                    "A sustainable approach to fine dining"
+                    {
+                      "id": "locally-sourced-produce-picked-at-its-peak",
+                      "text": "Locally sourced produce picked at its peak"
+                    },
+                    {
+                      "id": "menus-that-change-with-every-season",
+                      "text": "Menus that change with every season"
+                    },
+                    {
+                      "id": "a-sustainable-approach-to-fine-dining",
+                      "text": "A sustainable approach to fine dining"
+                    }
                   ],
                   "quote": {
                     "text": "When you cook with the seasons, nature does half the work.",
@@ -1163,15 +1179,20 @@
                   "thumbnailAlt": "Strawberry cocktail with rosemary garnish",
                   "coverImage": "/images/gallery/cocktail.webp",
                   "coverImageAlt": "Strawberry cocktail by warm lamplight",
-                  "content": [
-                    "A great cocktail is built the same way as a great dish: with fresh ingredients, balance and a little creativity. Our bar team works closely with our chefs so every drink complements the flavours on your plate.",
-                    "We use seasonal fruit, fresh herbs and house-made syrups instead of ready-made mixes. Each recipe is tested and refined until the sweetness, acidity and strength are in perfect harmony.",
-                    "Presentation matters too. The glassware, the garnish and even the ice are chosen to make every drink as beautiful to look at as it is to taste."
-                  ],
+                  "content": "A great cocktail is built the same way as a great dish: with fresh ingredients, balance and a little creativity. Our bar team works closely with our chefs so every drink complements the flavours on your plate.\nWe use seasonal fruit, fresh herbs and house-made syrups instead of ready-made mixes. Each recipe is tested and refined until the sweetness, acidity and strength are in perfect harmony.\nPresentation matters too. The glassware, the garnish and even the ice are chosen to make every drink as beautiful to look at as it is to taste.",
                   "highlights": [
-                    "Fresh seasonal fruit and herbs in every drink",
-                    "House-made syrups and infusions",
-                    "Pairings designed to complement our menu"
+                    {
+                      "id": "fresh-seasonal-fruit-and-herbs-in-every-drink",
+                      "text": "Fresh seasonal fruit and herbs in every drink"
+                    },
+                    {
+                      "id": "house-made-syrups-and-infusions",
+                      "text": "House-made syrups and infusions"
+                    },
+                    {
+                      "id": "pairings-designed-to-complement-our-menu",
+                      "text": "Pairings designed to complement our menu"
+                    }
                   ],
                   "quote": {
                     "text": "A good drink should feel like the first course of the evening.",
@@ -1192,10 +1213,7 @@
                 "label": "Book a Table",
                 "title": "Reserve Your Table",
                 "titleHighlight": "For a Special Experience",
-                "text": [
-                  "Whether it's a romantic dinner, a family celebration, or a casual meal with friends,",
-                  "we'd love to welcome you. Book your table in advance and enjoy a memorable dining experience."
-                ]
+                "text": "Whether it's a romantic dinner, a family celebration, or a casual meal with friends,\nwe'd love to welcome you. Book your table in advance and enjoy a memorable dining experience."
               },
               "image": "/images/book-a-table/dining-room.webp",
               "imageAlt": "Candlelit restaurant table with red velvet chairs",
@@ -1240,7 +1258,7 @@
                   "09:00 PM",
                   "10:00 PM"
                 ],
-                "button": "Book a Table",
+                "buttonText": "Book a Table",
                 "buttonIcon": "HiOutlineArrowRight",
                 "sending": "Booking...",
                 "successIcon": "FaCheckCircle",
@@ -1279,36 +1297,26 @@
                 "label": "Contact Us",
                 "title": "Let's Get in Touch",
                 "titleHighlight": "We're Here for You",
-                "text": [
-                  "Have a question, booking request, or special occasion in mind?",
-                  "Our team is always happy to assist you and make your experience exceptional."
-                ]
+                "text": "Have a question, booking request, or special occasion in mind?\nOur team is always happy to assist you and make your experience exceptional."
               },
               "info": [
                 {
                   "id": "call-us",
                   "icon": "FaPhoneAlt",
                   "title": "Call Us",
-                  "lines": [
-                    "+1 0000000000"
-                  ]
+                  "text": "+1 0000000000"
                 },
                 {
                   "id": "email-us",
                   "icon": "FaEnvelope",
                   "title": "Email Us",
-                  "lines": [
-                    "info@xyz.com"
-                  ]
+                  "text": "info@xyz.com"
                 },
                 {
                   "id": "working-hours",
                   "icon": "FaRegClock",
                   "title": "Working Hours",
-                  "lines": [
-                    "Mon - Sun",
-                    "10:00 AM - 11:00 PM"
-                  ]
+                  "text": "Mon - Sun\n10:00 AM - 11:00 PM"
                 }
               ],
               "image": "/images/contact/restaurant-interior.webp",
@@ -1337,7 +1345,7 @@
                   "Catering Services",
                   "General Enquiry"
                 ],
-                "button": "Send Message",
+                "buttonText": "Send Message",
                 "buttonIcon": "HiOutlineArrowRight",
                 "sending": "Sending...",
                 "successIcon": "FaCheckCircle",
@@ -1367,10 +1375,7 @@
                 {
                   "id": "new-york",
                   "city": "New York",
-                  "address": [
-                    "350 Fifth Avenue,",
-                    "New York, NY 10118, USA"
-                  ],
+                  "address": "350 Fifth Avenue,\nNew York, NY 10118, USA",
                   "phone": "+1 0000000000",
                   "phoneUrl": "tel:+10000000000",
                   "email": "info@xyz.com",
@@ -1380,10 +1385,7 @@
                 {
                   "id": "san-francisco",
                   "city": "San Francisco",
-                  "address": [
-                    "1 Market Street,",
-                    "San Francisco, CA 94105, USA"
-                  ],
+                  "address": "1 Market Street,\nSan Francisco, CA 94105, USA",
                   "phone": "+1 0000000000",
                   "phoneUrl": "tel:+10000000000",
                   "email": "info@xyz.com",

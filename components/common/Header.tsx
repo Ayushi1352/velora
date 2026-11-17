@@ -34,10 +34,27 @@ export const Header = ({ data }: HeaderProps) => {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
+  // Close the mobile menu when another page opens (also through the browser's back / forward buttons).
+  const [menuPath, setMenuPath] = useState(pathname);
+  if (pathname !== menuPath) {
+    setMenuPath(pathname);
+    setOpen(false);
+  }
+
   useEffect(() => {
-    document.documentElement.style.overflow = open ? 'hidden' : '';
+    if (!open) return;
+    document.documentElement.style.overflow = 'hidden';
+    // The menu only exists below lg: close it (and give the page its scroll back) when the screen grows past that,
+    // and on Escape.
+    const desktop = window.matchMedia('(min-width: 1024px)');
+    const onDesktop = () => desktop.matches && setOpen(false);
+    const onKey = (e: KeyboardEvent) => e.key === 'Escape' && setOpen(false);
+    desktop.addEventListener('change', onDesktop);
+    window.addEventListener('keydown', onKey);
     return () => {
       document.documentElement.style.overflow = '';
+      desktop.removeEventListener('change', onDesktop);
+      window.removeEventListener('keydown', onKey);
     };
   }, [open]);
 
@@ -92,10 +109,10 @@ export const Header = ({ data }: HeaderProps) => {
 
         <div className="flex items-center gap-3">
           <Link
-            href={data.button.url}
+            href={data.buttonUrl}
             className={`${btnFrame} hidden h-[46px] items-center gap-3 bg-[var(--color-maroon-dark)] px-5 font-accent text-[16px] tracking-[0.02em] text-[var(--color-white)] transition-colors hover:bg-[var(--color-gold)] hover:text-[var(--color-white)] sm:inline-flex lg:h-[calc(58*var(--u))] lg:px-[calc(31*var(--u))] lg:text-[max(calc(20*var(--u)),var(--text-min))] lg:gap-[calc(13*var(--u))]`}
           >
-            {data.button.label}
+            {data.buttonText}
             <Icon name={data.buttonIcon} strokeWidth={2} className="size-[14px] lg:size-[calc(15*var(--u))]" />
           </Link>
           <button
@@ -140,11 +157,11 @@ export const Header = ({ data }: HeaderProps) => {
             })}
           </ul>
           <Link
-            href={data.button.url}
+            href={data.buttonUrl}
             onClick={() => setOpen(false)}
             className={`${btnFrame} mt-7 inline-flex h-[50px] items-center gap-3 bg-[var(--color-maroon-dark)] px-6 font-accent text-[18px] text-[var(--color-white)] transition-colors hover:bg-[var(--color-gold)] hover:text-[var(--color-white)] sm:hidden`}
           >
-            {data.button.label}
+            {data.buttonText}
             <Icon name={data.buttonIcon} strokeWidth={2} className="size-4" />
           </Link>
         </nav>

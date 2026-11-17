@@ -43,7 +43,8 @@ export interface PaginationData {
   pageLabel: string;
 }
 
-/** Heading of an inner page section: label, title and the gold second line. */
+/** Heading of an inner page section: label, title and the gold second line. "
+" in `text` starts a new line (on desktop). */
 export interface SectionIntroData {
   label: string;
   title: string;
@@ -51,14 +52,15 @@ export interface SectionIntroData {
   text: string;
 }
 
-/** Same as SectionIntroData, with the text split into lines that break on desktop. */
-export interface MultiLineIntroData extends Omit<SectionIntroData, 'text'> {
-  text: string[];
+/** A list item that is just a line of text. */
+export interface TextItem {
+  id: string;
+  text: string;
 }
 
 /** Text of a form's submit button and of the thank-you message shown after it is sent. */
 export interface FormSubmitLabels {
-  button: string;
+  buttonText: string;
   buttonIcon: string;
   sending: string;
   successIcon: string;
@@ -131,7 +133,8 @@ export interface NotFoundData {
   title: string;
   titleHighlight: string;
   text: string;
-  button: LinkData;
+  buttonText: string;
+  buttonUrl: string;
   buttonIcon: string;
 }
 
@@ -148,20 +151,29 @@ export interface FooterData {
   logoLabel: string;
   title: string;
   titleHighlight: string;
-  text: string[];
-  addressIcon: string;
-  address: string[];
-  phoneIcon: string;
-  phone: string;
-  phoneUrl: string;
-  emailIcon: string;
-  email: string;
-  emailUrl: string;
-  menuLabel: string;
-  links: NavLink[];
+  /** "
+" starts a new line (from sm up) */
+  description: string;
+  contactItems: FooterContactItem[];
+  quickLinks: FooterQuickLinks;
   /** "{year}" is the current year */
   copyrightText: string;
   socialLinks: SocialLink[];
+}
+
+/** Address, phone or email line of the footer; "
+" starts a new line. Items with a url are links. */
+export interface FooterContactItem {
+  id: string;
+  icon: string;
+  text: string;
+  url?: string;
+}
+
+/** The footer's page links; `title` names the list for screen readers. */
+export interface FooterQuickLinks {
+  title: string;
+  links: NavLink[];
 }
 
 export interface FooterProps {
@@ -200,7 +212,8 @@ export interface HeaderData {
   logoUrl: string;
   logoLabel: string;
   navLinks: NavLink[];
-  button: LinkData;
+  buttonText: string;
+  buttonUrl: string;
   buttonIcon: string;
   menuLabel: string;
   mobileMenuLabel: string;
@@ -218,8 +231,9 @@ export interface HeroData {
   sectionLabel: string;
   title: string;
   subtitle: string;
-  highlights: string[];
-  button: LinkData;
+  highlights: TextItem[];
+  buttonText: string;
+  buttonUrl: string;
   buttonIcon: string;
   image: string;
   imageAlt: string;
@@ -254,8 +268,11 @@ export interface AboutUsData {
   label: string;
   title: string;
   titleHighlight: string;
-  paragraphs: string[];
-  button?: LinkData;
+  /** One paragraph per "
+"-separated line */
+  description: string;
+  buttonText?: string;
+  buttonUrl?: string;
   buttonIcon?: string;
   leftImage: string;
   leftImageAlt: string;
@@ -283,7 +300,8 @@ export interface FoodMenuData {
   title: string;
   titleHighlight: string;
   text: string;
-  button: LinkData;
+  buttonText: string;
+  buttonUrl: string;
   buttonIcon: string;
   categories: FoodMenuCategory[];
 }
@@ -480,8 +498,10 @@ export interface BlogPost {
   homeImageAlt?: string;
   coverImage: string;
   coverImageAlt: string;
-  content: string[];
-  highlights: string[];
+  /** One paragraph per "
+"-separated line */
+  content: string;
+  highlights: TextItem[];
   image: string;
   imageAlt: string;
   quote: {
@@ -554,7 +574,7 @@ export interface BookingFeature {
 }
 
 export interface BookingData {
-  intro: MultiLineIntroData;
+  intro: SectionIntroData;
   image: string;
   imageAlt: string;
   form: BookingFormData;
@@ -571,11 +591,13 @@ export interface ContactInfoItem {
   id: string;
   icon: string;
   title: string;
-  lines: string[];
+  /** One line per "
+"-separated part */
+  text: string;
 }
 
 export interface ContactData {
-  intro: MultiLineIntroData;
+  intro: SectionIntroData;
   info: ContactInfoItem[];
   image: string;
   imageAlt: string;
@@ -612,7 +634,9 @@ export interface ContactFormProps {
 export interface LocationItem {
   id: string;
   city: string;
-  address: string[];
+  /** "
+" starts a new line */
+  address: string;
   phone: string;
   phoneUrl: string;
   email: string;

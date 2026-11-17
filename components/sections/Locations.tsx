@@ -1,5 +1,6 @@
 import { Fragment } from 'react';
 import { Icon } from '@/components/ui/Icon';
+import { lines } from '@/components/ui/text';
 import { SectionLabel } from '@/components/ui/SectionHeading';
 import type { LocationsProps } from '@/types/templates.types';
 
@@ -26,7 +27,7 @@ export const Locations = ({ data: locations }: LocationsProps) => {
           >
             <h3 className="font-heading text-[30px] leading-none text-[var(--color-ink)] lg:text-[max(calc(46*var(--u)),var(--text-min))]">{loc.city}</h3>
             <p className="font-ui text-[16px] leading-[1.55] text-[var(--color-body)] lg:text-[max(calc(21*var(--u)),var(--text-min))]">
-              {loc.address.map((line, i) => (
+              {lines(loc.address).map((line, i) => (
                 <Fragment key={i}>
                   {i > 0 && <br />}
                   {line}

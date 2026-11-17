@@ -54,7 +54,7 @@ const MessageForm = ({ form, closeLabel, closeIcon }: { form: ContactFormFields;
           disabled={status === 'sending'}
           className={`${btnFrame} inline-flex h-[54px] items-center gap-[12px] bg-[var(--color-maroon-dark)] px-[30px] font-accent text-[18px] text-[var(--color-white)] transition-colors hover:bg-[var(--color-gold)] hover:text-[var(--color-white)] disabled:opacity-80 lg:h-[calc(58*var(--u))] lg:px-[calc(31*var(--u))] lg:text-[max(calc(20*var(--u)),var(--text-min))]`}
         >
-          {status === 'sending' ? form.sending : form.button}
+          {status === 'sending' ? form.sending : form.buttonText}
           {status === 'sending' ? (
             <span aria-hidden="true" className="size-[16px] animate-spin rounded-full border-2 border-[var(--color-white-40)] border-t-[var(--color-white)]" />
           ) : (

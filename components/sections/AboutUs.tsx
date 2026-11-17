@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { Icon } from '@/components/ui/Icon';
+import { lines } from '@/components/ui/text';
 import { SectionLabel } from '@/components/ui/SectionHeading';
 import type { AboutUsProps } from '@/types/templates.types';
 
@@ -19,7 +20,7 @@ const layouts = {
 /** Three column "Our Story" layout used on the Home and About Us pages. */
 export const AboutUs = ({ data, layout = 'home' }: AboutUsProps) => {
   if (!data) return null;
-  const { label, title, titleHighlight, paragraphs, button, buttonIcon, leftImage, leftImageAlt, rightImage, rightImageAlt } = data;
+  const { label, title, titleHighlight, description, buttonText, buttonUrl, buttonIcon, leftImage, leftImageAlt, rightImage, rightImageAlt } = data;
   const classes = layouts[layout];
 
   return (
@@ -41,21 +42,21 @@ export const AboutUs = ({ data, layout = 'home' }: AboutUsProps) => {
             <span className="text-[var(--color-gold)]">{titleHighlight}</span>
           </h2>
           <div className={`mt-[22px] max-w-[560px] space-y-[1.4em] font-body text-[17px] leading-[1.38] text-[var(--color-ink-soft)] lg:ml-[calc(84*var(--u))] lg:max-w-[calc(520*var(--u))] ${classes.text}`}>
-            {paragraphs.map((p, i) => (
+            {lines(description).map((p, i) => (
               <p key={i} data-reveal="up" data-delay={2 + i}>
                 {p}
               </p>
             ))}
           </div>
-          {button && buttonIcon && (
+          {buttonText && buttonUrl && buttonIcon && (
             <Link
               data-reveal="zoom"
               data-delay="3"
-              href={button.url}
+              href={buttonUrl}
               className="group mt-[30px] grid size-[160px] place-items-center rounded-full border border-[var(--color-gold-line)] text-center transition-colors hover:border-[var(--color-maroon)] hover:bg-[var(--color-maroon)] lg:ml-[calc(73*var(--u))] lg:mt-[calc(46*var(--u))] lg:size-[calc(182*var(--u))]"
             >
               <span className="flex flex-col items-center font-heading text-[18px] font-medium leading-[1.12] text-[var(--color-wine)] transition-colors group-hover:text-[var(--color-white)] lg:text-[max(calc(21*var(--u)),var(--text-min))]">
-                <span className="max-w-[7.4em]">{button.label}</span>
+                <span className="max-w-[7.4em]">{buttonText}</span>
                 <Icon name={buttonIcon} strokeWidth={2} className="mt-[0.55em] size-[0.8em] text-[var(--color-gold)] transition-transform duration-300 group-hover:translate-x-1.5 group-hover:text-[var(--color-white)]" />
               </span>
             </Link>

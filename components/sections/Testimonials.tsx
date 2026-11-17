@@ -252,6 +252,7 @@ const TestimonialGrid = ({ data }: { data: TestimonialsData }) => {
 const TestimonialHome = ({ data }: { data: TestimonialsData }) => {
   const { home } = data;
   const items = data.homeItemIds.flatMap((id) => data.items.filter((item) => item.id === id));
+  if (!items.length) return null;
 
   return (
     <section aria-label={home.label} className="py-[var(--section-space)] overflow-hidden">

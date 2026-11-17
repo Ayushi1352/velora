@@ -8,3 +8,8 @@ export function isActive(pathname: string, href: string) {
   if (href === '/') return pathname === '/';
   return pathname === href || pathname.startsWith(`${href}/`);
 }
+
+/** The lines of a templates.json text; "\n" in the text starts a new line. */
+export function lines(text: string) {
+  return text.split('\n');
+}

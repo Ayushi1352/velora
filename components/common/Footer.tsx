@@ -3,6 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { FooterLinks } from '@/components/common/FooterLinks';
 import { Icon } from '@/components/ui/Icon';
+import { lines } from '@/components/ui/text';
 import type { FooterProps } from '@/types/templates.types';
 
 const contactText = 'font-body text-[17px] leading-[1.38] text-[var(--color-ink-soft)] lg:text-[max(calc(20*var(--u)),var(--text-min))]';
@@ -40,7 +41,7 @@ export const Footer = async ({ data: footer }: FooterProps) => {
             </p>
             <span aria-hidden="true" data-reveal="line" data-delay="3" className="ml-[22px] mt-4 block h-[2px] w-[48px] origin-left bg-[var(--color-gold-soft)] lg:ml-[calc(24*var(--u))] lg:mt-[calc(16*var(--u))] lg:w-[calc(52*var(--u))]" />
             <p className="mt-4 pl-[22px] font-body text-[16px] leading-[1.45] text-[var(--color-ink-soft)] lg:mt-[calc(18*var(--u))] lg:pl-[calc(24*var(--u))] lg:text-[max(calc(19*var(--u)),var(--text-min))]">
-              {footer.text.map((line, i) => (
+              {lines(footer.description).map((line, i) => (
                 <Fragment key={i}>
                   {i > 0 && (
                     <>
@@ -55,39 +56,33 @@ export const Footer = async ({ data: footer }: FooterProps) => {
 
           {/* Contact */}
           <ul data-reveal="up" data-delay="2" className="flex flex-col gap-5 md:order-2 lg:order-none lg:gap-[calc(24*var(--u))]">
-            <li className="flex items-center gap-5 lg:gap-[calc(37*var(--u))]">
-              <span className={iconCircle}>
-                <Icon name={footer.addressIcon} className="size-[18px] lg:size-[calc(18*var(--u))]" />
-              </span>
-              <span className={contactText}>
-                {footer.address.map((line, i) => (
-                  <Fragment key={i}>
-                    {i > 0 && <br />}
-                    {line}
-                  </Fragment>
-                ))}
-              </span>
-            </li>
-            <li className="flex items-center gap-5 lg:gap-[calc(37*var(--u))]">
-              <span className={iconCircle}>
-                <Icon name={footer.phoneIcon} className="size-[16px] lg:size-[calc(16*var(--u))]" />
-              </span>
-              <a href={footer.phoneUrl} className={`${contactText} transition-colors hover:text-[var(--color-gold)]`}>
-                {footer.phone}
-              </a>
-            </li>
-            <li className="flex items-center gap-5 lg:gap-[calc(37*var(--u))]">
-              <span className={iconCircle}>
-                <Icon name={footer.emailIcon} className="size-[16px] lg:size-[calc(16*var(--u))]" />
-              </span>
-              <a href={footer.emailUrl} className={`${contactText} break-all transition-colors hover:text-[var(--color-gold)]`}>
-                {footer.email}
-              </a>
-            </li>
+            {footer.contactItems.map((item) => (
+              <li key={item.id} className="flex items-center gap-5 lg:gap-[calc(37*var(--u))]">
+                <span className={iconCircle}>
+                  {/* the address line (the one without a link) has the slightly larger pin icon */}
+                  <Icon name={item.icon} className={item.url ? 'size-[16px] lg:size-[calc(16*var(--u))]' : 'size-[18px] lg:size-[calc(18*var(--u))]'} />
+                </span>
+                {item.url ? (
+                  // an email address has no spaces, so it may break anywhere on a narrow screen
+                  <a href={item.url} className={`${contactText} ${item.url.startsWith('mailto:') ? 'break-all ' : ''}transition-colors hover:text-[var(--color-gold)]`}>
+                    {item.text}
+                  </a>
+                ) : (
+                  <span className={contactText}>
+                    {lines(item.text).map((line, i) => (
+                      <Fragment key={i}>
+                        {i > 0 && <br />}
+                        {line}
+                      </Fragment>
+                    ))}
+                  </span>
+                )}
+              </li>
+            ))}
           </ul>
 
           {/* Links */}
-          <FooterLinks links={footer.links} label={footer.menuLabel} />
+          <FooterLinks links={footer.quickLinks.links} label={footer.quickLinks.title} />
         </div>
       </div>
 

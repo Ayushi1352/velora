@@ -23,6 +23,8 @@ const navButton =
 /** Full screen image viewer with previous / next navigation (arrows, keyboard and swipe). */
 const GalleryLightbox = ({ images, index, onChange, onClose, labels }: GalleryLightboxProps) => {
   const touchX = useRef<number | null>(null);
+  const dialogRef = useRef<HTMLDivElement>(null);
+  const closeRef = useRef<HTMLButtonElement>(null);
   const count = images.length;
   const img = images[index];
 
@@ -34,16 +36,37 @@ const GalleryLightbox = ({ images, index, onChange, onClose, labels }: GalleryLi
       if (e.key === 'Escape') onClose();
       else if (e.key === 'ArrowLeft') onChange((index - 1 + count) % count);
       else if (e.key === 'ArrowRight') onChange((index + 1) % count);
+      else if (e.key === 'Tab') {
+        // Keep keyboard focus inside the viewer while it is open.
+        const buttons = [...(dialogRef.current?.querySelectorAll('button') ?? [])];
+        const first = buttons[0];
+        const last = buttons[buttons.length - 1];
+        if (!first || !last) return;
+        if (!dialogRef.current?.contains(document.activeElement)) {
+          e.preventDefault();
+          first.focus();
+        } else if (e.shiftKey && document.activeElement === first) {
+          e.preventDefault();
+          last.focus();
+        } else if (!e.shiftKey && document.activeElement === last) {
+          e.preventDefault();
+          first.focus();
+        }
+      }
     }
     window.addEventListener('keydown', onKey);
     return () => window.removeEventListener('keydown', onKey);
   }, [index, count, onChange, onClose]);
 
   useEffect(() => {
-    const { overflow } = document.body.style;
+    const { overflow } = document.documentElement.style;
     document.documentElement.style.overflow = 'hidden';
+    // Focus moves into the viewer, and back to the photo that opened it once it closes.
+    const opener = document.activeElement instanceof HTMLElement ? document.activeElement : null;
+    closeRef.current?.focus({ preventScroll: true });
     return () => {
       document.documentElement.style.overflow = overflow;
+      opener?.focus({ preventScroll: true });
     };
   }, []);
 
@@ -52,6 +75,7 @@ const GalleryLightbox = ({ images, index, onChange, onClose, labels }: GalleryLi
   return (
     <FadeIn duration={300}>
       <div
+        ref={dialogRef}
         role="dialog"
         aria-modal="true"
         aria-label={img.imageAlt}
@@ -66,6 +90,7 @@ const GalleryLightbox = ({ images, index, onChange, onClose, labels }: GalleryLi
         className="fixed inset-0 z-[100] flex items-center justify-center bg-[var(--color-black-90)]"
       >
         <button
+          ref={closeRef}
           type="button"
           aria-label={labels.closeLabel}
           onClick={onClose}

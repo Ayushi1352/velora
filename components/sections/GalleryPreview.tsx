@@ -6,7 +6,8 @@ import type { GalleryPreviewProps } from '@/types/templates.types';
 const zoom = 'object-cover transition-transform duration-700 group-hover:scale-105';
 
 export const GalleryPreview = ({ data: gallery }: GalleryPreviewProps) => {
-  if (!gallery) return null;
+  // The collage is drawn for exactly four photos.
+  if (!gallery || gallery.images.length < 4) return null;
   const [steak, room, cake, table] = gallery.images;
 
   return (

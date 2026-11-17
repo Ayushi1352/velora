@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import { Icon } from '@/components/ui/Icon';
+import { lines } from '@/components/ui/text';
 import { Fragment } from 'react';
 import { SectionHeading } from '@/components/ui/SectionHeading';
 import type { ContactData, ContactProps } from '@/types/templates.types';
@@ -19,7 +20,7 @@ const ContactInfo = ({ info, image, imageAlt }: ContactInfoProps) => {
               <span aria-hidden="true" className="mx-[24px] h-[96px] w-[2px] shrink-0 bg-[var(--color-gold-line)] lg:h-[calc(115*var(--u))] lg:ml-[calc(54*var(--u))] lg:mr-[calc(53*var(--u))]" />
               <div className="min-w-0">
                 <h2 className="font-heading text-[28px] leading-tight text-[var(--color-ink)] lg:text-[max(calc(38*var(--u)),var(--text-min))]">{item.title}</h2>
-                {item.lines.map((line) => (
+                {lines(item.text).map((line) => (
                   <p key={line} className="mt-[6px] break-words font-body text-[16px] tracking-[0.01em] sm:text-[18px] text-[var(--color-body)] lg:mt-[calc(2*var(--u))] lg:text-[max(calc(23.5*var(--u)),var(--text-min))]">
                     {line}
                   </p>
@@ -51,7 +52,7 @@ export const Contact = ({ data }: ContactProps) => {
         title={intro.title}
         titleHighlight={intro.titleHighlight}
         titleClassName="text-[clamp(26px,8.5vw,40px)] sm:text-[56px] lg:text-[max(calc(78*var(--u)),var(--text-min))]"
-        text={intro.text.map((line, i) => (
+        text={lines(intro.text).map((line, i) => (
           <Fragment key={i}>
             {i > 0 && ' '}
             <span className="md:block">{line}</span>

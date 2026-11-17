@@ -3,6 +3,7 @@
 import { FormThankYou } from '@/components/ui/FormThankYou';
 import { useDummySubmit } from '@/components/ui/useDummySubmit';
 import { Icon } from '@/components/ui/Icon';
+import { lines } from '@/components/ui/text';
 import { Fragment } from 'react';
 import Image from 'next/image';
 import { SectionHeading } from '@/components/ui/SectionHeading';
@@ -93,7 +94,7 @@ const ReservationForm = ({ form, closeLabel, closeIcon }: { form: BookingFormDat
             disabled={status === 'sending'}
             className="mt-[4px] flex h-[62px] items-center justify-center gap-[14px] rounded-[2px] bg-[linear-gradient(180deg,var(--color-wine),var(--color-maroon))] font-ui text-[18px] font-medium text-[var(--color-white)] shadow-[0_8px_18px_var(--color-shadow-button)] transition-colors hover:bg-none hover:bg-[var(--color-gold)] disabled:opacity-80 sm:col-span-2 lg:h-[calc(77*var(--u))] lg:mt-0 lg:gap-[calc(16*var(--u))] lg:text-[max(calc(21*var(--u)),var(--text-min))]"
           >
-            {status === 'sending' ? form.sending : form.button}
+            {status === 'sending' ? form.sending : form.buttonText}
             {status === 'sending' ? (
               <span aria-hidden="true" className="size-[18px] animate-spin rounded-full border-2 border-[var(--color-white-40)] border-t-[var(--color-white)]" />
             ) : (
@@ -143,7 +144,7 @@ export const Booking = ({ data }: BookingProps) => {
         title={intro.title}
         titleHighlight={intro.titleHighlight}
         titleClassName="text-[clamp(26px,8.5vw,40px)] sm:text-[56px] lg:text-[max(calc(80*var(--u)),var(--text-min))]"
-        text={intro.text.map((line, i) => (
+        text={lines(intro.text).map((line, i) => (
           <Fragment key={i}>
             {i > 0 && ' '}
             <span className="md:block">{line}</span>

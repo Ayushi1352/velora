@@ -20,8 +20,8 @@ export const NotFound = ({ data }: NotFoundProps) => {
       <BookButton
         data-intro="up"
         data-delay="6"
-        href={data.button.url}
-        label={data.button.label}
+        href={data.buttonUrl}
+        label={data.buttonText}
         icon={data.buttonIcon}
         className="mt-[28px] h-[54px] px-[30px] text-[18px] lg:mt-[calc(37*var(--u))] lg:h-[calc(61*var(--u))] lg:px-[calc(40*var(--u))] lg:text-[max(calc(19*var(--u)),var(--text-min))]"
       />

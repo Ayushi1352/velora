@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import { Icon } from '@/components/ui/Icon';
+import { lines } from '@/components/ui/text';
 import type { BlogPost, BlogDetailData, BlogDetailProps } from '@/types/templates.types';
 
 const ArticleHeader = ({ post, labels }: { post: BlogPost; labels: BlogDetailData }) => {
@@ -42,7 +43,7 @@ const ArticleBody = ({ post, labels }: { post: BlogPost; labels: BlogDetailData 
   return (
     <div className="mx-auto max-w-[1920px] pb-[var(--section-space)] px-5 pt-[40px] md:px-8 lg:px-[calc(103*var(--u))] lg:pt-[calc(58*var(--u))] lg:[container-type:inline-size]">
       <div className="space-y-[1.6em]">
-        {post.content.map((p, i) => (
+        {lines(post.content).map((p, i) => (
           <p key={i} data-reveal="up" className={paragraph}>
             {p}
           </p>
@@ -51,9 +52,9 @@ const ArticleBody = ({ post, labels }: { post: BlogPost; labels: BlogDetailData 
 
       <ul className="mt-[36px] flex flex-col gap-[16px] lg:mx-auto lg:max-w-[61.9em] lg:mt-[calc(70*var(--u))] lg:gap-[calc(19*var(--u))] lg:text-[min(18px,calc(100cqi/64))]">
         {post.highlights.map((h, i) => (
-          <li key={h} data-reveal="left" data-delay={i + 1} className="flex items-center gap-[18px] font-body text-[17px] text-[var(--color-body)] lg:gap-[calc(28*var(--u))] lg:text-[min(18px,calc(100cqi/64))]">
+          <li key={h.id} data-reveal="left" data-delay={i + 1} className="flex items-center gap-[18px] font-body text-[17px] text-[var(--color-body)] lg:gap-[calc(28*var(--u))] lg:text-[min(18px,calc(100cqi/64))]">
             <Icon name={labels.highlightIcon} className="size-[30px] shrink-0 text-[var(--color-gold)] lg:size-[calc(36*var(--u))]" />
-            {h}
+            {h.text}
           </li>
         ))}
       </ul>
